@@ -1,0 +1,96 @@
+<h1>Git & Githup</h1>
+
+<h3>Git</h3> 
+  <ul>
+      <li>is Distributed version control system
+      <li>is Free and Open source</li>
+      <li>it has GUI</li>
+      <li>Why you must learn Git?
+        <ul>
+          <li>Devs contribute to the same project</li>
+          <li>you can revet changes</li>
+          <li>you can collaborate to fix issues</li>
+          <li>you can collaborate to create new features</li>
+          <li>you can solve conflicts</li>
+          <li>you can organize features</li>
+        </ul>
+      </li>
+  </ul>
+
+<h3>Githup</h3>
+  <ul>
+    <li>is source for project and sources[gitlab,BitBucket]</li>
+    <li>Hithub simplify Using Git</li>
+    <li>you can use git without github</li>
+  </ul>
+
+  <p>
+    <h4>Words You will hear</h4>
+    <ul>
+      <li>Repository(Repo): places that i put into my codes about special Project(every project has a unique Repo)
+        <ul>
+          <li>Local repo --> like:my PC(no need to connect to remote repo when working)</li>
+          <li>Remote repo --> like: github</li>
+        </ul>
+      </li>
+      <li>Branch: its branch form the main Repo or main project --> allows me to make feature or maintaince by this branch (its good to create a new branch for every feature)</li>
+      <li>Commit:Checkpoint in my local Repo</li>
+      <li>Clone(Copy):happens from Local or Remote</li>
+      <li>Push:upload local changes to Remote</li>
+      <li>Pull:Pull changes from Remote repe to my local repo</li>
+      <li>Pull request:ask admin or others aboute changes that i made to pull it from local to remote</li>
+      <li>
+        <p>
+          Merging:combining the work from two different branches together<br>
+          Merging in Git creates a special commit that has two unique parents. A commit with two parents essentially means "I want to include all the work from this parent over here and this one over here, and the set of all their parents."
+        </p>
+      </li>
+      <li>Remote branches are on your local repository, not on the remote repository</li>
+      <li>when we make clone from branch that is name is "main" , we get remote branch named origin</li>
+    </ul>
+  </p>
+
+  <p>
+    first<br>
+    git clone link : git copy of your repo on your local system<br>
+    git status : show everything in our directory<br>
+    git add a* : add everyfile in your repo 
+    git add file.ext : add specific filename
+    git commit -m "masseage i want to print"
+    git branch
+    git remote -v
+    git push origin main (from local to remote)
+    git pull origin(git fitch , git mergegit)
+    git checkout Name ==> stand on this (name) 
+    git checkout name; git commit ==> this will put us on the new branch before commiting our changes.
+    git checkout -b name ==>> to create a new branch and check it out at the same time
+    git merge branchName
+    git rebase main => move your branch to merge it with the main
+    git rebase branchName => checkout to our branch after take what in the main
+  </p>
+
+  git branch bugFix
+  git checkout bugFix
+  git Commit
+  git checkout
+  git Commit
+  git merge bugFix
+ git checkout bugFix; git merge main
+
+    <h4><= level 3 =></h4>
+ git branch bugFix
+ git checkout bugFix || git checkout -b bufFix
+ git Commit
+ git checkout main
+ git Commit
+ git merge bugfix   
+
+   <h4><= level 4</h4>
+
+  git checkout -b bugFix; git commit
+  git checkout main; git Commit
+  git checkout bugFix
+  git rebase main
+
+    <h4><= level 5=></h4>
+  git checkout C4 , ( C4 ) ==> the hash or the name of the commit

@@ -1,0 +1,619 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <title>Notess</title>
+        <style>
+            body{
+                background-color: antiquewhite;
+            }
+            div{border: 2px solid blue}
+            .para{
+                color:blue;
+                border: 1px solid black;
+            }
+            #titling{
+                background-color: gray;
+                font-size: 20px;
+            }
+            p strong{
+                color: darkblue;
+                font-weight: bold;
+            }
+            .underline{
+                text-decoration: underline;
+            }
+            .big{
+                font-size: 25px;
+            }
+            #font{
+                font: italic small-caps bold 24px cursive;
+            }
+            .container{
+                display: grid;
+            }
+            .box{
+                display:flex;
+            }
+            span{
+                color: red;
+            }
+            
+        </style>
+    </head>
+
+    <body>
+        <span style="color:blue">hi</span>
+        <h1>biggest title</h1>
+
+        <strong>very cool !</strong> <br>
+
+        markup is a text has a special meaning that tells the browser 
+        what it should do with the text <br>
+
+        <h2>bit smaller</h2>
+
+        <em> it's now italic</em> <br>
+
+        <h3>bit bit smaller</h3>    
+
+        <mark>all whitespaces in text treat like single space in the browser </mark> <br>
+        <p>
+            <strong>void elements </strong>: elements doesn't have a closing tag because they don't have any contents like : <br>
+            <strong>syntax</strong> : Rules having to do with how the parts of a language can be put together <br>
+            <strong>nesting </strong>: the idea that some bits of code can go inside other bits of code <br>
+            <strong>markup </strong>: code that tells the browser what the text on a web page should look like <br>
+            <strong>hypertext</strong> : text that can have links or references <br>
+            <strong>whitespaces </strong>: A general term for spaces, tabs, and line breaks <br>
+        </p>
+        <h4>bit bit bit smaller</h4>
+        <p>
+            now i gonna say anything to make sure that this
+            gonna be a paragraph and it gonna leave a line below
+        </p>
+
+        like that <br><br>
+
+        <h5>bit bit bit bit smaller</h5>
+
+        now i gonna this sup x<sup> 2 </sup> <br>
+
+        and sub this to Oxgeen O<sub>2</sub> <br>
+
+        <p><em><mark>Hi there !</mark></em></p>
+
+        <!--
+            <em> and <strong> — Emphasis.
+        By default, text inside <em> is displayed as italic, and text in <strong> is displayed as boldface.
+        <p> — Paragraph.
+        Text in a paragraph is separated visually from other paragraphs by a small margin.
+        <br> — Line break. (empty)
+        A line break does not create a new paragraph; it only marks the end of a line.
+        <sub> and <sup> — Subscript and superscript.
+        Useful for math and chemistry: I have x3+2x2 molecules of H2O.
+        <mark> — Highlighting.
+        Not very often used, but it's kind of cool.
+        Of these elements, the br element is the only one that is an empty (or void) element.
+        -->
+        <h6>bit bit bit bit bit smaller</h6>
+
+        <p>
+            This paragraph is a block-level element;
+            block elements may contain inline elements and sometimes other block elements.
+            By default its begin on new lines ,
+            but inline elements can start anywhere in a line.
+        </p>
+
+        <p>
+            An inline element doesn't start on a new line 
+            and only takes up as much width as necessary.
+            By default inlinie elements don't force a new line to begin in the 
+            document flow, on the other hand block elements typically cause a line break to occur.
+        </p>
+
+        <p>
+            p is a <strong>block element</strong>, which means the browser creates a box around it.
+            It also generates a margin around this box, to visually
+            separate the paragraph from surrounding elements.<br>
+
+            In contrast, br is an <strong>inline element</strong> that just creates a line break.
+            It doesn't have a box around it and doesn't create any margin.
+        </p>
+        
+
+        <div>
+            <p>
+                you can use div to divide up the page into different sections.
+                div element is a generic container for whatever other elements you might want to put inside
+            </p>
+
+            <p>
+                You can use the div element to organize the content and divide the page into sections
+            </p>
+
+            <p>
+                div element help lay out and organize pages.
+            </p>
+        </div>
+
+        li element should come inside ol element or ul element and the closing tag is optinal<br><br>
+
+
+
+        p element and li element have optional closing tag <br>
+        when browser see another list item he knows that the last one has ended<br><br>
+
+        <div>
+            <p>
+                <mark>Pay attention</mark> to the fact that the closing tag is optional for li, but not optional for ol and ul.
+                In other words, a closing tag is optional for each <strong>list item</strong>, but not for the list as a whole.
+                We must be sure to close the list as a whole! Why? Because if we leave off the closing /ol or /ul,
+                then the <strong>browser will not know when our list ends!</strong> 
+                It will simply treat everything that comes after that point as <mark>of the list.</mark>
+            </p>
+        </div>
+
+        <p>
+            <ul>
+                <li>Learn Frontend.
+                    <ol>
+                        <li>Learn HTML.</li>
+                        <li>Learn CSS</li>
+                        <li>Learn JavaScript</li>
+                        <li>many many projects</li>
+                    </ol>
+                </li>
+                
+                <li>Learn Python.
+                    <ol>
+                        <li>Learn Basics</li>
+                        <li>Learn OOP</li>
+                        <li>Learn Data structure</li>
+                    </ol>
+                </li>
+                
+                <li>Save the world.</li>
+            </ul>
+            
+            This line should not be part of the list! (But it will be, if you forget to put a closing tag!)
+        </p>
+
+        <p>
+            When you're linking to the top page (or home page) of a site,the URL does not need a file path after the domain name<br>
+            so you will just see a single slash at the end of the address: http://en.wikipedia.org/ <br>
+            but if it was a local file we gonna put the file path like this: file:///D:/Projects/notes.html<br>         
+        </p>
+
+        now i gonna try <mark>a element</mark> so i can make a link to any web site i want:-<br><br>
+
+        <a href="http://google.com/" target="_blank">
+            this text gonna be the link to the web site.
+        </a> <br>
+        here we can use target="_blank" to make the link opens in a new tap.
+        <p>
+            a = stands for anchor , href = hypertext reference , href = "http://google.com/" = attribute ,  <br>
+            text after attribute is what the user actually clicks on.
+        </p>
+        so now we gonna try import photo by html <br>
+        <a href="https://www.youtube.com/c/Tahalip/videos">
+            <img src="pic.jpg" alt="this gonna show up if there is a miss">
+        </a>
+        <pre>
+Learn Programming
+        Learn Computer Science
+        Learn Database
+Design
+        Learn graphics
+        learn sketching
+        </pre>
+        <p>
+            img element doesn't copy the image to the html file , it just tell the browser where this 
+            image file(source src) and its an inline element. <br>
+            src and alt are attributes for img element.
+        </p>
+        <p>
+            instead of using the full path file for local file , u can put the file(pic) if it with the html file; <br>
+            and this called relative URL like this: <br>
+        
+        </p>
+        <hr>
+        <h4>
+            Review
+        </h4>
+        <p>
+            <strong>Block elements</strong> are used for large sections of text, such as paragraphs, headlines, or lists; and also for some other features such as video players and tables.<br>
+            <ul>
+                <li><strong>p</strong>: Paragraph. Text in a paragraph is separated visually from other paragraphs by a small margin.</li>
+                <li><strong>ul and ol</strong>: Unordered and ordered lists. By default, ul lists are displayed with bullet points, and ol lists with numbered items.</li>
+                <li><strong>li</strong>: List items inside a ul or ol list. The li element has to be nested inside a ul or ol list; it can't occur on its own.</li>
+                <li><strong>Section headers</strong>: from h1 (largest) to h6 (smallest). Used for headlines, section titles, and the like.</li>
+                <li><strong>div</strong>:A logical division of a page or document. Other block elements such as paragraphs, lists, and headers can be nested inside a div.</li>
+            </ul>
+        </p>
+        <p>
+            <strong>Inline elements</strong> do not create a full-width box on the display. They modify the display of text, or insert other things into the text — such as line breaks, images, or hyperlinks.<br>
+            <ol>
+                <li><strong>Without attributes</strong></li>
+                    <ul>
+                        <li><strong>em and strong</strong>: Emphasis. By default, text inside an em is displayed as <em>italic</em>, and text in strong is displayed as <strong>boldface</strong>.
+                        <li><strong>br</strong>: Line break. (empty) A line break does not create a new paragraph; it only marks the end of a line.
+                        <li><strong>sub and sup</strong>: Subscript and superscript. Useful for math and chemistry: I have x<sup>3</sup>+2x<sup>2</sup> molecules of H<sub>2</sub>O. 
+                        <li><strong>mark</strong>: Highlighting. Not very often used, but it's <mark>kind of cool</mark>.
+                    </ul><br>
+                <li><strong>With attributes</strong></li>
+                    <ul>
+                        <li><strong>img</strong>:  Images. Needs a src attribute with a URL, and an alt attribute with descriptive text.
+                            <!--  <img src="Image URL here" alt="A description of the image">  -->
+                        <li><strong>a</strong>: Hyperlinks. Needs an href(hypertext reference) attribute with a URL ,Hyperlinks allow the user to navigate from one page to another. They are created using the a element. The destination of the link is written in an attribute called href; the link text appears as the contents of the a element.
+                            <!-- <a href="https://en.wikipedia.org/wiki/Hypertext"> Wikipedia's "Hypertext" article </a>  -->
+                    </ul><br>
+            </ol>
+        </p>
+
+        <a href="https://www.youtube.com/watch?v=BGpzGu9Yp6Y&ab_channel=Skrillex" target="_blank">
+            far cry 3 make it bun dem.
+        </a>
+
+        <p>
+            DOM tree(document object model):is a tree structure with a node for each HTML element,
+            piece of text, image, and any other object in the web page.
+        </p>
+
+        <ol>
+            <li style="color: red"> first</li>
+            <li style="color: red"> second</li><br>
+            this is way it bad because u repeat ur code
+        </ol>
+
+        <p>
+            or we use in the style section: li{color:red;} <br>
+            
+        </p>
+
+        <p style="text-align: center">This is a haiku</p>
+        <p style="text-align:center" >So I want each line centered</p>
+        <p style="text-align: center">Let’s make it stylish</p>
+
+        <p style="color: red; text-align:center">
+            if we want to do and multiple things in inline style we use the ";" like this paragraph
+
+        </p>
+
+        <p style="color: brown">
+        now the word style called attribute and everything in the "" is the value of this attribute <br>
+        so we always put "" around the value.<br>
+        The quotes indicate where an attribute value starts and stops, even if there are spaces inside it.
+        </p>
+
+        <p>
+            To signal to the browser that this code is in the CSS language,<br>
+            we need to put it inside a style element or use it as the value of a style attribute.
+        </p>
+
+        <p>
+            A CSS ruleset is made up of a selector and a declaration block.;<br>
+            SELECTOR: Which elements will the Ruleset apply to? <br>
+            DECLARATION BLOCK: How will the Ruleset modify these elements?<br>
+        </p>
+
+        
+        
+        <p class="para">
+            this paragraph made by special class selector<br>
+            go see the rest of code in style section, so anything using class"para" it gonna be the same style.
+        </p>
+
+        <h4 id="titling">
+            this made by ID selector
+        </h4>
+
+        <p>
+            now i gonna use <strong>Combining selectors</strong> on strong elements
+        </p>
+
+
+
+
+        <strong>selectors:</strong><br>
+        <ol>
+            <li>TYPE selecctors: some style we gonna apply it amoung the hole page : h1{}</li>
+            <li>CLASS selectors: to do special style to specific elements : .box{}</li>
+            <li>ID selectors: same with <strong>CLASS</strong> but it used one time : #unique</li>
+            <li>Combining Selectors: its compine more than one element</li>
+        </ol>
+
+        <p>
+            to make the text 1.5 times bigger than the current font size use:1.5em
+        </p>
+
+        <h2>Cascading and Specificity</h2>
+
+        <p>
+            The term "cascading" in Cascading Style Sheets refers to the way that style properties "cascade" down the DOM tree, starting at the top.
+            A style applied to the body element will affect the entire document. A style applied to a lower-level element will affect that element and all its descendants.
+            A style applied at a lower level can override a style at a higher level. For instance, if the body has color: red but a paragraph within the body has color: blue,
+            the blue will apply to that paragraph and to any elements inside it
+
+        </p>
+
+        <p>
+            what is div ? <br>
+            It is a generic container. A p element is specifically meant to contain text.<br>
+            In contrast, the div element is a generic container,
+            meaning you can put whatever other elements you want inside.<br>
+            You can use the div element to organize the content and divide the page into sections.
+        </p>
+
+        <p>
+            <h2>Stylesheet or style element — not both!</h2>
+            
+            If you are linking to a stylesheet located on another web server,
+            you will use a full URL in the href attribute.
+            If you're linking to one that's in the same directory as your HTML file,
+            you can just use the filename as a relative URL.
+        </p>
+
+        <p style="background-color: rgb(0%,0%,0%); color: rgb(255, 255, 255);
+        font-family:geneva;">
+            this gonna be black
+        </p>
+
+        <p style="background-color:#0000ff ; color:rgb(2,179,228);" >
+            this udacity color
+
+        </p>
+
+        <p>
+            In word processors (and everyday speech) we would call this the "Times New Roman font".
+            But technically, "Times New Roman" is not a font—it is a typeface.<br><br>
+            A <strong>typeface</strong> is a group of related <strong>fonts</strong>.<br>
+            A <strong>font</strong> is a specific version of a <strong>typeface</strong>.
+        </p>
+
+        <p>
+            ex: font-family: Helvetica; <br>
+            ___font-family: "Times New Roman";<br>
+            The quotes are recommended for font families that <strong style="text-decoration: underline;">have spaces in the name</strong>.
+            They help ensure that the name is read as one thing.
+        </p>
+
+        <h3>Generic Font families</h3>
+        <ul>
+            <li style="font-family:serif">Serif</li>
+            <li style="font-family:sans-serif">Sans-serif</li>
+            <li style="font-family:cursive">Cursive</li>
+            <li style="font-family:fantasy">Fantasy</li>
+            <li style="font-family:monospace">Monospace</li>
+        </ul>
+
+        <p style="font-family: 'Courier New', Courier, monospace ">
+            Font Stacks
+            Since we don't know what font will be available to each user, it's a good idea to give multiple options. CSS allows us to do this by using a font stack, like this:<br>
+            font-family: Courier, "Courier New";<br>
+            As you can see, we simply list the font families that are OK to use, with the most-preferred choice first. If that choice isn't available, it will try the next one, and so on.<br>
+            A common (and very good) practice is to put the generic font family at the end of the list, like this:<br>
+            font-family: Courier, "Courier New", monospace;<br>
+            This way, if none of the other font families are available, the browser will still use the right general type.<br>
+        </p>
+
+        <p>
+            <h3>3 important things in formating</h3>
+            <ul style="font-size:17px; font-family:cursive;">
+                <li><strong class="big">size</strong>: by font-size: xx px;</li>
+                <li><strong>bold</strong>: by font-weight: bold;</li>
+                <li><em>italic</em>: by font-style: italic;</li>
+                <li><strong class="underline">underline</strong>: by text-decoration: underline;</li>
+            </ul>
+
+            instead of <i>using</i> all of them we can use "font: italic 24px Times;"<br>
+            but it has unique order like this order:
+            <ol>
+                <li>font-style</li>
+                <li>font-variant</li>
+                <li>font-wight</li>
+                <li>*font-size</li>
+                <li>*font-family</li>
+            </ol>
+            things with * we should use them(required) , everything else is optional<br>
+            like: "font: italic small-caps bold 24px cursive" and we gonna use it in the next paragraph<br>
+            at it is :"font: font-style font-variant font-weight font-size/line-height font-family;"
+        </p>
+
+        <p id="font">
+            now we gonna use all the font options we put in last paragraph
+        </p>
+
+        <p>
+            the HTML indicates what the contents mean, while the CSS indicates how the contents should look. Web programmers refer to this as semantic markup — using markup to indicate meaning, not just appearance.
+        </p>
+
+        <h2>CSS Grid vs Flexbox</h2>
+        <p>
+            <strong>Flexbox</strong> <mark>is for how content flows</mark>, <strong>Grid</strong> <mark>is for how content is placed </mark><br>
+            - i.e. grid works nicely for page layouts, flex works nicely for regions within the grid.
+            <ul>
+                <li>Grid is two dimensional, while Flex is one</li>
+                <li>Grid is layout first, while Flexbox is content first</li>
+                <li>Flex is for components of an app, Grid is for the app layout itself</li>
+            </ul>
+        </p>
+
+        <h3>Rows & Columns in Action</h3>
+        <p>
+            <strong>grid-template-columns</strong> is the property that defines the column layout of your grid - that is how many sections the page should be divided into vertically. The values for this property are the explicit value for each column and the number of columns is defined implicitly by the number of values entered<br>
+            For example:<br>
+            grid-template-columns: 60px 60px;<br>
+            would create two columns of 60px each. If you had two items inside your grid and didn't set their position explicitly, the first item would be placed in the first column and the second item in the second
+        </p>
+
+        <p>
+            The grid-area property specifies a particular area or set of rows and columns that a grid item occupies. It is applied to the grid item itself with CSS<br>
+            The grid-area property defines the space an element takes up in the grid by setting values for the row it starts and ends in, and the column it starts and ends in.<br>
+            and it "grid-area:row start/column start/row end/column end;"<br>
+            "grid-area:1/2/3/3;" --> would start at the first row and the first column, and end at the third row (which is the end of the second row if there is no third row) and the third column.<br>
+
+        </p>
+        <p>
+
+            CSS Grid includes advanced capabilities for creating large and complex grids. Some of these are:
+            <ul>
+                <li>the fr Unit</li>
+                <li>Track listings with repeat() notation</li>
+                <li>Track sizing and minmax()</li>
+            </ul>
+        </p>
+
+        <p>
+            The Flexbox model relies on two axes: the main axis and the cross axis. The main axis is defined by flex-direction, which has four possible values:
+            <ul>
+                <li>row</li>
+                <li>row-reverse</li>
+                <li>column</li>
+                <li>column-reverse</li>
+            </ul>
+
+            The two row settings will create the main axis horizontally - or inline direction. The two column settings will create the main axis vertically - or block direction. block or inline here refer to the CSS display settings which we have covered previously.<br>
+            The axis determines the flow of your content - you can think of this as being either rows or columns - and they will be determined when you start aligning and justifying content within a flex container.
+            
+        </p>
+
+        <p>
+            here are three ways to explicitly set the order in which items will appear in a grid.
+            <ol>
+                <li>Moving the HTML code for the elements themselves to reorder</li>
+                <li>Appending -reverse to row or column will reverse the order in the specified row or column</li>
+                <li>Using the order property of the individual items inside the grid</li>
+            </ol>
+        </p>
+
+        <h3>Aligning Items & Justifying Content with Flexbox</h3>
+        <p>
+            To align items on the cross axis use align-items with the possible values:
+            <ul>
+                <li>stretch</li>
+                <li>flex-start</li>
+                <li>flex-end</li>
+                <li>center</li>
+            </ul>
+            To justify content on the main axis use justify-content, which has the possible values:
+            <ul>
+                <li>flex-start</li>
+                <li>flex-end</li>
+                <li>center</li>
+                <li>space-around</li>
+                <li>space-between</li>
+                <li>space-evenly</li>
+            </ul>
+        </p>
+
+
+        <h3>deffernce between wordpress,wordpress.com and wordpress.org</h3>
+        <p>
+            <ol>
+                <li>
+                    <strong>Wordpress:</strong>
+                    <ul>
+                        <li>Free and open source application</li>
+                        <li>Can be used to develop your own websites using the application development environment</li>
+                        <li>a correct use of the term would be " my recent website is powered by wordpress"</li>
+                    </ul>
+                </li><br>
+
+                <li>
+                    <strong>Wordpress.com:</strong>
+                    <ul>
+                        <li>Is a SaaS (software as a service)</li>
+                        <li>Can be used to publish your website through the platform</li>
+                        <li>Can't upload plugins</li>
+                        <li>Limited customizable themes</li>
+                        <li>Private domain name not available</li>
+                        <li>a correct use of the term would be " i created my first blog using wordpress.com"</li>
+                    </ul>
+                </li><br>
+
+                <li>
+                    <strong>Wordpress.org:</strong>
+                    <ul>
+                        <li>The website where the wordpress application is hosted</li>
+                        <li>Documentation is found here</li>
+                        <li>Access to thousands of plugins</li>
+                        <li>Ability to have your own domain name</li>
+                        <li>Ability to monetize your website through Ad placements</li>
+                    </ul>
+                </li>
+            </ol>
+        </p> 
+        <p>
+            <h3>how it works and what is it?</h3>
+            <ul>
+                <li>is used to publish content on the web</li>
+                <li>acts as an interface between the publisher, the database and the visitor</li>
+                <li>Can create posts, pages and media elements --> is used to publish content on the web</li>
+                <li>content is stored as database entries</li>
+                <li>Elements accessed through URL</li>
+                <li></li>
+            </ul>
+        </p>
+
+        <hr>
+        <h2>Wordpress</h2>
+        <pre>
+it has 3 types of content: posts, pages and media elements.<br>
+if(will included in main menu && is stand alone contant && parent-child relationship){        
+    ----->so we choose page
+}
+else if(not in main menu && part of a stream of content){
+    -----> we choose post
+}
+else if(is the content going to change in the future && content is time sensitive && related to a specific event){
+    -----> we choose post
+}
+else(not going to change && content is not likely to change alot){
+    -----> we choose page
+}
+        </pre>
+
+        <p>
+            <h3>View types</h3>
+            <ul>
+                <li>Posts & Pages index</li>
+                <li>Posts & Pages editor</li>
+                <li>media library</li>
+            </ul><br>
+            <h3>The index contains information such as :</h3>
+            <ul>
+                <li>Author</li>
+                <li>Categories</li>
+                <li>Tags</li>
+                <li>Comments</li>
+                <li>Publishing date</li>
+            </ul>
+        </p>
+<pre>
+    Blocks are content elements that you add to the edit screen to create content layouts. Each item you add to your post or page is a block.
+
+You can add blocks for each paragraph, images, videos, galleries, audio, lists, and more.
+
+There are blocks for all common content elements and more can be added by WordPress plugins.
+
+The block editor is designed to be intuitive and flexible.
+
+While it looks different than the old WordPress editor, it still does all the things that you were able to do in the classic editor.
+</pre>
+        
+        <p>
+            HTML and CSS are <strong>markup languages</strong>. Markup languages are used to describe and define elements within a document. <mark>JavaScript</mark> is a programming language.
+            Programming languages are used to communicate instructions to a machine. Programming languages can be used to control the behavior of a machine and to express algorithms.
+        </p>
+
+        <p>
+            alert("how u doin")
+            alert("wassap")
+            alert("les go")
+        </p>
+
+        
+        
+
+    </body>
+
+</html>

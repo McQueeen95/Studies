@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>
+            test1 plz
+        </title>
+        <meta charset="UTF-8">
+
+        <style>
+            body{
+                background-color: black;
+            }
+            .container{
+                display: grid;
+                grid-template-columns:30px 300px;
+                grid-template-rows: 250px 600px 30px;
+                grid-template-areas: /* 2^3 this makes 8 boxes that we can use then anywhere we want*/
+                "hd hd hd hd hd hd" /*فصلهتا خيالي بحيث اقدر اعمل اللي اناعاوزه فيها*/
+                "sd sd main main main main"
+                "ft ft ft ft ft ft";
+                /*كدا احنا نقدر نسنخدم المكان بتاع 8 عوامبد و 3 صفوف*/
+                /*وبدال في 8 غواميد فلازم كل صف يكون فيه 8 عواميد*/
+                border: 2px solid black;
+                margin: auto;
+            }
+            .box{
+                /* width: 250px;
+                height: 150px; */
+                border: 1px solid red;
+                background: burlywood;
+                align-items: center;
+                justify-content: center;
+                display: flex;
+            }
+            .header{
+                grid-area: hd;
+
+            }
+            .footer{
+                grid-area:ft;
+            }
+            .sidebar{
+                grid-area: sd;
+
+            }
+            .content{
+                grid-area: main;
+            }
+        </style>
+    </head>
+
+    <body>
+        <div class="container">
+            <div class="header box">header</div>
+            <div class="footer box">footer</div>
+            <div class="content box">content</div>
+            <div class="sidebar box">sidebar</div>
+        </div>
+    </body>
+
+</html>

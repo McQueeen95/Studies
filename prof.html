@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <title>Tests from prof. track</title>
+    <meta charset="UTF-8">
+    <link rel="stylesheet" href="prof.css">
+  </head>
+
+  <body>
+    <h1 id="para">
+      make me any color you want 
+    </h1>
+    <button onclick="colorOfThem('blue');">blue</button>
+    <button onclick="colorOfThem('red');">red</button>
+    <button onclick="colorOfThem('green');">green</button>
+
+    <p id="main-heading">
+      hi this main-heading
+    </p>
+    <div id="other-heading">
+      hi this the other heading
+    </div> <br>
+
+    <select id="position">
+      <option>beforebegin</option>
+      <option>afterbegin</option>
+      <option>beforeend</option>
+      <option>afterend</option>
+    </select>
+    
+    <button id="insert">Insert HTML</button>
+    <button id="reset">Reset</button> <br><br>
+
+    <label for="Example">put any text here:</label>
+    <input type="text" id="Example" name="Example" placeholder="Any text">
+    
+    <p>
+      Some text, <code id="subject"> Watch me and see where it gonna land </code> inside p.
+    </p>
+
+    <div id="one">
+      ok
+      <p id="two">
+        so..
+      </p>
+    </div>
+
+    <script>
+      function colorOfThem(Ncolor){
+        //let element = document.getElementById('para');
+        let element = document.querySelector('#para');
+        element.style.color = Ncolor;
+      }
+
+      const insert = document.querySelector('#insert');
+      insert.addEventListener('click' , () => {
+        const subject = document.querySelector('#subject');
+        const positionSelect = document.querySelector('#position');
+        const Text = document.querySelector('#Example');
+        subject.insertAdjacentHTML(positionSelect.value,Text.value.bold());
+      });
+
+      const reset = document.querySelector('#reset');
+      reset.addEventListener('click', () => {document.location.reload();});
+
+
+    </script>
+
+  </body>
+
+
+</html>
