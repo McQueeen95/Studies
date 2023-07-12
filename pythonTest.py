@@ -473,7 +473,70 @@
 # print("My Name is : {myName} and My Age is : {myAge}")
 # print(f"My Name is : {myName} and My Age is : {myAge}") # by putting f before the string we can make it like javascript
 # ==================================================================================
-# Assignment 2
+## Assignment 2
+# 1,2
+# name = "ahmed"
+# age = 20
+# county = "Egypt"
+# print('''
+#       \"Hello '{}', How You Doing \\
+#       \"\"\" Your Age Is \"{}\"\" +
+#       And Your Country Is: {}
+#       '''.format(name,age,county))
+
+# 3,4
+# name = "Elzero"
+# print('''
+#       Second Letter is "{}"
+#       Third Letter Is "{}"
+#       Last Letter Is "{}"'''.format(name[1],name[2],name[-1]))
+# print('''
+#       "{}"
+#       "{}"
+#       "{}"'''.format(name[1:4],name[::2],name[-2::-2]))
+
+# 5
+# name = "#@#@Elzero#@#@"
+# print(name.strip("#@"))
+
+# 6
+# num = "1500"
+# print(num.zfill(4))
+
+# 7
+# name1 = "Ahmed"
+# name2 ="Ahmed MOhamed"
+# print(name1.rjust(20,"@"))
+# print(name2.rjust(20,"@"))
+
+# 8
+# name1 = "OSamA"
+# name2 = "osaMA"
+# print(name1.swapcase())
+# print(name2.swapcase())
+
+# 9
+# msg = "I Love Python And Although Love Elzero Web School"
+# print(msg.count("Love"))
+
+# 10
+# name = "elzero"
+# print(name.find("z"))
+
+# 11
+# msg = "I <3 Python And Although <3 Elzero Web School"
+# print(msg.replace("<3","Love",1))
+
+# 12
+# msg = "I <3 Python And Although <3 Elzero Web School"
+# print(msg.replace("<3","Love"))
+
+# 13
+# name = "Osama"
+# age = 38
+# country = "Egypt"
+# print(f"My Name Is {name}, And My Age Is {age}, And My Country Is {country}")
+# ==================================================================================
 
 
 ###Coding
@@ -485,7 +548,7 @@
 # (True , False , < , > , == , <= , >= ,!=) is comparison operations
 # (and , or , != ) is logical operations
 #  == can compare 2 strings
-#
+# x**2 (this x square)
 #
 #
 #########################################################################
@@ -661,3 +724,16 @@
 #   print("hi i'm function")
 
 # funcName()
+
+# search engine problem
+# take two inputs (text , word(search for it in the text))
+
+# def search(text,key):
+#   textList = text.split(" ")
+#   for _ in range(len(textList)):
+#     if textList[_] == key:
+#       return "Word found"
+#   return "Word not found"
+
+# print(search(input(),input()))
+# =================================================
