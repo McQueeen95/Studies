@@ -737,3 +737,42 @@
 
 # print(search(input(),input()))
 # =================================================
+# ## Dictionary
+# dicName = {
+#   "key" : value,
+#   "key1" : value,
+# }
+# ages = {"dave": True, "mary": 34, "john": 58}  # way 1
+# ages2 = {
+#   "Dave":36,
+#   "mary":15,
+#   "john":37
+# } # way 2
+# print(ages["dave"])
+# print(ages2["Dave"])
+# nums = {1: "one",
+#         2: "two",
+#         3: "three"
+#         }
+# print(1 in nums) # return true if we have key = 1
+# print("one" in nums) # return false because its not key (its a value)
+# print(4 not in nums) # return true as key 4 not in nums
+# so in function is only for keys
+# pairs = {
+#   1:"apple",
+#   "orange" : [2,3,4],
+#   True : False,
+#   12 : "True"
+# }
+# print(pairs.get("orange")) # getting the value of "orange" key
+# print(pairs.get(7,42)) # same but if key 7 not here its prints 42
+# print(pairs.get(12345,"not found"))  # same but if key 12345 not here its prints "not found"
+
+
+
+
+
+
+
+
+
