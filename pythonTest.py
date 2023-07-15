@@ -473,6 +473,8 @@
 # print("My Name is : {myName} and My Age is : {myAge}")
 # print(f"My Name is : {myName} and My Age is : {myAge}") # by putting f before the string we can make it like javascript
 # ==================================================================================
+# this a full info about the formating (https://pyformat.info/)
+# ==================================================================================
 ## Assignment 2
 # 1,2
 # name = "ahmed"
@@ -737,6 +739,11 @@
 
 # print(search(input(),input()))
 # =================================================
+# List [] mutable
+# Tuple() immutable
+# Dictionary{key:value} mutable
+# Set {} or {[]} mutable
+# =================================================
 # ## Dictionary
 # dicName = {
 #   "key" : value,
@@ -767,12 +774,29 @@
 # print(pairs.get("orange")) # getting the value of "orange" key
 # print(pairs.get(7,42)) # same but if key 7 not here its prints 42
 # print(pairs.get(12345,"not found"))  # same but if key 12345 not here its prints "not found"
-
-
-
-
-
-
-
-
-
+# =================================================
+## Tuple
+# x = ("ahmed" , "mohamed" , "ibrahem")
+# y= "1" , "2" , "3"
+# print(x[0])
+# print(type(y[1]))
+# search key problem
+# def search(searchKey):
+#   contacts = [
+#     ('James', 42),
+#     ('Amy', 24),
+#     ('John', 31),
+#     ('Amanda', 63),
+#     ('Bob', 18)
+# ]
+#   for i in range(len(contacts)):
+#     if searchKey == contacts[i][0]:
+#       return f"{contacts[i][0]} is {contacts[i][1]}"
+#   return "Not found"
+# print(search(input()))
+# another solution
+# contacts = [ ('James', 42), ('Amy', 24), ('John', 31), ('Amanda', 63), ('Bob', 18) ]
+# contacts = dict(contacts)
+# name = input()
+# if name in contacts: print(name, "is", contacts[name])
+# else: print("Not Found")
