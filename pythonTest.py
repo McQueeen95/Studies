@@ -474,6 +474,15 @@
 # print(f"My Name is : {myName} and My Age is : {myAge}") # by putting f before the string we can make it like javascript
 # ==================================================================================
 # this a full info about the formating (https://pyformat.info/)
+# padding and aligning strings
+# old
+# print("%10s of any u want" % "test")  # 10 spaces behind 'test'
+# print('%-10s of any u want'% "test" ) #10 spaces after 'test'
+# new (more control)
+# print("hello this is {:>10}".format("test"))  # 10 spaces behind 'test'
+# print("hello this is {:10}".format("test"))#10 spaces after 'test'
+# print("hello this is {:_<10}".format("test"))  # 10 spaces after 'test'
+# print("hello this is {:^10}".format("test"))  # 10 spaces 5 before 5 after
 # ==================================================================================
 ## Assignment 2
 # 1,2
@@ -780,6 +789,7 @@
 # y= "1" , "2" , "3"
 # print(x[0])
 # print(type(y[1]))
+
 # search key problem
 # def search(searchKey):
 #   contacts = [
@@ -794,9 +804,168 @@
 #       return f"{contacts[i][0]} is {contacts[i][1]}"
 #   return "Not found"
 # print(search(input()))
+
 # another solution
 # contacts = [ ('James', 42), ('Amy', 24), ('John', 31), ('Amanda', 63), ('Bob', 18) ]
 # contacts = dict(contacts)
 # name = input()
 # if name in contacts: print(name, "is", contacts[name])
 # else: print("Not Found")
+
+# swap values
+# a , b = 4 ,5
+# print(f"{a} and {b}")
+# a , b = b , a # swapping
+# print(f"{a} and {b}")
+
+# a , b , *c , d = [1,2,3,4,5,6,6,7] # * means unpack rest of elements to the c
+# print(f"{a} {b} {c} {d}")
+# ============================================================
+## sets (non repeatable elements && non invoking each of elements(not indexed) && ordered elements)
+# Nset = {6,4,5,9}
+# print(Nset)
+# print(3 in Nset) # check if 3 is in the set
+# Nset.add(1)
+# Nset.remove(9)
+# first = { 2 ,4 ,6 , 5 , 8 ,0}
+# second = { 1 ,3 ,5 ,7 , 0 ,9}
+# print(first  | second) # union U
+# print(first  & second) # intersectioin ∩
+# print(first  - second) # elements that exists in first and not in second (difference)
+# print(second - first) # elements that exists in second and not in first
+# print(first ^ second) # (gets items in either set but not both) (symmetric difference)
+# x = {"html","css","javascript"}
+# y = {"html","aa","bb"}
+# print(" ".join(x & y))
+# print(*(x & y)) # we put * to unpack it so it be a normal string not a set element
+# ============================================================
+## List Comprehensions (creating a lists whose contents obey a rule)
+# [x | P(x)] this means : x such that x is some polynomial or some function
+# cubes = [i**3 for i in range(5)]
+# print(cubes)
+# instead of typing 0 to 100 in a list we may use this:-
+# ls = [x for x in range(101)]
+# print(ls[100])
+# we can add a condition to this list:-
+# evens = [i for i in range(11) if i % 2 == 0]
+# print(evens)
+# ============================================================
+# summary (Lists , Dictionaries, Tuples , Sets)
+# use Dictionaries when :
+#   1) need a logical association between a key:value pair
+#   2) fast lookup for you data based on a custom key
+#   3) modifiy data constantly as its mutable
+# use Lists when :  1) having collection of data that does not need random access (simple iterable collection that is modified frequently)
+# use Set when :    1) need uniqueness for the elements (non repeataple)
+# use Tuples when : 1) data can't and shouldn't change
+# ============================================================
+### functions
+# def adding(x,y):
+#   return x + y
+# print(adding(5,6))
+## Functional Programming (takes other functions as arguments or return them as results)
+# def apply3Times(func , num):
+#   return(func(func(func(num))))
+# def add5(x):
+#   return (x+5)
+# print(apply3Times(add5,20))
+## Pure and Impure functions
+# def pureFunction(x,y):
+#   t = x + 2*y
+#   return t / (2*x + y) # its pure because it doesn't effect other variables (x and y still the same)
+
+# ls = []
+# def impureFunction(x):
+#   ls.append(x) # not pure as it changes a variable outside of the function
+# note :- memoization is the reducing the number of times the function called by caching the results of fuction calls
+# as the output is stored in a cache if the function is called again with the same input , the cached output is returned instead of recalculating the functoin
+
+## Anonymous Function (on-the-fly function)
+# lambda
+# print((lambda arg: expression)(value))
+# def myFunc(f,arg):
+#   return f(arg)
+# print(myFunc(lambda x: 2*x*x , 5))
+
+# def poly(x):         #namedFunction
+#   return x**2 + 5*x + 5
+# print(poly(-4))
+# print((lambda x: x**2 + 5*x + 5)(-4))             #lambda function
+# print((lambda x,y: x+y)(2,3))
+# ============================================================
+## map (built in function that operate on lists or any iterables and returns a new iterable(not a list or something))
+# ls = [3,5,64,64,43,26]
+# def add4(x):
+#   return x + 4
+# rs = map(add4,ls) # return a map opject(iterable)
+# rs1 = list(map(add4,ls))
+# print(rs1)
+# print(list(map(lambda x: x+4,ls))) # using two ways of creating functions
+
+## problem
+# def func(ls,bs):
+#   for i in range(len(ls)):
+#     ls[i] = ls[i] + bs
+#   return ls  ### way 1 to solve
+# bonus = int(input())
+# def addBouns(x):
+#   return x + bonus ### another way
+# salaries = [2000, 1800, 3100, 4400, 1500]
+# print(list(map(addBouns,salaries)))
+# print([x+bonus for x in salaries])
+# print(list(map(lambda x: x +bonus , salaries)))
+## filter
+# nums = [11, 22, 33, 44, 55]
+# res = list(filter(lambda x: x%2==0, nums))
+# print(res)
+# ============================================================
+### Generators (its iterable but don't allow indexing and can be iterated with for loops >> using yield statment)
+# its used to loop over many amount of data without storing it
+# it don't have the memory restrictions like lists >> it can be infinite!
+# Furthermore, we do not need to wait until all the elements have been generated before we start to use them.
+# def gen(n):
+#   for i in range(n):
+#     yield i # here its go to return the current value and get back to complete the loop
+# print(gen(5)) # this return generator object not alist
+# print(list(gen(5))) # this list of this generator
+# x = gen(4)
+# print(next(x))
+# print(next(x))
+# print(next(x))
+# def gen1():
+#   yield 1
+#   print("pause1")
+#   yield 2
+#   print("pause2")
+#   yield 3
+#   print("pause3")
+#   yield 4
+# x = gen1()
+# print(next(x))
+# print(next(x))
+# print(next(x))
+## Generators Comprehensions
+# x = (i**2 for i in range(6)) # this is a generator
+# print(x)
+# print(next(x))
+# print(next(x))
+# print(next(x))
+
+# problem
+# def isPrime(x):
+#     if x < 2:
+#         return False
+#     elif x == 2:
+#         return True
+#     for i in range(2, x):
+#         if x % i ==0:
+#             return False
+#     return True
+# def primeGenerator(a, b):
+#   for i in range(a,b):
+#     if isPrime(i):
+#       yield i
+# f = int(input())
+# t = int(input())
+# print(list(primeGenerator(f, t)))
+# ============================================================
