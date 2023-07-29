@@ -703,7 +703,7 @@
 # print(x)
 # # sort()
 # y = [1, 2, 100, 120, -10, 17, 29]
-# y = ["A", "Z", "C"] 
+# y = ["A", "Z", "C"]
 # y.sort(reverse=True)
 # y.sort()
 # print(y)
@@ -876,4 +876,338 @@
 # print(a)
 # print(b)
 # print(c)
-#
+# ==================================================================================
+# Lesson 26
+# -----------------------------
+# -- Set --
+# ---------
+# [1] Set Items Are Enclosed in Curly Braces
+# [2] Set Items Are Not Ordered And Not Indexed
+# [3] Set Indexing and Slicing Cant Be Done
+# [4] Set Has Only Immutable Data Types (Numbers, Strings, Tuples) List and Dict Are Not
+# [5] Set Items Is Unique
+# -----------------------------
+# Not Ordered And Not Indexed
+# every run go with diffrent order
+# mySetOne = {"Osama", "Ahmed", 100}
+# print(mySetOne)
+# print(mySetOne[0]) # error
+# Slicing Cant Be Done
+# mySetTwo = {1, 2, 3, 4, 5, 6}
+# print(mySetTwo[0:3]) #error
+# Has Only Immutable Data Types # any i can modifiy is not accepted
+# mySetThree = {"Osama", 100, 100.5, True, [1, 2, 3]} # unhashable type: 'list'
+# mySetThree = {"Osama", 100, 100.5, True, (1, 2, 3)}
+# print(mySetThree)
+# Items Is Unique # any repeated object is gone
+# mySetFour = {1, 2, "Osama", "One", "Osama", 1}
+# print(mySetFour)
+# ==================================================================================
+# Lesson 27
+# -----------------
+# -- Set Methods --
+# -----------------
+# # clear()
+# a = {1, 2, 3}
+# a.clear()
+# print(a)
+# # union()
+# b = {"One", "Two", "Three"}
+# c = {"1", "2", "3"}
+# x = {"Zero", "Cool"}
+# print(b | c)
+# print(b.union(c, x))
+# # add()
+# d = {1, 2, 3, 4}
+# d.add(5)
+# d.add(6)
+# print(d)
+# # copy()
+# e = {1, 2, 3, 4}
+# f = e.copy()
+# print(e)
+# print(f)
+# e.add(6)
+# print(e)
+# print(f)
+# # remove()
+# g = {1, 2, 3, 4}
+# g.remove(1)
+# g.remove(7) # if some element is DNE it returns an error
+# print(g)
+# # discard()
+# h = {1, 2, 3, 4}
+# h.discard(1)
+# h.discard(7) # if some element is Exist it doesn't return an error
+# print(h)
+# # pop()
+# i = {10,(0,2),"hi",'H',4.44}
+# print(i.pop()) # returns a random element from the set
+# # update()
+# j = {1, 2, 3}
+# k = {1, "A", "B", 2}
+# j.update(['Html', "Css"])
+# j.update(k)
+# print(j)
+# ==================================================================================
+# Lesson 28
+# -----------------
+# -- Set Methods --
+# -----------------
+# # difference() # elements that exists in first and not in second (difference)
+# a = {1, 2, 3, 4}
+# b = {1, 2, 3, "Osama", "Ahmed"}
+# print(a)
+# print(a.difference(b))  # a - b
+# print(a)
+# # difference_update()
+# c = {1, 2, 3, 4}
+# d = {1, 2, "Osama", "Ahmed"}
+# print(c)
+# c.difference_update(d)  # c - d
+# print(c) # here its update the c with the result of the operation
+# # intersection()
+# e = {1, 2, 3, 4, "X", "Osama"}
+# f = {"Osama", "X", 2}
+# print(e)
+# print(e.intersection(f))  # e & f
+# print(e)
+# # intersection_update()
+# g = {1, 2, 3, 4, "X", "Osama"}
+# h = {"Osama", "X", 2}
+# print(g)
+# g.intersection_update(h)  # g & h
+# print(g)
+# # symmetric_difference()
+# i = {1, 2, 3, 4, 5, "X"}
+# j = {"Osama", "Zero", 1, 2, 4, "X"}
+# print(i)
+# print(i.symmetric_difference(j))  # i ^ j
+# print(i)
+# # symmetric_difference_update()
+# k = {1, 2, 3, 4, 5, "X"}
+# l = {"Osama", "Zero", 1, 2, 4, "X"}
+# print(k)
+# k.symmetric_difference_update(l)  # k ^ l
+# print(k)
+# ==================================================================================
+# Lesson 29
+# -----------------
+# -- Set Methods --
+# -----------------
+# # issuperset() # returns true if all elements in 2nd set is inside the 1st set
+# first = {1, 2, 3, 4}
+# second = {1, 2, 3}
+# c = {1, 2, 3, 4, 5}
+# print(first.issuperset(second))  # True
+# print(first.issuperset(c))  # False
+# # issubset() # returns true if all alements in 1st set is inside the 2nd set
+# d = {1, 2, 3, 4}
+# e = {1, 2, 3}
+# f = {1, 2, 3, 4, 5}
+# print(d.issubset(e))  # False
+# print(d.issubset(f))  # True
+# # isdisjoint() # return false if there is mutual elemets between the two sets
+# g = {1, 2, 3, 4}
+# h = {1, 2, 3}
+# i = {10, 11, 12}
+# print(g.isdisjoint(h))  # False
+# print(g.isdisjoint(i))  # True
+# ==================================================================================
+# Lesson 30
+# ---------------------------
+# -- Dictionary --
+# ----------------
+# [1] Dict Items Are Enclosed in Curly Braces
+# [2] Dict Items Are Contains Key : Value
+# [3] Dict Key Need To Be Immutable => (Number, String, Tuple) List Not Allowed
+# [4] Dict Value Can Have Any Data Types
+# [5] Dict Key Need To Be Unique
+# [6] Dict Is Not Ordered You Access Its Element With Key
+# ----------------------------
+# user = {
+#   "name": "Osama",
+#   "age": 36,
+#   "country": "Egypt",
+#   "skills": ["Html", "Css", "JS"],
+#   "rating": 10.5
+# }
+# print(user)
+# print(user['country'])
+# print(user.get("country"))
+# # Two-Dimensional Dictionary
+# languages = {
+#   "One": {
+#     "name": "Html",
+#     "progress": "80%"
+#   },
+#   "Two": {
+#     "name": "Css",
+#     "progress": "90%"
+#   },
+#   "Three": {
+#     "name": "Js",
+#     "progress": "90%"
+#   }
+# }
+# print(languages)
+# print(languages['One'])
+# print(languages['Three']['name'])
+# # Dictionary Length
+# print(len(languages))
+# print(len(languages["Two"]))
+# # Create Dictionary From Variables
+# frameworkOne = {
+#   "name": "Vuejs",
+#   "progress": "80%"
+# }
+# frameworkTwo = {
+#   "name": "ReactJs",
+#   "progress": "80%"
+# }
+# frameworkThree = {
+#   "name": "Angular",
+#   "progress": "80%"
+# }
+# allFramework = {
+#   "one": frameworkOne,
+#   "two": frameworkTwo,
+#   "three": frameworkThree
+# }
+# print(allFramework)
+# ==================================================================================
+# Lesson 31
+# ------------------------
+# -- Dictionary Methods --
+# ------------------------
+# # clear()
+# user = {
+#   "name": "Osama"
+# }
+# print(user)
+# user.clear()
+# print(user)
+# # update()
+# member = {
+#   "name": "Osama"
+# }
+# print(member)
+# member["age"] = 36 # we can add a new key:value manually like this
+# print(member)
+# member.update({"country": "Egypt"}) # or add it by the update() method
+# print(member)
+# # copy()
+# main = {
+#   "name": "Osama"
+# }
+# b = main.copy()
+# print(b)
+# main.update({"skills": "Fighting"})
+# print(main)
+# print(b)
+# # keys() + values()
+# print(main.keys())
+# print(main.values())
+# ==================================================================================
+# Lesson 32
+# ------------------------
+# -- Dictionary Methods --
+# ------------------------
+# setdefault()
+# user = {
+#   "name": "Osama"
+# }
+# print(user)
+# print(user.setdefault("age", 36)) # if there isn't "age" key , it add it with its value 36 and return it (value)
+# print(user.setdefault("name", "Ahmed")) # if there is the "name" key it returns its value , if not its add it with "name": Ahmed
+# print(user)
+# # popitem()
+# member = {
+#   "name": "Osama",
+#   "skill": "PS4"
+# }
+# print(member)
+# member.update({"age": 36})
+# print(member.popitem()) # returns the last item added to the dictionary
+# # items()
+# view = {
+#   "name": "Osama",
+#   "skill": "XBox"
+# }
+# print(view.items()) # items of view in a list and every element is in a tuple
+# print(view)
+# print(view.items())
+# view["age"] = 36 # adds new item
+# print(view.items())
+# # fromkeys()
+# a = ('MyKeyOne', 'MyKeyTwo', 'MyKeyThree') # tuple
+# b = "X"
+# c = ["hi one","hi two","hi three"]
+# print(dict.fromkeys(a, b)) # making a dictionary from keys and one value
+# print(dict.fromkeys(a,c)) # every key take the same value
+# ==================================================================================
+# Assignment 6
+# 1 (in more advance)
+# x = [1,5,4,3,3,2,1]
+# uqX = set(x)
+# print(*uqX) # to print with unpack it to be without , and {}
+# print(" ".join(uqX))  # same but with useing join
+# print(enumerate(uqX)) # return an enumerate object
+# for i,element in enumerate(uqX): # assigns the index of the current element to the variable i and the value of the current element to the variable element.
+#   if i == len(uqX)-1: # this to print it with , but not with {}
+#     print(element)
+#   else:
+#     print(element,end=",")
+
+# 1
+# my_list = [1, 2, 3, 3, 4, 5, 1]
+# unique_list = list(set(my_list))
+# print(",".join([str(x) for x in unique_list]))
+# print(type(unique_list))
+# print(",".join([str(x) for x in unique_list[:-1]]))
+
+# 2
+# nums = {1,2,3}
+# letters = {'A','B','C'}
+# print(nums | letters)
+# print(nums.union(letters))
+# nums.update(letters)
+# print(nums)
+
+# 3
+# my_set = {1, 2, 3}
+# print(my_set)
+# my_set.clear()
+# print(my_set)
+# my_set.update(["A","B"])
+# print(my_set)
+# my_set.discard("C")
+
+# 4
+# set_one = {1, 2, 3}
+# set_two = {1, 2, 3, 4, 5, 6}
+# print(set_one.issubset(set_two))
+
+# 5
+# exp = {
+#   "first":{
+#     "name" : "HTML",
+#     "progress" : "90%"
+#   },
+#   "second":{
+#     "name" : "CSS",
+#     "progress" : "80%"
+#   },
+#   "Third":{
+#     "name" : "Python",
+#     "progress" : "40%"
+#   }
+# }
+# print(f'"{exp["first"]["name"]} Progress is {exp["first"]["progress"]}"')
+# print(f'"{exp["second"]["name"]} Progress is {exp["second"]["progress"]}"')
+# print(f'"{exp["Third"]["name"]} Progress is {exp["Third"]["progress"]}"')
+# exp["fourth"] = {
+#     "name" : "AI",
+#     "progress" : "20%"
+# }
+# print(f'"{exp["fourth"]["name"]} Progress is {exp["fourth"]["progress"]}"')
