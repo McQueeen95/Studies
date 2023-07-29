@@ -548,3 +548,332 @@
 # country = "Egypt"
 # print(f"My Name Is {name}, And My Age Is {age}, And My Country Is {country}")
 # ==================================================================================
+# Lesson 19
+# -------------
+# -- Numbers --
+# -------------
+# Integer
+# print(type(1))
+# print(type(100))
+# print(type(10))
+# print(type(-10))
+# print(type(-110))
+# Float
+# print(type(1.500))
+# print(type(100.99))
+# print(type(-10.99))
+# print(type(0.99))
+# print(type(-0.99))
+# Complex
+# myComplexNumber = 5+6j
+# print(type(myComplexNumber))
+# print("Real Part Is: {}".format(myComplexNumber.real))
+# print("Imaginary Part Is: {}".format(myComplexNumber.imag))
+# [1] You Can Convert From Int To Float or Complex
+# [2] You Can Convert From Float To Int or Complex
+# [3] You Cannot Convert Complex To Any Type
+# print(100)
+# print(float(100))
+# print(complex(100))
+# print(10.50)
+# print(int(10.50))
+# print(complex(10.50))
+# print(10+9j)
+# print(int(10+9j))
+# ==================================================================================
+# Lesson 20
+# --------------------------
+# -- Arithmetic Operators --
+# --------------------------
+# [+] Addition
+# [-] Subtraction
+# [*] Multiplication
+# [/] Division
+# [%] Modulus
+# [**] Exponent
+# [//] Floor Division
+# --------------------------
+# Addition
+# print(10 + 30)  # 40
+# print(-10 + 20)  # 10
+# print(1 + 2.66)  # 3.66
+# print(1.2 + 1.2)  # 2.4
+# # Subtraction
+# print(60 - 30)  # 30
+# print(-30 - 20)  # -50
+# print(-30 - -20)  # -10
+# print(5.66 - 3.44)  # 2.22
+# # Multiplication
+# print(10 * 3)  # 30
+# print(5 + 10 * 100)  # 1005
+# print((5 + 10) * 100)  # 1500
+# # Division
+# print(100 / 20)  # 5.0
+# print(int(100 / 20))  # 5
+# # Modulus
+# print(8 % 2)  # 0
+# print(9 % 2)  # 1
+# print(20 % 5)  # 0
+# print(22 % 5)  # 2
+# # Exponent
+# print(2 ** 5)  # 32
+# print(2 * 2 * 2 * 2 * 2)  # 32
+# print(5 ** 4)  # 625
+# print(5 * 5 * 5 * 5)  # 625
+# # Floor Division
+# print(100 // 20)  # 5
+# print(119 // 20)  # 5
+# print(120 // 20)  # 6
+# print(140 // 20)  # 7
+# print(142 // 20)  # 7
+# ==================================================================================
+## Assignment 3
+# 1
+# print(type(1))
+# print(type(1.0))
+# print(type(1+2j))
+
+# 2
+# x = 1 + 2j
+# print(x.real)
+# print(x.imag)
+
+# 3
+# x = 10
+# print("{:.10f}".format(x))
+
+# 4
+# x = 159.650
+# print(int(x))
+# print(type(int(x)))
+# ==================================================================================
+# Lesson 21
+# -----------------------------
+# -- Lists --
+# -----------
+# [1] List Items Are Enclosed in Square Brackets
+# [2] List Are Ordered, To Use Index To Access Item
+# [3] List Are Mutable => Add, Delete, Edit
+# [4] List Items Is Not Unique
+# [5] List Can Have Different Data Types
+# -----------------------------
+# myAwesomeList = ["One", "Two", "One", 1, 100.5, True]
+# print(myAwesomeList)  # Whole List
+# print(myAwesomeList[1])  # "Two"
+# print(myAwesomeList[-1])  # True
+# print(myAwesomeList[-3])  # 1
+# print(myAwesomeList[1:4])  # ['Two', 'One', 1]
+# print(myAwesomeList[:4])  # ['One', 'Two', 'One', 1]
+# print(myAwesomeList[1:])  # ['Two', 'One', 1, 100.5, True]
+# print(myAwesomeList[::1])  # ['One', 'Two', 'One', 1, 100.5, True]
+# print(myAwesomeList[::2])  # ['One', 'One', 100.5]
+# print(myAwesomeList) # ['One', 'Two', 'One', 1, 100.5, True]
+# myAwesomeList[1] = 2
+# myAwesomeList[-1] = False
+# myAwesomeList[0:3] = ["A"]
+# print(myAwesomeList)
+# ==================================================================================
+# Lesson 22
+# -------------------
+# -- Lists Methods --
+# -------------------
+# # append()
+# myFriends = ["Osama", "Ahmed", "Sayed"]
+# myOldFriends = ["Haytham", "Samah", "Ali"]
+# myFriends.append("Alaa")
+# myFriends.append(100)
+# myFriends.append(150.200)
+# myFriends.append(True)
+# myFriends.append(myOldFriends)
+# print(myFriends)
+# print(myFriends[2])
+# print(myFriends[6])
+# print(myFriends[7])
+# print(myFriends[7][2])
+# # extend()
+# a = [1, 2, 3, 4]
+# b = ["A", "B", "C"]
+# c = ["One", "Two"]
+# a.extend(b)
+# a.extend(c)
+# print(a)
+# # remove()
+# x = [1, 2, 3, 4, 5, "Osama", True, "Osama", "Osama"]
+# x.remove("Osama")
+# print(x)
+# # sort()
+# y = [1, 2, 100, 120, -10, 17, 29]
+# y = ["A", "Z", "C"] 
+# y.sort(reverse=True)
+# y.sort()
+# print(y)
+# # reverse()
+# z = [10, 1, 9, 80, 100, "Osama", 100]
+# z.reverse()
+# print(z)
+# ==================================================================================
+# Lesson 23
+# -------------------
+# -- Lists Methods --
+# -------------------
+# # clear()
+# a = [1, 2, 3, 4]
+# a.clear()
+# print(a)
+# # copy()
+# b = [1, 2, 3, 4]
+# c = b.copy()
+# print(b)  # Main List
+# print(c)  # Copied List
+# b.append(5)
+# print(b)  # Main List
+# print(c)  # Copied List
+# # count()
+# d = [1, 2, 3, 4, 3, 9, 10, 1, 2, 1]
+# print(d.count(1))
+# # index()
+# e = ["Osama", "Ahmed", "Sayed", "Ramy", "Ahmed", "Ramy"]
+# print(e.index("Ramy"))
+# # insert()
+# f = [1, 2, 3, 4, 5, "A", "B"]
+# f.insert(0, "Test")
+# f.insert(-1, "Test") # it insert the new element before the given index
+# f.insert(len(f),"final")
+# print(f)
+# # pop()
+# g = [1, 2, 3, 4, 5, "A", "B"]
+# print(g.pop(-3))
+# ==================================================================================
+# Assignment 4
+# 1,2,3,4,5,6,8,9
+# friends = ["Osama", "Ahmed", "Sayed", "Ali", "Mahmoud"]
+# print(friends[0])
+# print(friends[-5])
+# print(friends[-1])
+# print(friends[4])
+# print(friends[0::2])
+# print(friends[1::2])
+# print(friends[1:4])
+# print(friends[3:])
+# friends[3:5] = ["Elzero","Elzero"]
+# friends.insert(0,"mona")
+# friends.insert(len(friends),"yousef")
+# friends.remove(friends[0])
+# friends.remove(friends[0])
+# print(friends)
+# friends.remove(friends[-1])
+# print(friends)
+# friends.sort()
+# print(friends)
+# friends.sort(reverse=True)
+# print(friends)
+# print(len(friends))
+
+# 7
+# friends = ["Ahmed", "Sayed"]
+# employees = ["Samah", "Eman"]
+# school = ["Ramy", "Shady"]
+# friends.extend(employees)
+# friends.extend(school)
+# print(friends)
+
+# 10
+# technologies = ["Html", "CSS", "JS", "Python", ["Django", "Flask", "Web"]]
+# print(technologies[-1][0])
+# print(technologies[-1][-1])
+# ==================================================================================
+# Lesson 24
+# -----------------------------
+# -- Tuple --
+# -----------
+# [1] Tuple Items Are Enclosed in Parentheses
+# [2] You Can Remove The Parentheses If You Want
+# [3] Tuple Are Ordered, To Use Index To Access Item
+# [4] Tuple Are Immutable => You Cant Add or Delete
+# [5] Tuple Items Is Not Unique
+# [6] Tuple Can Have Different Data Types
+# [7] Operators Used in Strings and Lists Available In Tuples
+# -----------------------------
+# # Tuple Syntax & Type Test
+# myAwesomeTupleOne = ("Osama", "Ahmed")
+# myAwesomeTupleTwo = "Osama", "Ahmed"
+# print(myAwesomeTupleOne)
+# print(myAwesomeTupleTwo)
+# print(type(myAwesomeTupleOne))
+# print(type(myAwesomeTupleTwo))
+# # Tuple Indexing
+# myAwesomeTupleFive = ("Osama", "Osama", 1, 2, 3, 100.5, True)
+# print(myAwesomeTupleFive[1])
+# print(myAwesomeTupleFive[-1])
+# # Tuple Assign Values
+# myAwesomeTupleFour = (1, 2, 3, 4, 5)
+# myAwesomeTupleFour[2] = "Three"
+# print(myAwesomeTupleFour)  # 'tuple' object does not support item assignment
+# ==================================================================================
+# Lesson 25
+# -----------
+# -- Tuple --
+# -----------
+# # Tuple With One Element
+# myTuple1 = ("Osama",) # we put commas to be a tuble , if we don't it become string
+# myTuple2 = "Osama",
+# print(myTuple1)
+# print(myTuple2)
+# print(type(myTuple1))
+# print(type(myTuple2))
+# print(len(myTuple1))
+# print(len(myTuple2))
+# # Tuple Concatenation
+# a = (1, 2, 3, 4)
+# b = (5, 6)
+# c = a + b
+# d = a + ("A", "B", True) + b
+# print(c)
+# print(d)
+# # Tuple, List, String Repeat (*)
+# myString = "Osama"
+# myList = [1, 2]
+# myTuple = ("A", "B")
+# print(myString * 6)
+# print(myList * 6)
+# print(myTuple * 6)
+# # Methods => count()
+# a = (1, 3, 7, 8, 2, 6, 5, 8)
+# print(a.count(8))
+# # Methods => index()
+# b = (1, 3, 7, 8, 2, 6, 5)
+# print("The Position of Index Is: {:d}".format(b.index(7)))
+# print(f"The Position of Index Is: {b.index(7)}") # another way to write it
+# # Tuple Destruct
+# a = ("A", "B", 4, "C") # 3 var for tuble of len 3 , anything else is error
+# x, y, _, z = a # we can make _ var to take valuse we don't need
+# print(_)
+# print(x)
+# print(y)
+# print(z)
+# ==================================================================================
+# Assignment 5
+# 1
+# x = "Ahmed",
+# print(f"\"{x[0]}\" and this is {type(x)}")
+
+# 2
+# friends = ("Osama", "Ahmed", "Sayed")
+# lsf = list(friends)
+# lsf[0] = "Elzero"
+# print(f"{tuple(lsf)} and this is {type(friends)} and the len is{len(friends)}")
+
+# 3
+# nums = (1, 2, 3)
+# letters = ("A", "B", "C")
+# x = nums+letters
+# print(f"nums_and_letters_one = {x}")
+# print(f"{len(x)} Elements")
+
+# 4
+# my_tuple = (1, 2, 3, 4)
+# a ,b,_,c = my_tuple
+# print(a)
+# print(b)
+# print(c)
+#
