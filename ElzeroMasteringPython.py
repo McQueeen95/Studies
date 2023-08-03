@@ -1211,3 +1211,237 @@
 #     "progress" : "20%"
 # }
 # print(f'"{exp["fourth"]["name"]} Progress is {exp["fourth"]["progress"]}"')
+# ==================================================================================
+# Lesson 33
+# -------------
+# -- Boolean --
+# -------------
+# [1] In Programming You Need to Known Your If Your Code Output is True Or False
+# [2] Boolean Values Are The Two Constant Objects False + True.
+# ---------------------------------------------------------------
+# name = " "
+# print(name.isspace())
+# # True Values
+# print(bool("Osama"))
+# print(bool(100))
+# print(bool(100.95))
+# print(bool(True))
+# print(bool([1, 2, 3, 4, 5]))
+# # False Values
+# print(bool(0))
+# print(bool(""))
+# print(bool(''))
+# print(bool([]))
+# print(bool(False))
+# print(bool(()))
+# print(bool({}))
+# print(bool(None))
+# ==================================================================================
+# Lesson 34
+# -----------------------
+# -- Boolean Operators --
+# -----------------------
+# and
+# or
+# not
+# -----------------------
+# age = 36
+# country = "Egypt"
+# rank = 10
+# print(age > 16 and country == "Egypt" and rank > 0)  # True
+# print(age > 16 and country == "KSA" and rank > 0)  # False
+# print(age > 40 or country == "KSA" or rank > 20)  # False
+# print(age > 40 or country == "Egypt" or rank > 20)  # True
+# print(age > 16)  # True
+# print(not age > 16)  # Not True = False
+# print(not((True and True) and (False or True)))
+# ==================================================================================
+# Lesson 35
+# --------------------------
+# -- Assignment Operators --
+# --------------------------
+# =
+# +=
+# -=
+# *=
+# /=
+# **=
+# %=
+# //=
+# --------------------------
+# x = 10  # Var One
+# y = 20  # Var Two
+# Var One = Self [Operator] Var Two
+# Var One [Operator]= Var Two
+# x += y
+# x -= y
+# print(x)
+# ==================================================================================
+# Lesson 36
+# --------------------------
+# -- Comparison Operators --
+# --------------------------
+# [ == ] Equal
+# [ != ] Not Equal
+# [ > ] Greater Than
+# [ < ] Less Than
+# [ >= ] Greater Than Or Equal
+# [ <= ] Less Than Or Equal
+# --------------------------
+# # Equal + Not Equal
+# print(100 == 100)
+# print(100 == 100.00)
+# print(100 != 100)
+# print(100 != 100.00)
+# # Greater Than + Less Than
+# print(100 > 100.00)
+# print(100 > 40)
+# print(100 < 100.00)
+# print(100 < 40)
+# # Greater Than Or Equal + Less Than Or Equal
+# print(100 >= 100.00)
+# print(100 <= 100.00)
+# ==================================================================================
+# Lesson 37
+# ---------------------
+# -- Type Conversion --
+# ----------------------
+# # int()
+# st = "345"
+# print(int(st))
+# # str()
+# a = 10
+# print(type(a))
+# print(type(str(a)))
+# # tuple()
+# c = "Osama"  # String
+# d = [1, 2, 3, 4, 5]  # List
+# e = {"A", "B", "C"}  # Set (unorderd)
+# f = {"A": 1, "B": 2}  # Dictionary
+# print(tuple(c))
+# print(tuple(d))
+# print(tuple(e))
+# print(tuple(f))
+# # list()
+# c = "Osama"  # String
+# d = (1, 2, 3, 4, 5)  # Tuple
+# e = {"A", "B", "C"}  # Set
+# f = {"A": 1, "B": 2}  # Dictionary
+# print(list(c))
+# print(list(d))
+# print(list(e))
+# print(list(f))
+# # set() (all gonna be unordered)
+# c = "Osama"  # String
+# d = (1, 2, 3, 4, 5)  # Tuple
+# e = ["A", "B", "C"]  # List
+# f = {"A": 1, "B": 2}  # Dictionary
+# print(set(c))
+# print(set(d))
+# print(set(e))
+# print(set(f))
+# # dict()
+# d = (("A", 1), ("B", 2), ("C", 3))  # Tuple
+# e = [["One", 1], ["Two", 2], ["Three", 3]]  # List
+# print(dict(d))
+# print(dict(e))
+# ==================================================================================
+# Assignment 7
+# 1
+# print(bool(True))
+# print(bool([1,2]))
+# print(bool("hi"))
+# print(bool({1,2}))
+# print(bool(False))
+# print(bool(""))
+# print(bool([]))
+# print(bool({}))
+
+# 2
+# html = 80
+# css = 60
+# javascript = 70
+# print(html > 50 and css > 50 and javascript > 50)
+
+# 3
+# num_one = 10
+# num_two = 20
+# num = 20
+# print(num > num_one or num > num_two)
+# print(num > num_one and num > num_two)
+
+# 4
+# num_one = 10
+# num_two = 20
+# result = num_two + num_one
+# print(result)
+# print(result**3)
+# print((result**3) % 2600)
+# print(((result**3) % 2600) / 5)
+# print(type(str(((result**3) % 2600) / 5)))
+# ==================================================================================
+# Lesson 38
+# ----------------
+# -- User Input --
+# ----------------
+# fName = input('What\'s Is Your First Name?')
+# mName = input('What\'s Is Your Middle Name?')
+# lName = input('What\'s Is Your Last Name?')
+# fName = fName.strip().capitalize()
+# mName = mName.strip().capitalize()
+# lName = lName.strip().capitalize()
+# print(f"Hello {fName} {mName:.1s} {lName} Happy To See You.")
+# ==================================================================================
+# Lesson 39
+# ---------------------------
+# -- Practical Slice Email --
+# ---------------------------
+# theName = input('What\'s Your Name ?').strip().capitalize()
+# theEmail = input('What\'s Your Email ?').strip()
+# theUsername = theEmail[:theEmail.index("@")]
+# theWebsite = theEmail[theEmail.index("@") + 1:]
+# print(f"Hello {theName} Your Email Is {theEmail}")
+# print(f"Your Username Is {theUsername} \nYour Website Is {theWebsite}")
+# ==================================================================================
+# Lesson 40
+# -------------------------------------
+# -- Practical Your Age Full Details --
+# -------------------------------------
+# age = int(input('What\'s Your Age ? ').strip())
+# months = age * 12
+# weeks = months * 4
+# days = weeks * 7
+# hours = days * 24
+# minutes = hours * 60
+# seconds = minutes * 60
+# print('You Lived For:')
+# print(f"{months} Months.")
+# print(f"{weeks:,} Weeks.")
+# print(f"{days:,} Days.")
+# print(f"{hours:,} Hours.")
+# print(f"{minutes:,} Minutes.")
+# print(f"{seconds:,} Seconds.")
+# ==================================================================================
+# Assignment 8
+# 1
+# name = input("ur name is: ").strip().capitalize()
+# print(f"Hello {name}, we missed u bro.. I missed u , all I want in this life is your eyes infrontof me every sec")
+
+# 2
+# age = int(input("ur age is:"))
+# if age < 16:
+#   print("Hello Your Age Is Under 16, Some Articles Is Not Suitable For You")
+# else:
+#   print(f"Hello Your Age Is {age}, All Articles Is Suitable For You")
+
+# 3
+# firstName = input("ur first name is:").strip().capitalize()
+# lastName = input("ur last name is:").strip().capitalize()
+# print(f"Hello {firstName} {lastName:.1s}")
+
+# 4
+# email = input("ur email is:").strip().lower()
+# print(email[:email.index("@")].capitalize())
+# print(email[email.index("@")+1:email.index(".")])
+# print(email[email.index(".")+1:])
+# ==================================================================================
