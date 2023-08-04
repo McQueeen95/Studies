@@ -418,3 +418,37 @@
 # t = int(input())
 # print(list(primeGenerator(f, t)))
 # ============================================================
+# Decorators (when one function is used to modify another function.)
+# Decorators provide a way to modify functions using other functions. 
+# This is ideal when you need to extend the functionality of functions that you don't want to modify.
+# # Example
+# def mainFunction():
+#   print("Hello,World")
+# def functionModifiy(func):
+#   print("========")
+#   func()
+#   print("=======")
+# functionModifiy(mainFunction)
+
+# # Example 2
+# def decor(func):
+#   def wrap():
+#     print("========")
+#     func()
+#     print("=======")
+#   return wrap
+# @decor
+# def prnTx():
+#   print("Hello")
+# prnTx()
+
+# # Example 3
+# def invoice(num):
+#     print("INVOICE #" +num)
+
+# def decor(func,x):
+#   print("***")
+#   func(x)
+#   print("***")
+
+# decor(invoice,input())
