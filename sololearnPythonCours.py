@@ -1,4 +1,3 @@
-
 ###Coding
 # x = input() here x will hava data type string as it auto takes the input as string , if we want to take integer : int(input())
 # in python there is no concatenation just str on int
@@ -419,7 +418,7 @@
 # print(list(primeGenerator(f, t)))
 # ============================================================
 # Decorators (when one function is used to modify another function.)
-# Decorators provide a way to modify functions using other functions. 
+# Decorators provide a way to modify functions using other functions.
 # This is ideal when you need to extend the functionality of functions that you don't want to modify.
 # # Example
 # def mainFunction():
@@ -452,3 +451,73 @@
 #   print("***")
 
 # decor(invoice,input())
+# ============================================================
+# Recursion
+# Ex1
+# def rec(x):
+#   if x==1:
+#     return 1
+#   return x*rec(x-1)
+# print(rec(5))
+# Ex2
+# def is_even(x):
+#   if x == 0:
+#     return True
+#   else:
+#     return is_odd(x-1)
+# def is_odd(x):
+#   return not is_even(x)
+# print(is_odd(2))
+# print(is_even(1))
+# Ex3
+# def convert(num):   # converts from decimal to binary
+#   if num == 1:
+#     return 1
+#   return num % 2 + 10 * convert(num // 2)
+# print(convert(7))
+# ============================================================
+# # *args
+# Using *args as a function parameter enables you to pass an arbitrary number of arguments to that function.
+# The arguments are then accessible as the tuple args in the body of the function.
+#  it collects any extra positional arguments passed to the function into a tuple.
+# Ex1
+# def function(named_arg, *args):   #Just remember that 'args' is the NAME of the tuple while '*args' is the WAY TO LET THE COMPUTER KNOW that a function has a dynamic number of arguments
+#     print(named_arg)
+#     print(args)
+# function(1, 2, 3, 4, 5)
+# a , *d , e =[1,2,35,66,34,33] # this here called args
+# print(f"{a} , {d} , {e}")
+# Ex2
+# def my_function(*args):
+#     for arg in args:
+#         print(arg)
+# my_function("apple", "banana", "cherry")        # In this example, the function my_function takes any number of arguments, and *args collects them into a tuple named args. 
+# my_function(1,2,3,4,5,6,6,7,7,7,3,52,354,45)    # You can then iterate over args or perform any other operations on the arguments.
+# Ex3
+# def my_min(*args):
+#     return min(args)
+# print(my_min(8, 13, 4, 42, 120, 7))
+# # **kwargs
+# The **kwargs parameter allows a function to accept any number of keyword arguments. 
+# It collects any extra keyword arguments passed to the function into a dictionary.
+# Ex1
+# def my_function(**kwargs):
+#     for key, value in kwargs.items():   # In this example, the function my_function takes any number of keyword arguments, and **kwargs collects them into a dictionary named kwargs.
+#         print(key, value)               #  You can then access the keyword arguments as key-value pairs in the kwargs dictionary.
+# my_function(name="John", age=25, city="London")
+# Ex2
+# def my_func(x, y=7, *args, **kwargs):
+#     print(kwargs)
+#     print(x)
+#     print(y)
+#     print(args)
+# my_func(2, 3, 4, 5, 6, a=7, b=8)
+# Both *args and **kwargs provide flexibility in function definitions by allowing you to handle a variable number of arguments.
+# You can use them together in a function definition if you need to accept both positional and keyword arguments.
+### Quiz
+# nums = [1,2,8,3,7]
+# x = list(map(lambda x:x%2==0,nums)) # here its maps on the list and check from the expression and return if true of false
+# print(x)
+# nums1 = [1,2,8,3,7]
+# x1 = list(filter(lambda x:x%2==0,nums)) # here its use the expression to filter the list 
+# print(x1)
