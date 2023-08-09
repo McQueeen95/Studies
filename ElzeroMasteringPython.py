@@ -1445,3 +1445,196 @@
 # print(email[email.index("@")+1:email.index(".")])
 # print(email[email.index(".")+1:])
 # ==================================================================================
+# Lesson 41, 42
+# --------------------
+# --  Control Flow  --
+# -- If, Elif, Else --
+# -- Make Decisions --
+# -- Nested If -------
+# --------------------
+# uName = "Osama"
+# isStudent = "Yes"
+# uCountry = "Egypt"
+# cName = "Python Course"
+# cPrice = 100
+# if uCountry == "Egypt" or uCountry == "KSA" or uCountry == "Qatar":
+#   if isStudent == "Yes":
+#     print(f"Hi {uName} Because U R From {uCountry} And Student")
+#     print(f"The Course \"{cName}\" Price Is: ${cPrice - 90}")
+#   else:
+#     print(f"Hi {uName} Because U R From {uCountry}")
+#     print(f"The Course \"{cName}\" Price Is: ${cPrice - 80}")
+# elif uCountry == "Kuwait" or uCountry == "Bahrain":
+#   print(f"Hi {uName} Because U R From {uCountry}")
+#   print(f"The Course \"{cName}\" Price Is: ${cPrice - 50}")
+# else:
+#   print(f"Hi {uName} Because U R From {uCountry}")
+#   print(f"The Course \"{cName}\" Price Is: ${cPrice - 30}")
+# ==================================================================================
+# Lesson 43
+# ----------------------------------
+# -- Ternary Conditional Operator --
+# ----------------------------------
+# country = "A"
+# if country == "Egypt" : print(f"The Weather in {country} Is 15")
+# elif country == "KSA" : print(f"The Weather in {country} Is 30")
+# else : print("Country is Not in The List")
+# # Short If
+# movieRate = 18
+# age = 18
+# print("Movie S Not Good 4U" if age < movieRate else "Movie S Good 4U And Happy Watching")
+# # Condition If True | If Condition | Else | Condition If False
+# print(True if int(input()) > 8 else False)
+# ==================================================================================
+# Lesson 44
+# -------------------------------------------------
+# -- Calculate Age Advanced Version and Training --
+# -------------------------------------------------
+# print("#" * 80)
+# print(" You Can Write any Letter Or Full Name of The Time Unit ".center(80, "#"))
+# print(" And i gonna give u how much u lived ".center(80, "#"))
+# print("#" * 80)
+# age = int(input("ur age:"))
+# choise = (input("now choose between month,day,week or any letter of them: ").strip().lower())
+# months = age * 12
+# weeks = months * 4
+# days = age * 365
+# lm = ["m", "o", "t", "h", "n"]
+# lw = ["w", "e", "k"]
+# ld = ["d", "a", "y"]
+
+# if choise == "month" or choise in lm:
+#     print("You Choosed The Unit Months")
+#     print(f"You Lived For {months:,} Months.")
+# elif choise == "weeks" or choise in lw:
+#     print("You Choosed The Unit Weeks")
+#     print(f"You Lived For {weeks:,} Weeks.")
+# elif choise == "days" or choise in ld:
+#     print("You Choosed The Unit Days")
+#     print(f"You Lived For {days:,} Days.")
+# ==================================================================================
+# Lesson 45
+# --------------------------
+# -- Membership Operators --
+# --------------------------
+# in
+# not in
+# --------------------------
+# # String
+# name = "Osama"
+# print("s" in name)
+# print("a" in name)
+# print("A" in name)
+# # List
+# friends = ["Ahmed", "Sayed", "Mahmoud"]
+# print("Osama" in friends)
+# print("Sayed" in friends)
+# print("Mahmoud" not in friends)
+# # Using In and Not In With Condition
+# countriesOne = ["Egypt", "KSA", "Kuwait", "Bahrain", "Syria"]
+# countriesOneDiscount = 80
+# countriesTwo = ["Italy", "USA"]
+# countriesTwoDiscount = 50
+# myCountry = "Italy"
+# if myCountry in countriesOne:
+#   print(f"Hello You Have A Discount Equal To ${countriesOneDiscount}")
+# elif myCountry in countriesTwo:
+#   print(f"Hello You Have A Discount Equal To ${countriesTwoDiscount}")
+# else:
+#   print("You Have No Discount")
+# ==================================================================================
+# Lesson 46
+# ----------------------------------
+# -- Practical Membership Control --
+# ----------------------------------
+# # List Contains Admins
+# admins = ["Ahmed", "Osama", "Sameh", "Manal", "Rahma", "Mahmoud", "Enas"]
+# # Login
+# name = input("Please Type Your Name ").strip().capitalize()
+# # If Name is In Admin
+# if name in admins:
+#   print(f"Hello {name} Welcome Back")
+#   option = input("Delete Or Update Your Name ?").strip().capitalize()
+#   # Update Option
+#   if option == 'Update' or option == 'U':
+#     theNewName = input("Your New Name Please ").strip().capitalize()
+#     admins[admins.index(name)] = theNewName
+#     print("Name Updated.")
+#     print(admins)
+#   # Delete Option
+#   elif option == 'Delete' or option == 'D':
+#     admins.remove(name)
+#     print("Name Deleted")
+#     print(admins)
+#   # Wrong Option
+#   else:
+#     print("Wrong Option Choosed")
+# else:
+#   status = input("Not Admin, Add You Y, N ? ").strip().capitalize()
+#   if status == "Yes" or status == "Y":
+#     print("You Have Been Added")
+#     admins.append(name)
+#     print(admins)
+#   else:
+#     print("You Are Not Added.")
+# ==================================================================================
+# Assignment 9
+
+# 1
+# while True:
+#   num1 = int(input("first num: "))
+#   num2 = int(input("second number: "))
+#   operation = input("Select opr (+ , - , * , / , %) or E to Exit ").strip().lower()
+#   if operation == 'e':
+#     print(f"Exiting the program..")
+#     break
+#   elif operation in ['+', '-', '*', '/', '%']:
+#     if operation == '+':
+#       result = num1+num2
+#     elif operation == '-':
+#       result = num1-num2
+#     elif operation == '*':
+#       result = num1*num2
+#     elif operation == '/':
+#       result = num1/num2
+#     elif operation == '%':
+#       result = num1%num2
+#     print(f"Result: {num1} {operation} {num2} = {result}")
+#   else :
+#     print("wrong choice bro ,select again")
+
+# 2 
+# age = int(input())
+# print("App Is Suitable For You" if age >= 16 else "App Is Not Suitable For You")
+
+# 3
+# age = int(input())
+# months = age * 12
+# weeks = months * 4
+# days = age * 365
+# hours = days * 24
+# minutes = hours * 60
+# seconds = minutes * 60
+# if age > 100 or age < 10:
+#   print("out of range")
+# else:
+#   print(f"Your Age In months Is {months:,} months")
+#   print(f"Your Age In weeks Is {weeks:,} weeks")
+#   print(f"Your Age In days Is {days:,} days")
+#   print(f"Your Age In hours Is {hours:,} hours")
+#   print(f"Your Age In minutes Is {minutes:,} minutes")
+#   print(f"Your Age In seconds Is {seconds:,} seconds")
+
+# 4
+# countries = ["Egypt", "Palestine", "Syria", "Yemen", "KSA", "USA", "Bahrain", "England"]
+# discount = 30
+# price = 100
+# country = input("ur country: ").strip().capitalize()
+# if country in countries:
+#   print(f"Your Country Eligible For Discount And The Price After Discount Is ${price - discount}")
+# else:
+#   print(f"Your Country Not Eligible For Discount And The Price Is ${price}")
+
+
+
+
