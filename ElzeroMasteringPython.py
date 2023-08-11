@@ -1579,7 +1579,6 @@
 #     print("You Are Not Added.")
 # ==================================================================================
 # Assignment 9
-
 # 1
 # while True:
 #   num1 = int(input("first num: "))
@@ -1603,7 +1602,7 @@
 #   else :
 #     print("wrong choice bro ,select again")
 
-# 2 
+# 2
 # age = int(input())
 # print("App Is Suitable For You" if age >= 16 else "App Is Not Suitable For You")
 
@@ -1634,7 +1633,135 @@
 #   print(f"Your Country Eligible For Discount And The Price After Discount Is ${price - discount}")
 # else:
 #   print(f"Your Country Not Eligible For Discount And The Price Is ${price}")
+# ==================================================================================
+# Lesson 47
+# -------------------
+# -- Loop => While --
+# -------------------
+# while condition_is_true
+#   Code Will Run Until Condition Become False
+# -----------------------
+# a = 0
+# while a < 15:
+#   print(a)
+#   a += 1  # a = a + 1
+# print("Loop is Done")  # True Become False
+# while False:
+#   print("Will Not Print")
+# ==================================================================================
+# Lesson 48
+# ----------------------------
+# -- Loop => While Training --
+# ----------------------------
+# while condition_is_true
+#   Code Will Run Until Condition Become False
+# -----------------------
+# myF = ["Os", "Ah", "Ga", "Al", "Ra", "Sa", "Ta", "Ma", "Mo", "Wa"]
+# print(len(myF))  # List Length [10]
+# a = 0
+# while a < len(myF):  # a < 10
+#   print(f"#{str(a + 1).zfill(3)} {myF[a]}")
+#   a += 1  # a = a + 1
+# else: # I gonna explain it after this lesson
+#   print("All Friends Printed To Screen.")
+# ==================================================================================
+# Lesson 49
+# ----------------------------
+# -- Loop => While Training --
+# -- Simple Bookmark Manage --
+# ----------------------------
+# # Empty List To Fill Later
+# myFavouriteWebs = []
+# # Maximum Allowed Websites
+# maximumWebs = 5
+# while maximumWebs > 0:
+#   # Input The New Website
+#   web = input("Website Name Without https:// ")
+#   # Add The New Website To The List
+#   myFavouriteWebs.append(f"https://{web.strip().lower()}")
+#   # Decrease One Number From Allowed Websites
+#   maximumWebs -= 1  # maximumWebs = maximumWebs - 1
+#   # Print The Add Message
+#   print(f"Website Added, {maximumWebs} Places Left")
+#   # Print The List
+#   print(myFavouriteWebs)
+# else:
+#   print("Bookmark Is Full, You Cant Add More")
+# ==================================================================================
+# Lesson 50
+# ----------------------------
+# -- Loop => While Training --
+# -- Simple Password Guess --
+# ----------------------------
+# tries = 3
+# mainPassword = "000"
+# inputPassword = input("Write Your Password: ")
+# while inputPassword != mainPassword:  # True
+#   tries -= 1  # tries = tries - 1
+#   if tries == 0:
+#     print("All Tries Is Finished.")
+#     break
+#   print(f"Wrong Password, { 'Last' if tries == 1 else tries } Chance Left")
+#   inputPassword = input("Write Your Password: ")
+# else:
+#   print("Correct Password") # this just happens when the condition is false but when its true and the loop finishes its never show up
+# print("now go out")
+# ==================================================================================
+# Assignment 10
+# 1
+# num = int(input("enter a number > 0: "))
+# printed = 0
+# if num <= 0:
+#   print("its <= 0")
+# else:
+#   while num > 0:
+#     if num-1 == 6 or num-1 == 0:
+#       num -= 1
+#       continue
+#     else:
+#       print(num-1)
+#       printed +=1
+#       num -= 1
+# print(f"{printed} Numbers Printed Successfully.")
 
+# 2
+# friends = ["Mohamed", "Shady", "ahmed", "eman", "Sherif","sorry","ignored","Bigdata"]
+# i = 0
+# ignored = 0
+# while i < len(friends):
+#   if friends[i][0].upper() == friends[i][0]:
+#     print(friends[i])
+#     i += 1
+#   else:
+#     ignored += 1
+#     i += 1
+# print(f"Friends Printed And Ignored Names Count Is {ignored}")
 
+# 3
+# skills = ["HTML", "CSS", "JavaScript", "PHP", "Python"]
+# while skills:
+#   print(f'"{skills.pop(0)}"')
 
-
+# 4
+# my_friends = ["hi","bro","good","very"]
+# lenOfList = 4
+# while lenOfList > 0 and lenOfList != 4:
+#   name = input("Enter ur friend name: ").strip()
+#   if name == name.upper():
+#     print("Invalid Name")
+#   elif name == name.lower():
+#     my_friends.append(name.capitalize())
+#     lenOfList -= 1
+#     print(f"Friend {name} Added => 1st Letter Become Capital")
+#     print(f"Names Left in List Is {lenOfList}")
+#   elif name == name.capitalize():
+#     my_friends.append(name)
+#     lenOfList -= 1
+#     print(f"Friend {name} Added")
+#     print(f"Names Left in List Is {lenOfList}")
+#   else:
+#     print("Enter ur name like humans bro")
+# else:
+#   print("sorry the list is full")
+# print(f"ur list is {my_friends}")
+# ==================================================================================
