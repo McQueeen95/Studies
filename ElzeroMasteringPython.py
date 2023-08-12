@@ -1765,3 +1765,235 @@
 #   print("sorry the list is full")
 # print(f"ur list is {my_friends}")
 # ==================================================================================
+# Lesson 51
+# -----------------
+# -- Loop => For --
+# -----------------
+# for item in iterable_object :
+#   Do Something With Item
+# -----------------------------
+# item Is A Vairable You Create and Call Whenever You Want
+# item refer to the current position and will run and visit all items to the end
+# iterable_object => Sequence [ list, tuples, set, dict, string of charcaters, etc ... ]
+# ---------------------------------------------------------------
+# myNumbers = [1, 2, 3, 4, 5, 6, 7, 8, 9]
+# for number in myNumbers:
+#   print(number * 17)
+#   if number % 2 == 0:  # Even
+#     print(f"The Number {number} Is Even.")
+#   else:
+#     print(f"The Number {number} Is Odd.")
+# else:
+#   print("The Loop Is Finished") # not like else in while loop
+# myName = "Osama"
+# for letter in myName:
+#   print(f" [ {letter.upper()} ] ")
+# ==================================================================================
+# Lesson 52
+# -----------------
+# -- Loop => For --
+# --  Trainings  --
+# -----------------
+# # Range
+# for number in range(1, 101):
+#   print(number)
+# # Dictionary
+# mySkills = {
+#   "Html": "90%",
+#   "Css": "60%",
+#   "PHP": "70%",
+#   "JS": "80%",
+#   "Python": "90%",
+#   "MySQL": "60%"
+# }
+# print(mySkills['JS'])
+# print(mySkills.get("Python"))
+# for skill in mySkills:
+#   print(f"My Progress in Lang {skill} Is: {mySkills.get(skill)}")
+# ==================================================================================
+# Lesson 53
+# -----------------
+# -- Loop => For --
+# -- Nested Loop --
+# -----------------
+# peoples = ["Osama", "Ahmed", "Sayed", "Ali"]
+# skills = ["Html", "Css", "Js"]
+# for name in peoples:  # Outer Loop
+#   print(f"{name} Skills Is: ")
+#   for skill in skills:  # Inner Loop
+#     print(f"- {skill}")
+# Dictionary
+# peoples = {
+#   "Osama": {"Html": "70%", "Css": "80%", "Js": "70%"},
+#   "Ahmed": {"Html": "90%", "Css": "80%", "Js": "90%"},
+#   "Sayed": {"Html": "70%", "Css": "60%", "Js": "90%"},
+# }
+# for name in peoples:
+#   print(f"Skills and Progress For {name} Is: ")
+#   for skill in peoples[name]:
+#     print(f"{skill} => {peoples[name][skill]}")
+# ==================================================================================
+# Lesson 54
+# ---------------------------
+# -- Break, Continue, Pass --
+# ---------------------------
+# myNumbers = [1, 2, 3, 5, 7, 10, 13, 14, 15, 19]
+# # Continue
+# for number in myNumbers:
+#   if number == 13:
+#     continue # skips the current iteration
+#   print(number)
+# # Break
+# for number in myNumbers:
+#   if number == 13:
+#     break # break and exit from the loop
+#   print(number)
+# # Pass
+# for number in myNumbers:
+#   if number == 13:
+#     pass # ignores this block of code
+#   print(number)
+# ==================================================================================
+# Lesson 55
+# ------------------------------
+# -- Advanced Dictionary Loop --
+# ------------------------------
+# mySkills = {
+#   "HTML": "80%",
+#   "CSS": "90%",
+#   "JS": "70%",
+#   "PHP": "80%"
+# }
+# print(mySkills.items()) # this returns the keys and values of each one
+# for skill in mySkills:
+#   print(f"{skill} => {mySkills[skill]}")
+# for skill_key, skill_progress in mySkills.items():
+#   print(f"{skill_key} => {skill_progress}")
+# myUltimateSkills = {
+#   "HTML": {
+#     "Main": "80%",
+#     "Pugjs": "80%"
+#   },
+#   "CSS": {
+#     "Main": "90%",
+#     "Sass": "70%"
+#   }
+# }
+# for main_key, main_value in myUltimateSkills.items():
+#   print(f"{main_key} Progress Is: ")
+#   for child_key, child_value in main_value.items():
+#     print(f"- {child_key} => {child_value}")
+# ==================================================================================
+# Assignment 11
+# 1
+# my_nums = [15, 81, 5, 17, 20, 21, 13]
+# my_nums.sort(reverse=True)
+# order = 1
+# for i in range(len(my_nums)):
+#   if my_nums[i] % 5 == 0:
+#     print(f"{order} => {my_nums[i]}")
+#     order += 1
+# else:
+#   print("All numbers printed")
+
+# 2
+# for i in range(1,21):
+#   if i == 6 or i == 8 or i == 12:
+#     continue
+#   print(str(i).zfill(2))
+# else:
+#   print("All numbers printed")
+
+# 3
+# my_ranks = {
+#   'Math': 'A',
+#   "Science": 'B',
+#   'Drawing': 'A',
+#   'Sports': 'C'
+# }
+# points = {
+#   'A' : 100,
+#   'B': 80,
+#   'C' : 40
+# }
+# total = 0
+# for key,value in my_ranks.items():
+#   print(f"My rank in {key} is {value} and this Equal {points[value]}")
+#   total += points[value]
+# else:
+#   print(f"Total points is {total}")
+
+# 4
+# students = {
+#   "Ahmed": {
+#     "Math": "A",
+#     "Science": "D",
+#     "Draw": "B",
+#     "Sports": "C",
+#     "Thinking": "A"
+#   },
+#   "Sayed": {
+#     "Math": "B",
+#     "Science": "B",
+#     "Draw": "B",
+#     "Sports": "D",
+#     "Thinking": "A"
+#   },
+#   "Mahmoud": {
+#     "Math": "D",
+#     "Science": "A",
+#     "Draw": "A",
+#     "Sports": "B",
+#     "Thinking": "B"
+#   }
+# }
+# points = {
+#   'A' : 100,
+#   'B': 80,
+#   'C' : 40,
+#   'D' : 20
+# }
+# print(students['Ahmed']['Math'])
+# print(points[students['Ahmed']['Math']]) # for understand how we gonna use the loop
+# part 1 (without .items())
+# for name in students:
+#   total = 0
+#   print('"------------------------------"')
+#   print(f'"- Student Name => {name}"')
+#   print('"------------------------------"')
+#   for subject in students[name]:
+#     print(f'"- {subject} => {points[students[name][subject]]} Points"')
+#     total += points[students[name][subject]]
+#   print(f'"Total Points For {name} is {total}')
+# part 2 (with .items())
+# for topKey,topValue in students.items():
+#   total = 0
+#   print('"------------------------------"')
+#   print(f'"- Student Name => {topKey}"')
+#   print('"------------------------------"')
+#   for bottomKey,bottomValue in topValue.items():
+#     print(f'"- {bottomKey} => {points[bottomValue]} Points"')
+#     total += points[bottomValue]
+#   print(f'"Total Points For {topKey} is {total}')
+# ==================================================================================
+
+
+# ==================================================================================
+
+
+# ==================================================================================
+
+
+# ==================================================================================
+
+
+# ==================================================================================
+
+
+# ==================================================================================
+
+
+# ==================================================================================
+
+
+# ==================================================================================
