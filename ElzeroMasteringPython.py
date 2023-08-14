@@ -1976,11 +1976,273 @@
 #     total += points[bottomValue]
 #   print(f'"Total Points For {topKey} is {total}')
 # ==================================================================================
-
-
+# Lesson 56
+# -------------------------
+# -- Function And Return --
+# -------------------------
+# [1] A Function is A Reusable Block Of Code Do A Task
+# [2] A Function Run When You Call It
+# [3] A Function Accept Element To Deal With Called [Parameters]
+# [4] A Function Can Do The Task Without Returning Data
+# [5] A Function Can Return Data After Job is Finished
+# [6] A Function Create To Prevent DRY (Don't Repeat Yourself)
+# [7] A Function Accept Elements When You Call It Called [Arguments]
+# [8] There's A Built-In Functions and User Defined Functions
+# [9] A Function Is For All Team and All Apps
+# ----------------------------------------
+# def function_name():
+#   return "Hello Python From Inside Function"
+# dataFromFunction = function_name()
+# print(dataFromFunction)
 # ==================================================================================
+# Lesson 57
+# ---------------------------------------
+# -- Function Parameters And Arguments --
+# ---------------------------------------
+# def                     => Function Keyword [Define]
+# say_hello()             => Function Name
+# name                    => Parameter
+# print(f"Hello {name}")  => Task
+# say_hello("Ahmed")      => Ahmed is The Argument
+# def say_hello(name):
+#   print(f"Hello {name}")
+# say_hello("Ahmed")
+# def addition(n1, n2):
+#   if type(n1) != int or type(n2) != int:
+#     print("Only Integers Allowed")
+#   else:
+#     print(n1 + n2)
+# addition(100, 500)
+# def full_name(first, middle, last):
+#   print(f"Hello {first.strip().capitalize()} {middle.upper():.1s} {last.capitalize()}")
+# full_name("   osama   ", 'mohamed', "elsayed")
+# ==================================================================================
+# Lesson 58
+# -------------------------------------------------
+# -- Function Packing, Unpacking Arguments *Args --
+# -------------------------------------------------
+# print(1, 2, 3, 4)
+# print("hello", "I'm ahmed" , "and this first time" , int(4), sep="\n" , end="||")
+# myList = [1, 2, 3, 5]
+# print(myList)
+# print(*myList)
+# def say_hello(*peoples):  # n1, n2, n3, n4
+#   for name in peoples:
+#     print(f"Hello {name}")
+# say_hello("Osama", "Ahmed", "Sayed", "Mahmoud")
+# def show_details(name, *skills):
+#   print(f"Hello {name} Your Skills Is: ")
+#   for skill in skills:
+#     print(skill)
+# show_details("Osama", "Html", "CSS", "JS")
+# show_details("Ahmed", "Html", "CSS", "JS", "Python", "PHP", "MySQL")
+# ==================================================================================
+# Lesson 59
+# ---------------------------------
+# -- Function Default Parameters --
+# ---------------------------------
+# def say_hello(name="Unknown", age="Unknown", country="Unknown"):  # default parameters must start from the end => can't set the first paramter to default value
+#   print(f"Hello {name} Your Age is {age} and Your Country Is {country}")
+# say_hello("Osama", 36, "Egypt")
+# say_hello("Mahmoud", 28, "KSA")
+# say_hello("Sameh", 38)
+# say_hello("Ramy")
+# say_hello()
+# ==================================================================================
+# Assignment 12
+# 1
+# def calculate(n1 , n2 , sign = "+"):
+#   sign = sign.lower()
+#   if sign == "+" or sign == "add" or sign == "a":
+#     return n1 + n2
+#   elif sign == "*" or sign == "multiply" or sign == "m":
+#     return n2 * n1
+#   elif sign == "-" or sign == "subtract" or sign == "s":
+#     return n1 - n2
+#   else:
+#     return "worng choise"
+# print(calculate(10, 20)) # 30
+# print(calculate(10, 20, "AdD")) # 30
+# print(calculate(10, 20, "a")) # 30
+# print(calculate(10, 20, "A")) # 30
+# print(calculate(10, 20, "S")) # -10
+# print(calculate(10, 20, "subTRACT")) # -10
+# print(calculate(10, 20, "Multiply")) # 200
+# print(calculate(10, 20, "m")) # 200
+
+# 2
+# def addition(*xs):
+#   res = 0
+#   for x in xs:
+#     if x == 10:
+#       continue
+#     elif x == 5:
+#       res -= x
+#     else:
+#       res += x
+#   return res
+# print(addition(10, 20, 30, 10, 15)) # 65
+# print(addition(10, 20, 30, 10, 15, 5, 100)) # 160
+
+# 3
+# def show_skills(name,*skills):
+#   if len(skills) == 0:
+#     print(f"Hello {name} You have no skills to show")
+#   else:
+#     print(f"Hello {name} your skils is")
+#     for skill in skills:
+#       print(f"- {skill}")
+# show_skills("Osama", "HTML", "CSS", "JS", "Python")
+# show_skills("Ahmed")
 
 
+# 4
+# def say_hello(name ="UnKnown",age="UnKnown",county="Unknown"):
+#   return f"Hello {name} Your Age Is {age} And You Live In {county}"
+# print(say_hello("Osama", 38, "Egypt"))
+# print(say_hello())
+# ==================================================================================
+# Lesson 60
+# ----------------------------------------------------
+# -- Function Packing, Unpacking Arguments **KWArgs --
+# ----------------------------------------------------
+# def show_skills(*skills):
+#   print(type(skills)) # its a tuble
+#   for skill in skills:
+#     print(f"{skill}")
+# show_skills("Html", "CSS", "JS")
+# mySkills = {
+#   'Html': "80%",
+#   'Css': "70%",
+#   'Js': "50%",
+#   'Python': "80%",
+#   "Go": "40%"
+# }
+# def show_skills(**skills):
+#   print(type(skills)) # when its ** it just asking for a dictionary
+#   for skill, value in skills.items():
+#     print(f"{skill} => {value}")
+# show_skills(**mySkills)
+# show_skills(html = "40" , kss = "34" , mona = 27 , ahmed = 25)
+# ==================================================================================
+# Lesson 61
+# -----------------------------------------------------
+# -- Function Packing, Unpacking Arguments Trainings --
+# -----------------------------------------------------
+# myTuple = ("Html", "CSS", "JS")
+# mySkills = {
+#   'Go': "80%",
+#   'Python': "50%",
+#   'MySQL': "80%"
+# }
+# def show_skills(name, *skills, **skillsWithProgres):
+#   print(f"Hello {name} \nSkills Without Progress Is: ")
+#   for skill in skills:
+#     print(f"- {skill}")
+#   print("Skills With Progress Is: ")
+#   for skill_key, skill_value in skillsWithProgres.items():
+#     print(f"- {skill_key} => {skill_value}")
+# show_skills("Osama", *myTuple, **mySkills)
+# show_skills("mona","smart","beautful","kind",nur = "very good" , housWork = "suber good" , takingMyheart = "brilliant")
+# ==================================================================================
+# Lesson 62
+# --------------------
+# -- Function Scope --
+# --------------------
+# x = 1  # Global Scope
+# def one():
+#   global x # here we make x in a global scope not in a function scope only
+#   x = 2
+#   print(f"Print Variable From Function Scope {x}")
+# def two():
+#   x = 10
+#   print(f"Print Variable From Function Scope {x}")
+# one()
+# print(f"Print Variable From Global Scope {x}")
+# two()
+# print(f"Print Variable From Global Scope After One Function Is Called {x}")
+# ==================================================================================
+# Lesson 63
+# ------------------------
+# -- Function Recursion --
+# ------------------------
+# ---------------------------------------------------------------------
+# -- To Understand Recursion, You Need to First Understand Recursion --
+# ---------------------------------------------------------------------
+# def cleanWord(word):
+#   if len(word)  == 1:
+#     return word
+#   if word[0] == word[1]:
+#     return cleanWord(word[1:])
+#   return word[0] + cleanWord(word[1:])
+# print(cleanWord("mmmmmmmmmmmmmmmooooooonnnaaaaaaaaaaaaaaa <<<<<<<<3333333"))
+# ==================================================================================
+# Lesson 64
+# ------------------------
+# -- Function => lambda --
+# -- Anonymous Function --
+# ------------------------
+# [1] It Has No Name
+# [2] You Can Call It Inline Without Defining It
+# [3] You Can Use It In Return Data From Another Function
+# [4] Lambda Used For Simple Functions and Def Handle The Large Tasks
+# [5] Lambda is One Single Expression not Block Of Code
+# [6] Lambda Type is Function
+# -------------------------------------------------------------------
+# def say_hello(name, age):
+#   return f"Hello {name} your Age Is: {age}"
+# hello = lambda name, age: f"Hello {name} your Age Is: {age}"
+# print(say_hello("Ahmed", 36))
+# print(hello("Ahmed", 36))
+# print(hello) #here the lambda function stored in variable and its return <function <lambda>
+# print((lambda x: x**2)(2)) # (lambda var: var operation)(arguments)
+# print(say_hello.__name__)
+# print(hello.__name__)
+# print(type(hello))
+# ==================================================================================
+# Assignment 13
+# 1
+# def get_score(**skills):
+#   for skillKey , skillValue in skills.items():
+#     print(f"{skillKey} => {skillValue}")
+# get_score(Math=90, Science=80, Language=70)
+# get_score(Logic=70, Problems=60)
+
+# 2
+# def get_people_scores(name="",**skills):
+#   if len(skills) > 0:
+#     if len(name) > 0:
+#       print(f"Hello {name} This Is Your Score Table:")
+#     for skillKey , skillValue in skills.items():
+#       print(f"{skillKey} => {skillValue}")
+#     print("=" *20)
+#   else:
+#     print(f"Hello {name} You Have No Scores To Show")
+#     print("=" *20)
+# get_people_scores("Osama", Math=90, Science=80, Language=70)
+# get_people_scores("Mahmoud", Logic=70, Problems=60)
+# get_people_scores(Logic=70, Problems=60)
+# get_people_scores("Ahmed")
+
+# 3
+# scores_list = {
+#   "Math" : 90,
+#   "Science" : 80,
+#   "Language" : 70
+# }
+# def get_the_scores(name="",**skills):
+#     if len(skills) > 0:
+#       if len(name) > 0:
+#         print(f"Hello {name} This Is Your Score Table:")
+#       for skillKey , skillValue in skills.items():
+#         print(f"{skillKey} => {skillValue}")
+#       print("=" *20)
+#     else:
+#       print(f"Hello {name} You Have No Scores To Show")
+#       print("=" *20)
+# get_the_scores("Osama", **scores_list)
+# get_the_scores("Osama")
+# get_the_scores(**scores_list)
 # ==================================================================================
 
 

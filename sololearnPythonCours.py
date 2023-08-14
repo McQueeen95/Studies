@@ -1,9 +1,9 @@
 ###Coding
 # x = input() here x will hava data type string as it auto takes the input as string , if we want to take integer : int(input())
-# in python there is no concatenation just str on int
-# x = input() //5 this is str
-# y = input() //3.0 this is str
-# print(x + y) //53.5 # and this wrong to make it right we use int(input())
+# in python there is no concatenation just str or int
+# x = input() #5 this is str
+# y = input() #3.0 this is str
+# print(x + y) # 53.0  and this wrong to make it right we use int(input())
 # (True , False , < , > , == , <= , >= ,!=) is comparison operations
 # (and , or , != ) is logical operations
 #  == can compare 2 strings
@@ -476,7 +476,7 @@
 #   return num % 2 + 10 * convert(num // 2)
 # print(convert(7))
 # ============================================================
-# # *args
+# # *args (arguments)
 # Using *args as a function parameter enables you to pass an arbitrary number of arguments to that function.
 # The arguments are then accessible as the tuple args in the body of the function.
 #  it collects any extra positional arguments passed to the function into a tuple.
@@ -497,7 +497,7 @@
 # def my_min(*args):
 #     return min(args)
 # print(my_min(8, 13, 4, 42, 120, 7))
-# # **kwargs
+# # **kwargs (Key Word Arguments)
 # The **kwargs parameter allows a function to accept any number of keyword arguments. 
 # It collects any extra keyword arguments passed to the function into a dictionary.
 # Ex1
