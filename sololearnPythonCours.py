@@ -521,3 +521,69 @@
 # nums1 = [1,2,8,3,7]
 # x1 = list(filter(lambda x:x%2==0,nums)) # here its use the expression to filter the list 
 # print(x1)
+# ============================================================
+## Classes
+# class Cat:
+#   def __init__(self, color, legs): #__init__() => (class constructor.) called when an instance (object) of the class is created, using the class name as a function
+#     self.color = color # self => refers to the instance of the object being manipulated within a class method
+#     self.legs = legs   #      => it provides a way to access and mainpulate the instances's attributes
+#   def makeWoof(self):  # methods defined to add functionality to them. Remember, that all methods must have self as their first parameter.
+#     print("WOOOOFFF!") # These methods are accessed using the same dot syntax as attributes.
+# cat1 = Cat("red",4)
+# print(cat1.color)
+# cat1.makeWoof()
+# self => All methods must have self as their first parameter,
+#      => you do not need to include it when you call the methods
+#      => self refers to the instance calling the method.
+# Instances of a class have attributes, which are pieces of data associated with them.
+# In this example, Cat instances have attributes color and legs. These can be accessed by putting a dot,
+# and the attribute name after an instance. 
+#  be used to set the initial value of an instance's attributes.
+# ex1
+# class Player:
+#   def __init__(self,name,level):
+#     self.x = name
+#     self.y = level
+#   def intro(self):
+#     print(f"{self.x} (Level {self.y})")
+# name = input()
+# level = int(input())
+# player1 = Player(name,level)
+# player1.intro()
+#===================================
+# Inheritance (share functionality between classes.
+# To inherit a class from another class, put the superclass name in parentheses after the class name.
+# class Shape: # superclass
+#   def __init__(self,long):
+#     self.x = long
+#   def hi(self):
+#     print("hi")
+# class Circle(Shape): # subclass
+#   def area(self):
+#     return self.x * self.x * 22/7
+# class Square(Shape): # subclass
+#   def area(self):
+#     return self.x * self.x
+#   def hi(self):
+#     print(f"hi {self.x}")
+#     super().hi() #super() calls the hi method of the superclass
+# sq1 = Square(4)
+# print(sq1.area())
+# sq1.hi() # subclass overrides suberclass methods
+# ci1 = Circle(1)
+# print(ci1.area())
+# Ex
+# class Shape:
+#   def __init__(self,width,hight):
+#     self.w = width
+#     self.h = hight
+#   def area(self):
+#     print(self.w * self.h)
+# class Rectangle(Shape):
+#   def perimeter(self):
+#     print(2*(self.h+self.w))
+# w = int(input())
+# h = int(input())
+# r1 = Rectangle(w,h)
+# r1.area()
+# r1.perimeter()
