@@ -2244,18 +2244,89 @@
 # get_the_scores("Osama")
 # get_the_scores(**scores_list)
 # ==================================================================================
-
-
+# Lesson 65
+# -------------------
+# -- File Handling --
+# -------------------
+# "a" Append  Open File For Appending Values, Create File If Not Exists
+# "r" Read    [Default Value] Open File For Read and Give Error If File is Not Exists
+# "w" Write   Open File For Writing, Create File If Not Exists
+# "x" Create  Create File, Give Error If File Exists
+# --------------------------------------------------
+# import os
+# # Main Current Working Directory
+# print("this is my current work directory",os.getcwd())
+# # Directory For The Opened File
+# print("this is the path of this file",os.path.abspath(__file__))
+# absolute path of this file(os.path.abspath(__file__))
+# print("this is the path of the file's directory",os.path.dirname(os.path.abspath(__file__)))
+# # Change Current Working Directory
+# os.chdir(os.path.dirname(os.path.abspath(__file__)))
+# print(os.path.abspath(__file__))
+# file = open(r"D:\Python\Files\nfiles\osama.txt") # r => to avoid any escape seq
+# file = open("testFiles.txt")
+# file = open("testFiles.txt","r")
+# file = open(r"D:\Projects\Studies\testFiles.txt") # all is the same
 # ==================================================================================
-
-
+# Lesson 66
+# --------------------------------
+# -- File Handling => Read File --
+# --------------------------------
+# myFile = open("testFiles.txt")
+# print(myFile)  # File Data Object
+# print(myFile.name)
+# print(myFile.mode)
+# print(myFile.encoding)
+## .read()
+# print(myFile.read()) #return all text in the file
+# print(myFile.read(5)) # just reading first 5 letters
+## .readline()
+# print(myFile.readline(100)) # reads only 100 letters from the current line
+# print(myFile.readline()) # reads the hole second line
+# print(myFile.readline()) # reads the hole third line and so on
+## .readlines()
+# print(myFile.readlines()) #return all the line in a list
+# print(myFile.readlines(100)) # return 100 letter from the hole file in a list
+# print(type(myFile.readlines()))
+# for line in myFile:
+#   print(line)
+# # Close The File
+# myFile.close()
 # ==================================================================================
-
-
+# Lesson 67
+# -----------------------------------------------
+# -- File Handling => Write and Append In File --
+# -----------------------------------------------
+# myFile = open("testFiles.txt","w") # W for write and append and create file if DNE
+# myFile.write("Hello\n")
+# myFile.write("this override text") # hes overrides on the old text
+# myFile = open("fun.txt", "w") # creates a new file 
+# myFile.write("Hello I'm ahmed\n" * 1000)
+# myList = ["Oasma\n", "Ahmed\n", "Sayed\n\n\n\n"]
+# myFile = open("testFiles.txt","w")
+# myFile.writelines(myList)
+# myFile = open("testFiles.txt","a") # "a" here is for appending or opening in or a file
+# myFile.write("Elzero\n\n")
+# myFile.write("plz plz let me in\n")
 # ==================================================================================
-
-
+# Lesson 68
+# -----------------------------------------------
+# ------- File Handling => Important Info -------
+# - the new line in txt file is 2 letters (\r\n)-
+# -----------------------------------------------
+# import os
+## .truncate(num)) delete all text except the first 5 letter
+# myFile = open("testFiles.txt","a")
+# myFile.truncate(5) 
+## .tell() return where the cursor is (which letter or bit)
+# myFile = open("testFiles.txt","a")
+# print(myFile.tell())
+## .seek(num) to move the cursor to num letters
+# myFile = open("testFiles.txt","r")
+# myFile.seek(11)
+# print(myFile.read(3))
+# os.remove("testFiles.txt")
 # ==================================================================================
-
+# Assignment 14
 
 # ==================================================================================
