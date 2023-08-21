@@ -2300,7 +2300,7 @@
 # myFile = open("testFiles.txt","w") # W for write and append and create file if DNE
 # myFile.write("Hello\n")
 # myFile.write("this override text") # hes overrides on the old text
-# myFile = open("fun.txt", "w") # creates a new file 
+# myFile = open("fun.txt", "w") # creates a new file
 # myFile.write("Hello I'm ahmed\n" * 1000)
 # myList = ["Oasma\n", "Ahmed\n", "Sayed\n\n\n\n"]
 # myFile = open("testFiles.txt","w")
@@ -2317,7 +2317,7 @@
 # import os
 ## .truncate(num)) delete all text except the first 5 letter
 # myFile = open("testFiles.txt","a")
-# myFile.truncate(5) 
+# myFile.truncate(5)
 ## .tell() return where the cursor is (which letter or bit)
 # myFile = open("testFiles.txt","a")
 # print(myFile.tell())
@@ -2328,5 +2328,50 @@
 # os.remove("testFiles.txt")
 # ==================================================================================
 # Assignment 14
+# 1
+# import os
+# desktop_path = os.path.join(os.path.expanduser("~"), "Desktop")
+# python_folder = os.path.join(desktop_path, "Python")
+# os.makedirs(python_folder, exist_ok=True)
+# for i in range(1,51):
+#   if i == 25:
+#     myFile = open(rf"C:\Users\Ahmed\Desktop\Python\special-text.txt","w")
+#   else:
+#     myFile = open(rf"C:\Users\Ahmed\Desktop\Python\txt{i}.txt","w")
+#     myFile.write(f"Elzero Web School => {i}\n")
+# print("this is my current work directory",os.getcwd())
+# print("this is the path of the file's directory",os.path.abspath(__file__))
+# print(__file__)
+# print(len(os.listdir(python_folder)))
 
+# 2
+# myFile = open(r"C:\Users\Ahmed\Desktop\Python\txt1.txt","a")
+# for i in range(1,51):
+#   myFile.write("Appended => Elzero Web School\n")
+
+# 3
+# myFile = open(r"C:\Users\Ahmed\Desktop\Python\txt1.txt","r")
+# numOfLines = 0
+# numOfWords = 0
+# numOfChars = 0
+# numOfL = 0
+# for line in myFile:
+#   if line[-1] == "\n":
+#     numOfLines += 1
+#   for char in line:
+#     if char == " " or char == "\n":
+#       numOfWords += 1
+#     else:
+#       numOfChars += 1
+#     if char == "l":
+#       numOfL += 1
+# print(f"Number Of Lines Is => {numOfLines}")
+# print(f"Number Of Words Is => {numOfWords}")
+# print(f"Number Of Chars Is => {numOfChars}")
+# print(f"Number Of \"l\" Char Is => {numOfL}")
+# myFile.close()
+# 4
+# import os
+# for i in range(41,51):
+#   os.remove(rf"C:\Users\Ahmed\Desktop\Python\txt{i}.txt")
 # ==================================================================================
