@@ -587,3 +587,20 @@
 # r1 = Rectangle(w,h)
 # r1.area()
 # r1.perimeter()
+# problems
+# 1
+# problemList = ["Osama", "Ahmed", "Sayed", "Ramy", "Ahmed", "Ramy"]
+# problemInput = "Ahmed"
+# for i in range(len(problemList)):
+#   if problemList[i] == problemInput:
+#     print(f"{problemInput} is found on index ={problemList.index(problemInput)}")
+#     break
+# else:
+#   print("item is not found")
+# 2
+# word = "123abcjw:,.@!eiw"
+# newword = ""
+# for letter in word:
+#   if letter.isalnum():
+#     newword += letter
+# print(f"final string is : {newword}")
