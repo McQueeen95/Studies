@@ -457,7 +457,7 @@
 # print("Hello {} {} {}".format(a, b, c))  # Hello One Two Three
 # print("Hello {1} {2} {0}".format(a, b, c))  # Hello Two Three One
 # print("Hello {2} {0} {1}".format(a, b, c))  # Hello Three One Two
-# print("Hello {0} {0} {0}".format(a,b,c))
+# print("Hello {0} {0} {0}".format(a,b,c))      # Hello One One One
 
 # x, y, z = 10, 20, 30
 # print("Hello {} {} {}".format(x, y, z))
@@ -580,6 +580,17 @@
 # print(complex(10.50))
 # print(10+9j)
 # print(int(10+9j))
+### methods in numbers
+## isinstance(element,type u want to ask about it)
+# x = 10
+# y = 10.10
+# z = "10"
+# print(isinstance(x,int))
+# print(isinstance(x,float))
+# print(isinstance(y,int))
+# print(isinstance(y,float))
+# print(isinstance(z,int))
+# print(isinstance(z,float))
 # ==================================================================================
 # Lesson 20
 # --------------------------
@@ -704,10 +715,11 @@
 # # sort()
 # y = [1, 2, 100, 120, -10, 17, 29]
 # y = ["A", "Z", "C"]
-# y.sort(reverse=True)
-# y.sort()
+# y.sort(reverse=True) # from highest to lowest
 # print(y)
-# # reverse()
+# y.sort() # from lowest to highest
+# print(y)
+# # reverse() it reverse with the original arrangment
 # z = [10, 1, 9, 80, 100, "Osama", 100]
 # z.reverse()
 # print(z)
@@ -730,7 +742,7 @@
 # print(c)  # Copied List
 # # count()
 # d = [1, 2, 3, 4, 3, 9, 10, 1, 2, 1]
-# print(d.count(1))
+# print(d.count(5))
 # # index()
 # e = ["Osama", "Ahmed", "Sayed", "Ramy", "Ahmed", "Ramy"]
 # print(e.index("Ramy"))
@@ -2374,4 +2386,337 @@
 # import os
 # for i in range(41,51):
 #   os.remove(rf"C:\Users\Ahmed\Desktop\Python\txt{i}.txt")
+# ==================================================================================
+# Lesson 69
+# ------------------------
+# -- Built In Functions --
+# ------------------------
+# all() # all elements must be true to return true
+# any() # any element must be true to return true
+# bin() # return the binary code of any thing
+# id() # return the id or the location of its parameter
+# ------------------------
+## all()
+# x = [1, 2, 3, 4, []]
+# if all(x):
+#   print("All Elements Is True")
+# else:
+#   print("Theres At Least One Element Is False")
+## any()
+# x = [0, 0, []]
+# if any(x):
+#   print("There's At Least One Element is True")
+# else:
+#   print("Theres No Any True Elements")
+## bin()
+# print(bin(100))
+## id()
+# a = 1
+# b = 2
+# print(id(a))
+# print(id(b))
+# ==================================================================================
+# lesson 70
+# ------------------------
+# -- Built In Functions --
+# ------------------------
+# sum() # returns sum of iterable like lists
+# round() # returns a rounding number with its numofdigits rounded
+# range() # returns a range of numbers from our start to our end with our steps
+# print() # its our print with some functionality
+# ------------------------
+# # sum(iterable, another number)
+# a = [1, 10, 19, 40]
+# print(sum(a))
+# print(sum(a, 30))
+# # round(number, numofdigits)
+# print(round(150.501))
+# print(round(150.554, 2))
+# # range(start, end, step)
+# print(list(range(0)))
+# print(list(range(10)))
+# print(list(range(0, 20, 2)))
+# print(*range(5))
+# # print()
+# print("Hello @ Osama @ How @ Are @ You")
+# print("Hello", "Osama", "How", "Are", "You", sep=" | ")
+# print("First Line", end=" ")
+# print("Second Line")
+# print("Third Line")
+# ==================================================================================
+# lesson 71
+# ------------------------
+# -- Built In Functions --
+# ------------------------
+# abs() # returns the postive number
+# pow() # returns the power of two parameters ( and the mod of any number)
+# min() # returns the minimum of some numbers (elements or iterable)
+# max() # same but returns the maximum
+# slice() # return a particular elements from any iterable
+# ------------------------
+# # abs()
+# print(abs(100))
+# print(abs(-100))
+# print(abs(10.19))
+# print(abs(-10.19))
+
+# # pow(base, exp, mod) => Power
+# print(pow(2, 5))  # 2 * 2 * 2 * 2 * 2
+# print(pow(2, 5, 10))  # (2 * 2 * 2 * 2 * 2) % 10
+
+# # min(item, item , item, or iterator)
+# myNumbers = (1, 20, -50, -100, 100)
+# myNmuber1 = [2,4,5,6,7]
+# print(min(1, 10, -50, 20, 30))
+# print(min("X", "Z", "Osama"))
+# print(min(myNumbers))
+# print(min(myNmuber1))
+
+# # max(item, item , item, or iterator)
+# myNumbers = (1, 20, -50, -100, 100)
+# print(max(1, 10, -50, 20, 30))
+# print(max("X", "Z", "Osama"))
+# print(max(myNumbers))
+
+# # slice(start, end, step)
+# a = ["A", "B", "C", "D", "E", "F"]
+# print(a[:5])
+# print(a[slice(5)]) # same "start:end:steps" but with slice(start,end,step)
+# print(a[slice(2, 5)])
+# ==================================================================================
+# Assignment 15
+# 1
+# values = (0,1,2)
+# if any(values): # this any is true
+#   my_var = 0
+# my_list = [True, 1,  1, ["A", "B"], 10.5, my_var]
+# if all(my_list[:4]) or all(my_list[:6]) or all(my_list[:]): # true or true or true
+#   print("Good")
+# else:
+#   print("Bad")
+# its returns Good
+
+# 2
+# v = ??
+# v = 40
+# my_range = list(range(v))
+# print(sum(my_range, v) + pow(v, v, v))  # 820
+
+# 3
+# n = ??
+# n = 22 or n = 21 or n = 20
+# l = list(range(n))
+# print(sum(l))
+# if round(sum(l) / n) == max(0, 3, 10, 2, -100, -23, 9):  # max = 10
+#     print("Good")
+# Output => Good
+
+# 4
+# def my_all(list):
+#   for element in list:
+#     if bool(element) == False:
+#       return False
+#   return True
+# def my_any(list):
+#   for element in list:
+#     if bool(element) == True:
+#       return True
+#   return False
+# def my_min(iterable):
+#   min = 0
+#   for element in iterable:
+#     if element < min:
+#       min = element
+#   return min
+# def my_max(iterable):
+#   max = 0
+#   for element in iterable:
+#     if element > max:
+#       max = element
+#   return max
+# print(my_all([1, 2, 3])) # True
+# print(my_all([1, 2, 3, []])) # False
+# print(my_any([0, 1, [], False])) # True
+# print(my_any([(), 0, False])) # False
+# print(my_min([10, 100, -20, -100, 50])) # -100
+# print(my_min((10, 100, -20, -100, 50))) # -100
+# print(my_max([10, 100, -20, -100, 50, 700])) # 700
+# print(my_max((10, 100, -20, -100, 50, 700))) # 700
+# ==================================================================================
+# Lesson 72
+# -------------------------------
+# -- Built In Functions => Map --
+# -------------------------------
+# [1] Map Take A Function + Iterator
+# [2] Map Called Map Because It Map The Function On Every Element
+# [3] The Function Can Be Pre-Defined Function or Lambda Function
+# [4] we use Map to iterate over any iterable in any function without taking much memeory
+# ---------------------------------------------------------------
+## Use Map With Predefined Function
+# def formatText(text):
+#   return f"- {text.strip().capitalize()} -"
+# myTexts = [" OSama ", "AHMED", "  sAYed  "]
+# myFormatedData = map(formatText, myTexts)
+# print(myFormatedData)
+# for name in list(map(formatText, myTexts)):
+#   print(name)
+# for name in myFormatedData:
+#   print(name)
+
+# # Use Map With Lambda Function
+# myTexts = [" OSama ", "AHMED", "  sAYed  "]
+# thisMyMab = map((lambda text: f"- {text.strip().capitalize()} -"), myTexts)
+# print(thisMyMab)
+# for thing in thisMyMab:
+#   print(thing)
+# x = list(range(3))
+# print(x)
+# for ope in map((lambda num: num*3),x):
+#   print(ope)
+# ==================================================================================
+# Lesson 73
+# ----------------------------------
+# -- Built In Functions => Filter --
+# ----------------------------------
+# [1] Filter Take A Function + Iterator
+# [2] Filter Run A Function On Every Element
+# [3] The Function Can Be Pre-Defined Function or Lambda Function
+# [4] Filter Out All Elements For Which The Function Return True
+# [5] The Function Need To Return Boolean Value
+# ---------------------------------------------------------------
+# # Example 1
+# def checkNumber(num):
+#   return num > 10
+# myNumbers = [0, 0, 1, 19, 10, 20, 100, 5, 0]
+# myResult = filter(checkNumber, myNumbers)
+# for number in myResult:
+#   print(number)
+# # Example 2
+# def checkName(name):
+#   return name.startswith("O")
+# myTexts = ["Osama", "Omer", "Omar", "Ahmed", "Sayed", "Othman"]
+# myReturnedData = filter(checkName, myTexts)
+# for person in myReturnedData:
+#   print(person)
+# print("#" * 50)
+# # Example 3
+# myNames = ["Osama", "Omer", "Omar", "Ahmed", "Sayed", "Othman", "Ameer"]
+# for p in filter(lambda name: name.startswith("A"), myNames):
+#   print(p)
+# # Example 4
+# def func(name):
+#   return len(name) == 5
+# lists = ["ahmed","ali","eeeee","sssss"]
+# for i in filter(func,lists):
+#   print(i)
+# ==================================================================================
+# Lesson 74
+# ----------------------------------
+# -- Built In Functions => Reduce --
+# ----------------------------------
+# [1] Reduce Take A Function + Iterator
+# [2] Reduce Run A Function On FIrst and Second Element And Give Result
+# [3] Then Run Function On Result And Third Element
+# [4] Then Run Function On Result And Fourth Element And So On
+# [5] Till One ELement is Left And This is The Result of The Reduce
+# [6] The Function Can Be Pre-Defined Function or Lambda Function
+# ---------------------------------------------------------------
+## Example 1
+# from functools import reduce
+# def sumAll(num1, num2):
+#   return num1 + num2
+# numbers = [1, 8, 2, 9, 100]
+# result = reduce(sumAll, numbers)
+# result = reduce(lambda num1, num2: num1 + num2, numbers)
+# print(result)
+# ((((1 + 8) + 2) + 9) + 100)
+## Example 2
+# from functools import reduce
+# def checkTrue(ele1,ele2):
+#   if ele1 == "Ahmed":
+#     return ele1
+#   elif ele2 == "Ahmed":
+#     return ele2
+#   else:
+#     return "there's no Ahmed here"
+# someEa3 = ["AhmHED","AHmeD","HOMED","AHMed","Amed","Ahmed"]
+# print(reduce(checkTrue,someEa3))
+# ==================================================================================
+# Lesson 75
+# ------------------------
+# -- Built In Functions --
+# ------------------------
+# enumerate()
+# help()
+# reversed()
+# ------------------------
+# # enumerate(iterable, start=0)
+## Example 1
+# mySkills = ["Html", "Css", "Js", "PHP"]
+# mySkillsWithCounter = enumerate(mySkills, 20)
+# print(type(mySkillsWithCounter))
+# for counter, skill in mySkillsWithCounter:
+#   print(f"{counter} - {skill}")
+## Example 2
+# nums = ["first","second","third","fourth","fifth","sixth"]
+# for counter,num in enumerate(nums,1):
+#   print(f"{counter}) {num}")
+
+# # help() takes any method and returns with its information
+# print(help(sum))
+# print(help(map))
+
+# # reversed(iterable)
+# myString = "Elzero"
+# print(reversed(myString)) # returns reversed object
+# for letter in reversed(myString):
+#   print(letter)
+# ==================================================================================
+# Assignment 16
+# 1
+# def remove_chars(name):
+#   return name[1:len(name)-1]
+# friends_map = ["AEmanS", "AAhmedS", "DSamehF", "LOsamaL"]
+# cleaned_list = map(remove_chars,friends_map)
+# cleaned_list1 = map(lambda name:name[1:len(name)-1],friends_map)
+# for name in cleaned_list:
+#   print(name)
+# for name1 in cleaned_list1:
+#   print(name1)
+
+# 2
+# def get_names(name):
+#   if name[-1].lower() == "m":
+#     return True
+#   else:
+#     return False
+# friends_filter = ["Osama", "Wessam", "Amal", "Essam", "Gamal", "Othman"]
+# names = filter(get_names,friends_filter)
+# names1 = filter(lambda name:name[-1].lower() == "m",friends_filter)
+# for name,name1 in names,names1:
+#   print(name,name1)
+
+# 3
+# from functools import reduce
+# def op(n1,n2):
+#   return n1 * n2
+# nums = [2, 4, 6, 2]
+# result = reduce(op,nums)
+# result1 = reduce(lambda n1,n2:n1*n2,nums)
+# print(result)
+# print(result1)
+
+# 4
+# skills = ("HTML", "CSS", 10, "PHP", "Python", 20, "JavaScript")
+# for counter , element in enumerate(reversed(skills),50):
+#   if not isinstance(element, int) and not isinstance(element, float):
+#     print(f"{counter}) {element}")
+# ==================================================================================
+
+# ==================================================================================
+
+
+# ==================================================================================
+
+
 # ==================================================================================
