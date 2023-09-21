@@ -10,6 +10,5 @@
 # 1 (Basics of NumPy) : its the main package for scientific computing in python
 
 #   1.1- Packages
-
 import numpy as py
 print(py.__version__)
