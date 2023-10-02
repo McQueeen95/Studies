@@ -178,3 +178,189 @@ np.hsplit() - splits an array into several smaller arrays
 # print(np.hsplit(ar1,2))
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
+### Lab 2 (Solving Linear Systems: 2 variables)
+# ==========#######=========###
+## 1 Representing and Solving System of Linear Equations using Matrices
+# ==========#######====
+# 1.1- System of Linear Equations
+"is a collection of one or more linear equations involving the same variables."
+# ==========#######====
+# 1.2- solving Systems of Linear Equations using Matrices
+"""
+NumPy linear algebra package provides quick and reliable way to solve the system of linear equations using function np.linalg.solve(A, b).
+Here A is a matrix, each row of which represents one equation in the system and each column corresponds to the variable x1, x2. And b
+is a 1-D array of the free (right side) coefficients.
+More information here (https://numpy.org/doc/stable/reference/generated/numpy.linalg.solve.html)
+so A is Coefficient matrix,  and b is the values of each equations, so [A|b] is augmented matrix
+and Returns the Solution to the system
+Return error if its singular(infinite solutions or no solution) or not square(n x !n)
+"""
+# a = np.array([
+#       [-1,3],
+#       [3,2]
+# ])
+# b = np.array([7,1])
+# print("Matrix A:\n")
+# print(a)
+# print("\nValues b:\n")
+# print(b,"\n")
+# print(f"Shape of A: {a.shape}") # np.shape(a) its the same
+# print(f"Size of A: {a.size}")
+# print(f"Shape of b: {b.shape}")
+# print(f"Size of A: {b.size}")
+# print(f"Solution is: {np.int64(np.linalg.solve(a,b))}")
+# ==========#######====
+# 1.3- Evaluating Determinant of a Matrix
+"""
+In case of a square matrix it is possible to calculate its determinant.
+System  will have one solution if and only if matrix A has non-zero determinant.
+we can do it with the np.linalg.det(A) function.
+"""
+# a = np.array([
+#       [1, 2],
+#       [3, 4]
+#       ])
+# b = np.array([
+#       [
+#             [1, 2],
+#             [3, 4]
+#             ],
+#       [
+#             [1, 2],
+#             [2, 1]
+#             ],
+#       [
+#             [1, 3],
+#             [3, 1]
+#             ]
+#       ])
+# print(f"Det={np.linalg.det(a):.2f}")
+# print(f"shape= {np.shape(b)}\n det= {np.linalg.det(b)}")
+# ==========#######=========###
+## 2 Solving System of Linear Equations using Elimination Method
+# ==========#######====
+" Programming approach can still help here to reduce the amount of arithmetical calculations, and focus on the method itself."
+# 2.1- Elimination Method
+"""
+In the elimination method you either add or subtract the equations of the linear system to get an equation with smaller number of variables.
+If needed, you can also multiply whole equation by non-zero number.
+"""
+# ==========#######====
+# 2.2- Preparation for the Implementation of Elimination Method in the Code
+# x = np.array([
+#       [-1,3,7],
+#       [3,2,1]
+# ])
+# print(x[1]) # this the second row
+# ==========#######====
+# 2.3- Implementation of Elimination Method
+"""
+first: copy the matrix to keep the original one
+second: multiply first row by 3
+third: add it to the second row
+forth: exchange the second row with the result of this addition
+"""
+# xCopy = x.copy() # copying
+# xCopy[1] = (3*xCopy[0] + xCopy[1])*1/11 # 3R1 + R2 --> R2
+# print(xCopy)
+# ==========#######====
+# 2.4- Graphical Representation of the Solution
+"""
+the system of two equations there will be two lines corresponding to each of the equations,
+and the solution will be the intersection point of those lines.
+define a function plot_lines() to plot the lines and use it later to represent the solutions.
+"""
+# import matplotlib.pyplot as plt
+# def plot_lines(M):
+#       x_1 = np.linspace(-10, 10, 100)
+#       x_2_line_1 = (M[0, 2] - M[0, 0] * x_1) / M[0, 1]
+#       x_2_line_2 = (M[1, 2] - M[1, 0] * x_1) / M[1, 1]
+
+#       _, ax = plt.subplots(figsize=(10, 10))
+#       ax.plot(
+#             x_1,
+#             x_2_line_1,
+#             "-",
+#             linewidth=2,
+#             color="#0075ff",
+#             label=f"$x_2={-M[0,0]/M[0,1]:.2f}x_1 + {M[0,2]/M[0,1]:.2f}$",
+#       )
+#       ax.plot(
+#             x_1,
+#             x_2_line_2,
+#             "-",
+#             linewidth=2,
+#             color="#ff7300",
+#             label=f"$x_2={-M[1,0]/M[1,1]:.2f}x_1 + {M[1,2]/M[1,1]:.2f}$",
+#       )
+
+#       A = M[:, 0:-1]
+#       b = M[:, -1::].flatten()
+#       d = np.linalg.det(A)
+
+#       if d != 0:
+#             solution = np.linalg.solve(A, b)
+#             ax.plot(
+#             solution[0],
+#             solution[1],
+#             "-o",
+#             mfc="none",
+#             markersize=10,
+#             markeredgecolor="#ff0000",
+#             markeredgewidth=2,
+#             )
+#             ax.text(
+#             solution[0] - 0.25,
+#             solution[1] + 0.75,
+#             f"$(${solution[0]:.0f}$,{solution[1]:.0f})$",
+#             fontsize=14,
+#             )
+#       ax.tick_params(axis="x", labelsize=14)
+#       ax.tick_params(axis="y", labelsize=14)
+#       ax.set_xticks(np.arange(-10, 10))
+#       ax.set_yticks(np.arange(-10, 10))
+
+#       plt.xlabel("$x_1$", size=14)
+#       plt.ylabel("$x_2$", size=14)
+#       plt.legend(loc="upper right", fontsize=14)
+#       plt.axis([-10, 10, -10, 10])
+
+#       plt.grid()
+#       plt.gca().set_aspect("equal")
+
+#       plt.show()
+# plot_lines(x)
+# ==========#######=========###
+## 3 System of Linear Equations with No Solutions
+# ==========#######====
+# a = np.array([
+#       [-1, 3],
+#       [3, -9]
+#       ])
+# b = np.array([7,1])
+# print(np.linalg.det(a)) #Det = 0 so its infinte or no solution
+
+# try:
+#       x_2 = np.linalg.solve(a, b)
+# except np.linalg.LinAlgError as err:  # here we get that the system is singular
+#       print(err)
+
+# a2 = np.hstack((a,b.reshape(2,1)))  # reshape it to do the elimination method
+# print(a2)
+
+# a2Copy = a2.copy()
+# a2Copy[1] = 3 * a2Copy[0] + a2Copy[1]
+# print(a2Copy)
+
+# plot_lines(a2Copy)
+
+# ==========#######=========###
+## 4 System of Linear Equations with Infinite Number of Solutions
+# ==========#######====
+# x = np.array([[-1,3,7],[3,-9,-21]])
+# xCopy = x.copy()
+# xCopy[1] = xCopy[0] * 3 + xCopy[1]
+# print(xCopy)
+# plot_lines(xCopy)
+# ============########===============#################==================########################==============
+# ============########===============#################==================########################==============
