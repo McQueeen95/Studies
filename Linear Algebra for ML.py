@@ -364,3 +364,90 @@ define a function plot_lines() to plot the lines and use it later to represent t
 # plot_lines(xCopy)
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
+### Lab 3 (Solving Linear Systems: 3 variables)
+# ==========#######=========###
+## 1 Representing and Solving System of Linear Equations using Matrices
+# ==========#######====
+# 1.1- System of Linear Equations
+"is a collection of one or more linear equations involving the same variables."
+# ==========#######====
+# 1.2- Solving Systems of Linear Equations using Matrices
+"each row will represent one equation and each column correspond to x1,x2,x3 var and b is the coefficients"
+# A = np.array([
+#         [4, -3, 1],
+#         [2, 1, 3],
+#         [-1, 2, -5]
+#     ], dtype=np.dtype(int))
+# b = np.array([-10, 0, 17], dtype=np.dtype(int))
+# print(f"the solution of the matrix is: {np.int64(np.linalg.solve(A,b))}")
+# ==========#######====
+# 1.3- Evaluating the Determinant of a Matrix
+"if its a square matrix it is possible to get its determinant ==> np.linalg.det(array)"
+# print(f"Det = {np.linalg.det(A):.1f}")
+# ==========#######=========###
+## 2 Solving System of Linear Equations using Row Reduction
+# ==========#######====
+# 2.1- Preparation for Row Reduction
+"that way u can practice some solution techniques manually"
+"to use A and b matrix and make them agumented matrix [A|b]"
+# matrixA = np.hstack((A,b.reshape(3,1)),dtype=float) # original shape:(3,) , we make it (3,1)
+# print(matrixA) # we need to transform it so that it has the same number of dimensions
+# ==========#######====
+# 2.2- Functions for Elementary Operations
+"""
+elementary operations:
+      - Multiply any row by a non-zero number
+      - Add two rows and exchange one of the original rows with the result of the addition
+      - Swap rows
+"""
+def multiplyRow(matrix,rowNum,multiplyNum):
+  indexedRowNum = rowNum -1
+  if multiplyNum == 0:
+    return "Error enter non-zero value"
+  Nmatrix = matrix.copy()
+  Nmatrix[indexedRowNum] = Nmatrix[indexedRowNum] * multiplyNum
+  return Nmatrix
+
+def multiplyAndAddRows(matrix,rowNum1,rowNum2,rowNum1Multiple):# xR1 + R2 --> R2
+  indexedRowNum1 = rowNum1 -1
+  indexedRowNum2 = rowNum2 -1
+  if rowNum1Multiple == 0:
+    return "Error enter non-zero value"
+  Nmatrix = matrix.copy()
+  Nmatrix[indexedRowNum2] = rowNum1Multiple * Nmatrix[indexedRowNum1] + Nmatrix[indexedRowNum2]
+  return Nmatrix
+
+def swapRows(matrix,rowNum1,rowNum2):
+  indexedRowNum1 = rowNum1 -1
+  indexedRowNum2 = rowNum2 -1
+  Nmatrix = matrix.copy()
+  Nmatrix[[indexedRowNum1,indexedRowNum2]] = Nmatrix[[indexedRowNum2,indexedRowNum1]] # matrix[x][y] = matrix[x,y] R the same
+  return Nmatrix
+
+def giveMeInRowReduction3_4(matrix):
+  matrix = multiplyRow(matrix,3,1/matrix[2,2])
+  X3 = matrix[2][3]
+  X2 = (matrix[1,3] - matrix[1,2] * X3) / matrix[1,1]
+  X1 = (matrix[0,3] - matrix[0,2] * X3 - matrix[0,1] * X2) / matrix[0,0]
+  print(f"X1= {X1}\nX2= {X2}\nX3= {X3}")
+
+# print(f"by applying: 2*R3 --> R3 \n the matrix is:\n{multiplyRow(matrixA,3,2)}")
+# print(f"by applying: 1/2*R2 + R3 --> R3 \n the matrix is:\n{multiplyAndAddRows(matrixA,2,3,1/2)}")
+# print(f"by applying: R1 <--> R3 \n the matrix is:\n{swapRows(matrixA,1,3)}")
+
+# ==========#######====
+# 2.3- Row Reduction and Solution of the Linear System
+# A_ref = swapRows(matrixA,1,3) # R1 <--> R3
+# A_ref = multiplyAndAddRows(A_ref,1,2,2) # 2*R1 + R2 --> R2
+# A_ref = multiplyAndAddRows(A_ref,1,3,4) # 4*R1 + R3 --> R3
+# A_ref = multiplyAndAddRows(A_ref,2,3,-1) # -1*R2 + R3 --> R3
+# print(A_ref) # now its on Row Reduction form
+# giveMeInRowReduction3_4(A_ref)
+
+# we use the same methods with No solutions and infinite number of solutions
+# np.linalg.solve gives an error if there are no or infinitely many solutions,
+
+# ============########===============#################==================########################==============
+# ============########===============#################==================########################==============
+### Lab 3
+
