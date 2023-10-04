@@ -396,9 +396,9 @@ define a function plot_lines() to plot the lines and use it later to represent t
 # 2.2- Functions for Elementary Operations
 """
 elementary operations:
-      - Multiply any row by a non-zero number
-      - Add two rows and exchange one of the original rows with the result of the addition
-      - Swap rows
+  - Multiply any row by a non-zero number
+  - Add two rows and exchange one of the original rows with the result of the addition
+  - Swap rows
 """
 def multiplyRow(matrix,rowNum,multiplyNum):
   indexedRowNum = rowNum -1
