@@ -396,40 +396,54 @@ define a function plot_lines() to plot the lines and use it later to represent t
 # 2.2- Functions for Elementary Operations
 """
 elementary operations:
-  - Multiply any row by a non-zero number
-  - Add two rows and exchange one of the original rows with the result of the addition
-  - Swap rows
+    - Multiply any row by a non-zero number
+    - Add two rows and exchange one of the original rows with the result of the addition
+    - Swap rows
 """
-def multiplyRow(matrix,rowNum,multiplyNum):
-  indexedRowNum = rowNum -1
-  if multiplyNum == 0:
-    return "Error enter non-zero value"
-  Nmatrix = matrix.copy()
-  Nmatrix[indexedRowNum] = Nmatrix[indexedRowNum] * multiplyNum
-  return Nmatrix
 
-def multiplyAndAddRows(matrix,rowNum1,rowNum2,rowNum1Multiple):# xR1 + R2 --> R2
-  indexedRowNum1 = rowNum1 -1
-  indexedRowNum2 = rowNum2 -1
-  if rowNum1Multiple == 0:
-    return "Error enter non-zero value"
-  Nmatrix = matrix.copy()
-  Nmatrix[indexedRowNum2] = rowNum1Multiple * Nmatrix[indexedRowNum1] + Nmatrix[indexedRowNum2]
-  return Nmatrix
+def multiplyRow(matrix, rowNum, multiplyNum):
+    indexedRowNum = rowNum - 1
+    if multiplyNum == 0:
+        return "Error enter non-zero value"
+    Nmatrix = matrix.copy()
+    Nmatrix[indexedRowNum] = Nmatrix[indexedRowNum] * multiplyNum
+    return Nmatrix
 
-def swapRows(matrix,rowNum1,rowNum2):
-  indexedRowNum1 = rowNum1 -1
-  indexedRowNum2 = rowNum2 -1
-  Nmatrix = matrix.copy()
-  Nmatrix[[indexedRowNum1,indexedRowNum2]] = Nmatrix[[indexedRowNum2,indexedRowNum1]] # matrix[x][y] = matrix[x,y] R the same
-  return Nmatrix
+
+def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 --> R2
+    indexedRowNum1 = rowNum1 - 1
+    indexedRowNum2 = rowNum2 - 1
+    if rowNum1Multiple == 0:
+        return "Error enter non-zero value"
+    Nmatrix = matrix.copy()
+    Nmatrix[indexedRowNum2] = (
+        rowNum1Multiple * Nmatrix[indexedRowNum1] + Nmatrix[indexedRowNum2]
+    )
+    return Nmatrix
+
+def swapRows(matrix, rowNum1, rowNum2):
+    indexedRowNum1 = rowNum1 - 1
+    indexedRowNum2 = rowNum2 - 1
+    Nmatrix = matrix.copy()
+    Nmatrix[[indexedRowNum1, indexedRowNum2]] = Nmatrix[
+        [indexedRowNum2, indexedRowNum1]
+    ]  # matrix[x][y] = matrix[x,y] R the same
+    return Nmatrix
 
 def giveMeInRowReduction3_4(matrix):
-  matrix = multiplyRow(matrix,3,1/matrix[2,2])
-  X3 = matrix[2][3]
-  X2 = (matrix[1,3] - matrix[1,2] * X3) / matrix[1,1]
-  X1 = (matrix[0,3] - matrix[0,2] * X3 - matrix[0,1] * X2) / matrix[0,0]
-  print(f"X1= {X1}\nX2= {X2}\nX3= {X3}")
+    matrix = multiplyRow(matrix, 3, 1 / matrix[2, 2])
+    X3 = matrix[2][3]
+    X2 = (matrix[1, 3] - matrix[1, 2] * X3) / matrix[1, 1]
+    X1 = (matrix[0, 3] - matrix[0, 2] * X3 - matrix[0, 1] * X2) / matrix[0, 0]
+    print(f"X1= {X1}\nX2= {X2}\nX3= {X3}")
+
+def giveMeInRowReduction4_5(mat):
+    mat = multiplyRow(mat, 4, 1 / mat[3, 3])
+    X4 = mat[3, 4]
+    X3 = (mat[2, 4] - mat[2, 3] * X4) / mat[2, 2]
+    X2 = (mat[1, 4] - mat[1, 2] * X3 - mat[1, 3] * X4) / mat[1, 1]
+    X1 = (mat[0, 4] - mat[0, 1] * X2 - mat[0, 2] * X3 - mat[0, 3] * X4) / mat[0, 0]
+    print(f"X1= {X1}\nX2= {X2}\nX3= {X3}\nX4= {X4}")
 
 # print(f"by applying: 2*R3 --> R3 \n the matrix is:\n{multiplyRow(matrixA,3,2)}")
 # print(f"by applying: 1/2*R2 + R3 --> R3 \n the matrix is:\n{multiplyAndAddRows(matrixA,2,3,1/2)}")
@@ -449,5 +463,41 @@ def giveMeInRowReduction3_4(matrix):
 
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
-### Lab 3
 
+### Assignment 1
+# A = np.array([
+#   [2,-1,1,1],
+#   [1,2,-1,-1],
+#   [-1,2,2,2],
+#   [1,-1,2,1]
+# ],dtype=np.dtype(float))
+# b =np.array([6,3,14,8],dtype=np.dtype(float))
+# d = np.linalg.det(A)
+# print(f"{d:.2f}") # determant
+# x = np.linalg.solve(A,b)
+# print(x) # solving the system
+# matrix = np.hstack((A,np.reshape(b,(4,1)))) # make it agumented matrix
+# mat = swapRows(matrix,1,2)
+# mat = multiplyAndAddRows(mat,1,2,-2)
+# mat = multiplyAndAddRows(mat,1,3,1)
+# mat = multiplyAndAddRows(mat,1,4,-1)
+# mat = multiplyAndAddRows(mat,3,4,1)
+# mat = swapRows(mat,2,4)
+# mat = multiplyAndAddRows(mat,3,4,1)
+# mat = multiplyAndAddRows(mat,2,3,-4)
+# mat = multiplyAndAddRows(mat,2,4,1)
+# mat = multiplyAndAddRows(mat,4,3,2)
+# mat = multiplyAndAddRows(mat,3,4,-8)
+# mat = multiplyRow(mat,4,-1/17)
+# print(mat) # this in row echelon form
+# giveMeInRowReduction4_5(mat)
+# mat = multiplyAndAddRows(mat,4,3,-3)
+# mat = multiplyAndAddRows(mat,4,2,-3)
+# mat = multiplyAndAddRows(mat,4,1,1)
+# mat = multiplyAndAddRows(mat,3,2,-4)
+# mat = multiplyAndAddRows(mat,3,1,1)
+# mat = multiplyAndAddRows(mat,2,1,-2)
+# print(mat) # this in reduced row echlon form
+
+# ============########===============#################==================########################==============
+# ============########===============#################==================########################==============
