@@ -604,3 +604,11 @@
 #   if letter.isalnum():
 #     newword += letter
 # print(f"final string is : {newword}")
+#================================================================
+# zip()
+# The zip() function in Python is used to combine multiple iterables (such as lists, tuples, or strings) into an iterator of tuples. 
+# Each tuple contains the corresponding elements from the input iterables.
+# For example, consider two lists x = [1, 2, 3] and y = [4, 5, 6]. 
+# When we apply the zip() function to these lists, we get an iterator that contains tuples (1, 4), (2, 5), and (3, 6).
+# The zip() function stops when the shortest input iterable is exhausted. 
+# This means that if the input iterables are of different lengths, the resulting iterator will only have tuples up to the length of the shortest iterable.

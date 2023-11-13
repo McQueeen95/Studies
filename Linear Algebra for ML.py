@@ -4,9 +4,9 @@
 # [1] NumPy(Numerical Python) is an open-source package that is widely used in science and engineering
 # [2] After this assignment you will be able to:
 """   Use Jupyter Notebook and its features.
-      Use NumPy functions to create arrays and NumPy array operations.
-      Use indexing and slicing for 2-D arrays.
-      Find the shape of an array, reshape it and stack it horizontally and vertically.
+    Use NumPy functions to create arrays and NumPy array operations.
+    Use indexing and slicing for 2-D arrays.
+    Find the shape of an array, reshape it and stack it horizontally and vertically.
 """
 # [3] Jupyter Notebooks are interactive coding journals that integrate live code, explanatory text, equations, visualizations and other multimedia resources, all in a single document
 # =====================================================================================================
@@ -15,6 +15,8 @@
 # =========== 1.1- Packages
 # import package as name
 import numpy as np
+import matplotlib.pyplot as plt
+import time
 
 # print(np.__version__)
 
@@ -401,6 +403,7 @@ elementary operations:
     - Swap rows
 """
 
+
 def multiplyRow(matrix, rowNum, multiplyNum):
     indexedRowNum = rowNum - 1
     if multiplyNum == 0:
@@ -421,6 +424,7 @@ def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 -
     )
     return Nmatrix
 
+
 def swapRows(matrix, rowNum1, rowNum2):
     indexedRowNum1 = rowNum1 - 1
     indexedRowNum2 = rowNum2 - 1
@@ -430,12 +434,14 @@ def swapRows(matrix, rowNum1, rowNum2):
     ]  # matrix[x][y] = matrix[x,y] R the same
     return Nmatrix
 
+
 def giveMeInRowReduction3_4(matrix):
     matrix = multiplyRow(matrix, 3, 1 / matrix[2, 2])
     X3 = matrix[2][3]
     X2 = (matrix[1, 3] - matrix[1, 2] * X3) / matrix[1, 1]
     X1 = (matrix[0, 3] - matrix[0, 2] * X3 - matrix[0, 1] * X2) / matrix[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}")
+
 
 def giveMeInRowReduction4_5(mat):
     mat = multiplyRow(mat, 4, 1 / mat[3, 3])
@@ -444,6 +450,7 @@ def giveMeInRowReduction4_5(mat):
     X2 = (mat[1, 4] - mat[1, 2] * X3 - mat[1, 3] * X4) / mat[1, 1]
     X1 = (mat[0, 4] - mat[0, 1] * X2 - mat[0, 2] * X3 - mat[0, 3] * X4) / mat[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}\nX4= {X4}")
+
 
 # print(f"by applying: 2*R3 --> R3 \n the matrix is:\n{multiplyRow(matrixA,3,2)}")
 # print(f"by applying: 1/2*R2 + R3 --> R3 \n the matrix is:\n{multiplyAndAddRows(matrixA,2,3,1/2)}")
@@ -501,3 +508,178 @@ def giveMeInRowReduction4_5(mat):
 
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
+### Lab 4 (Vector Operations: Scalar Multiplication, Sum and Dot Product of Vectors)
+# ==========#######=========###
+## 1- Scalar Multiplication and Sum of Vectors
+"every vector written here is Trasposed to a column vector"
+# ======####==
+# 1.1 Visualization of a Vector (𝑣 ∈ ℝ2) R2 is a plane in two dimension
+"We can see that vectors can be visualized as arrows in the plane"
+
+
+def plot_vectors(list_v, list_label, list_color):
+    _, ax = plt.subplots(figsize=(10, 10))
+    ax.tick_params(axis="x", labelsize=14)
+    ax.tick_params(axis="y", labelsize=14)
+    ax.set_xticks(np.arange(-10, 10))
+    ax.set_yticks(np.arange(-10, 10))
+
+    plt.axis([-10, 10, -10, 10])
+    for i, v in enumerate(list_v):
+        sgn = 0.4 * np.array([[1] if i == 0 else [i] for i in np.sign(v)])
+        plt.quiver(
+            v[0], v[1], color=list_color[i], angles="xy", scale_units="xy", scale=1
+        )
+        ax.text(
+            v[0] - 0.2 + sgn[0],
+            v[1] - 0.2 + sgn[1],
+            list_label[i],
+            fontsize=14,
+            color=list_color[i],
+        )
+
+    plt.grid()
+    plt.gca().set_aspect("equal")
+    plt.show()
+
+
+# v = np.array([[1],[3]])
+# w = np.array([[4],[-1]])
+# n= np.array([0,9])
+# s= np.array([9,0])
+# e = np.array([0,-9])
+# d = np.array([-9,0])
+# plot_vectors([v], ["v"], ["gray"]) # drawing a vector from (0,0) to (9,3)
+# ======####==
+# 1.2 Scalar Multiplication
+"""
+    Scalar multiplication of a vector 𝑣 =[ 𝑣1 𝑣2 … 𝑣𝑛] ∈ ℝ𝑛 by a scalar 𝑘 is a vector  𝑘𝑣=[𝑘𝑣1 𝑘𝑣2 … 𝑘𝑣𝑛] (element by element multiplication).
+    If  𝑘>0 , then  𝑘𝑣 is a vector pointing in the same direction as 𝑣 and it is 𝑘 times as long as 𝑣
+    If  𝑘=0 , then  𝑘𝑣is a zero vector.
+    If  𝑘<0 , vector  𝑘𝑣 will be pointing in the opposite direction.
+    In Python you can perform this operation with a * operator.
+"""
+# plot_vectors([v, 2*v, -2*v , 0*v], [f"$v$", "2v", "-2v",f"$0v$"], ["brown", "green", "blue","black"])
+# ======####==
+# 1.3 Sum of Vectors
+"""
+    Sum of vectors (vector addition) can be performed by adding the corresponding components of the vectors:
+    if  𝑣 =[ 𝑣1 𝑣2 … 𝑣𝑛] ∈ ℝ𝑛 and 𝑤 = [ 𝑤1 𝑤2 … 𝑤𝑛] ∈ ℝ𝑛 , then  𝑣+𝑤 = [ 𝑣1+𝑤1 𝑣2+𝑤2 … 𝑣𝑛+𝑤𝑛 ] ∈ ℝ𝑛. 
+    The so-called parallelogram law gives the rule for vector addition. 
+    For two vectors  𝑢 and  𝑣
+    represented by the adjacent sides (both in magnitude and direction) of a parallelogram drawn from a point, the vector sum  𝑢+𝑣
+    is is represented by the diagonal of the parallelogram drawn from the same point
+    In Python you can either use + operator or NumPy function np.add().
+"""
+# plot_vectors([v, w, v + w], [f"$v$", f"$w$", f"$v + w$"], ["black", "black", "red"]) # v + w == np.add(v, w)
+# plot_vectors([n, s ,e,d ,n+s , s+e , e+d, d+n], [f"$n$", f"$s$",f"$e$",f"$d$",f"$n+s$",f"$s+e$",f"$e+d$",f"$d+n$"], ["black", "black","black","black","red", "red","red","red"])
+# ======####==
+# 1.4 Norm of Vector
+"""
+    The norm of a vector  𝑣 is denoted as  |𝑣|. 
+    It is a nonnegative number that describes the extent of the vector in space (its length). 
+    The norm of a vector can be found using NumPy function np.linalg.norm()
+"""
+# print("Norm of a vector v is", np.linalg.norm(v))
+# print("Norm of a vector d is", np.linalg.norm(d))
+# ==========#######=========###
+## 2- Dot Product
+# ======####==
+# 2.1  Algebraic Definition of the Dot Product
+"""
+    The dot product (or scalar product) is an algebraic operation that takes two vectors  𝑥 = [ 𝑥1 𝑥2 … 𝑥𝑛] ∈ ℝ𝑛 and 𝑦 = [ 𝑦1 𝑦2 … 𝑦𝑛] ∈ ℝ𝑛 and returns a single scalar. 
+    The dot product can be represented with a dot operator  𝑥 ⋅ 𝑦 (x dot y)
+    and defined as: 𝑥 ⋅ 𝑦 = ∑(1 => n) 𝑥𝑖*𝑦𝑖 = 𝑥1*𝑦1 + 𝑥2*𝑦2 + … + 𝑥𝑛*𝑦𝑛
+"""
+# ======####==
+# 2.2 Dot Product using Python
+"Note: it is recommended to define vectors as NumPy arrays to avoid errors."
+
+
+def Vdot2(x, y):
+    return sum(x[i] * y[i] for i in range(len(x)))
+
+
+def Vdot1(x, y):
+    sum = 0
+    for xi, yi in zip(x, y):
+        sum += xi * yi
+    return sum
+
+
+# x = np.array([1, 2, 3])
+# y = np.array([4, 5, 6])
+# all the methods below give the same result but they are different in terms of speed
+# print(x.dot(y))  # 32 (vectorized form)
+# print(np.dot(x, y))  # 32 (vectorized form)
+# print(x @ y)  # 32 (vectorized form)
+# print(Vdot1(x, y))  # 32 (loop form)
+# print(Vdot2(x, y))  # 32 (loop form)
+# ======####==
+## 2.3 Speed of Calculations in Vectorized Form
+"""
+    It is important to understand the difference in the speed of calculations using vectorized and the loop forms of the vectors and functions. 
+    In the loop form operations are performed one by one, while in the vectorized form they can be performed in parallel. 
+    In the section above you defined loop version of the dot product calculation (function Vdot1() and VdotProduct()), while np.dot(), @ and x.dot(y) are the functions representing vectorized form.
+    Let's perform a simple experiment to compare their speed by using time.time() function to evaluate amount of time (in seconds) required to calculate dot product using the function Vdot(x,y). 
+    Define new vectors  𝑎 and  𝑏 of the same size 1,000,000
+"""
+# a = np.random.rand(1000000)
+# b = np.random.rand(1000000)
+# "now we gonna compare the speed of all those methods"
+
+# tic = time.time()
+# operation = Vdot1(a, b)
+# toc = time.time()
+# print("result:  {:.2f}".format(operation))
+# print("loop version: {:.2f} ms\n".format(1000 * (toc - tic)))
+
+# tic = time.time()
+# operation = Vdot2(a, b)
+# toc = time.time()
+# print("result:  {:.2f}".format(operation))
+# print("loop version: {:.2f} ms\n".format(1000 * (toc - tic)))
+
+# tic = time.time()
+# operation = a.dot(b)
+# toc = time.time()
+# print("result:  {:.2f}".format(operation))
+# print("vectorized version: {:.2f} ms\n".format(1000 * (toc - tic)))
+
+# tic = time.time()
+# operation = np.dot(a,b)
+# toc = time.time()
+# print("result:  {:.2f}".format(operation))
+# print("vectorized version: {:.2f} ms\n".format(1000 * (toc - tic)))
+
+# tic = time.time()
+# operation = a @ b
+# toc = time.time()
+# print("result:  {:.2f}".format(operation))
+# print("vectorized version:{:.2f} ms\n".format(1000 * (toc - tic)))
+
+# ======####==
+# 2.4 Geometric Difinition of the Dot Product
+"""
+    a Euclidean vector has both magnitude and direction. 
+    The dot product of two vectors  𝑥 and  𝑦 is defined by: 𝑥 ⋅ 𝑦 = |𝑥| |𝑦| cos(𝜃), where  𝜃 is the angle between the two vectors
+    if the two vectrors are orthogonal, the angle between them is 0, and the dot product is 0.
+"""
+# i = np.array([1, 0, 0])
+# j = np.array([0, 1, 0])
+# print("The dot product of i and j is", Vdot1(i, j))
+# ======####==
+# 2.5 Application of the Dot Product: Vector Similarity
+"""
+    Geometric definition of a dot product is used in one of the applications - to evaluate vector similarity.
+    In Natural Language Processing (NLP) words or phrases from vocabulary are mapped to a corresponding vector of real numbers.
+    Similarity between two vectors can be defined as a cosine of the angle between them. 
+    When they point in the same direction, their similarity is 1 and it decreases with the increase of the angle.
+    Then we use to evaluate cosine of the angle between vectors: cos(𝜃) = ( 𝑥 ⋅ 𝑦 )/( |𝑥| |𝑦| )
+    Zero value corresponds to the zero similarity between vectors (and words corresponding to those vectors).
+    Largest value is when vectors point in the same direction, lowest value is when vectors point in the opposite directions.
+    This example of vector similarity is given to link the material with the Machine Learning applications.
+"""
+# ============########===============#################==================########################==============
+# ============########===============#################==================########################==============
+### Lab 5
