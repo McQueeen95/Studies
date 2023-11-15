@@ -19,7 +19,6 @@ import matplotlib.pyplot as plt
 import time
 
 # print(np.__version__)
-
 # =========== 1.2- Advantages of using NumPy arrays
 """
 NumPy library essential for organizing your data. You can think of them as a grid of values, all of the same type.
@@ -402,8 +401,6 @@ elementary operations:
     - Add two rows and exchange one of the original rows with the result of the addition
     - Swap rows
 """
-
-
 def multiplyRow(matrix, rowNum, multiplyNum):
     indexedRowNum = rowNum - 1
     if multiplyNum == 0:
@@ -411,8 +408,6 @@ def multiplyRow(matrix, rowNum, multiplyNum):
     Nmatrix = matrix.copy()
     Nmatrix[indexedRowNum] = Nmatrix[indexedRowNum] * multiplyNum
     return Nmatrix
-
-
 def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 --> R2
     indexedRowNum1 = rowNum1 - 1
     indexedRowNum2 = rowNum2 - 1
@@ -423,8 +418,6 @@ def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 -
         rowNum1Multiple * Nmatrix[indexedRowNum1] + Nmatrix[indexedRowNum2]
     )
     return Nmatrix
-
-
 def swapRows(matrix, rowNum1, rowNum2):
     indexedRowNum1 = rowNum1 - 1
     indexedRowNum2 = rowNum2 - 1
@@ -433,16 +426,12 @@ def swapRows(matrix, rowNum1, rowNum2):
         [indexedRowNum2, indexedRowNum1]
     ]  # matrix[x][y] = matrix[x,y] R the same
     return Nmatrix
-
-
 def giveMeInRowReduction3_4(matrix):
     matrix = multiplyRow(matrix, 3, 1 / matrix[2, 2])
     X3 = matrix[2][3]
     X2 = (matrix[1, 3] - matrix[1, 2] * X3) / matrix[1, 1]
     X1 = (matrix[0, 3] - matrix[0, 2] * X3 - matrix[0, 1] * X2) / matrix[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}")
-
-
 def giveMeInRowReduction4_5(mat):
     mat = multiplyRow(mat, 4, 1 / mat[3, 3])
     X4 = mat[3, 4]
@@ -450,8 +439,6 @@ def giveMeInRowReduction4_5(mat):
     X2 = (mat[1, 4] - mat[1, 2] * X3 - mat[1, 3] * X4) / mat[1, 1]
     X1 = (mat[0, 4] - mat[0, 1] * X2 - mat[0, 2] * X3 - mat[0, 3] * X4) / mat[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}\nX4= {X4}")
-
-
 # print(f"by applying: 2*R3 --> R3 \n the matrix is:\n{multiplyRow(matrixA,3,2)}")
 # print(f"by applying: 1/2*R2 + R3 --> R3 \n the matrix is:\n{multiplyAndAddRows(matrixA,2,3,1/2)}")
 # print(f"by applying: R1 <--> R3 \n the matrix is:\n{swapRows(matrixA,1,3)}")
@@ -515,15 +502,12 @@ def giveMeInRowReduction4_5(mat):
 # ======####==
 # 1.1 Visualization of a Vector (𝑣 ∈ ℝ2) R2 is a plane in two dimension
 "We can see that vectors can be visualized as arrows in the plane"
-
-
 def plot_vectors(list_v, list_label, list_color):
     _, ax = plt.subplots(figsize=(10, 10))
     ax.tick_params(axis="x", labelsize=14)
     ax.tick_params(axis="y", labelsize=14)
     ax.set_xticks(np.arange(-10, 10))
     ax.set_yticks(np.arange(-10, 10))
-
     plt.axis([-10, 10, -10, 10])
     for i, v in enumerate(list_v):
         sgn = 0.4 * np.array([[1] if i == 0 else [i] for i in np.sign(v)])
@@ -537,12 +521,9 @@ def plot_vectors(list_v, list_label, list_color):
             fontsize=14,
             color=list_color[i],
         )
-
     plt.grid()
     plt.gca().set_aspect("equal")
     plt.show()
-
-
 # v = np.array([[1],[3]])
 # w = np.array([[4],[-1]])
 # n= np.array([0,9])
@@ -594,19 +575,13 @@ def plot_vectors(list_v, list_label, list_color):
 # ======####==
 # 2.2 Dot Product using Python
 "Note: it is recommended to define vectors as NumPy arrays to avoid errors."
-
-
 def Vdot2(x, y):
     return sum(x[i] * y[i] for i in range(len(x)))
-
-
 def Vdot1(x, y):
     sum = 0
     for xi, yi in zip(x, y):
         sum += xi * yi
     return sum
-
-
 # x = np.array([1, 2, 3])
 # y = np.array([4, 5, 6])
 # all the methods below give the same result but they are different in terms of speed
@@ -682,4 +657,60 @@ def Vdot1(x, y):
 """
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
-### Lab 5
+### Lab 5 (Matrix Multiplication)
+# ==========#######=========###
+## 1- Matrix Multiplication using Python
+"we gonna show the most commonly used function in the vectorized form"
+A = np.array([[4, 9, 9], [9, 1, 6], [9, 2, 3]])
+# print("Matrix A (3 by 3):\n", A)
+B = np.array([[2, 2], [5, 7], [4, 4]])
+# print("Matrix B (3 by 2):\n", B)
+"first function is np.matmul() , second is '@' and third is 'x.dot(y)'"
+# print(np.matmul(A, B))
+# print(A @ B)
+# print(A.dot(B))
+# ============
+## 2- Matrix Conversion and Broadcasting
+""" 
+    matrix multiplication is defined only if number of the columns of matrix  𝐴
+    is equal to the number of the rows of matrix  𝐵
+    and if we try to code something like this it will give an error.
+"""
+# try:
+#     np.matmul(B, A)
+# except ValueError as err:
+#     print(err)
+"so the number of the columns in the first matrix should match the number of the rows in the second matrix"
+# backing to multipliying of the vectors there's a strange shortcut that I gonna show it to u
+x = np.array([1, -2, -5])
+y = np.array([4, 3, -1])
+# print("Shape of vector x:", x.shape)
+# print("Number of dimensions of vector x:", x.ndim)
+# print("Shape of vector x, reshaped to a matrix:", x.reshape((3, 1)).shape)
+# print("Number of dimensions of vector x, reshaped to a matrix:", x.reshape((3, 1)).ndim)
+# from we know when we multiply x by y it will give us an error
+# print(np.matmul(x,y)) # here we try without any reshape
+# but it worked fine!!! , so how ?
+"So, vector  𝑥 was automatically transposed into the vector  1×3 and matrix multiplication  𝑥𝑇 𝑦 was calculate  d." # xT is x transpose
+# now we gonna try same thing but now with reshape
+# try:
+#     np.matmul(x.reshape((3, 1)), y.reshape((3, 1)))
+# except ValueError as err:
+#     print(err)
+"""
+    and this gives an error, 
+    so we now know that python is smart enough to understand that the number of the columns in the first matrix should match the number of the rows in the second matrix
+    as we can see that he trasposed x by himself to fit the multiplication rule
+    What actually happens is what is called broadcasting in Python:
+    NumPy broadcasts this dot product operation to all rows and all columns, 
+    you get the resultant product matrix.
+"""
+# and this is good and bad at the same time , let me show to u:
+print(A - 2)
+"""
+    Mathematically, subtraction of the 3×3 matrix  𝐴 and a scalar is not defined,
+    but Python broadcasts the scalar, creating a  3×3 np.array and performing subtraction element by element.
+"""
+# ============########===============#################==================########################==============
+# ============########===============#################==================########################==============
+### Lab 6
