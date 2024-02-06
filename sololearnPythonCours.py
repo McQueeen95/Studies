@@ -491,14 +491,14 @@
 # def my_function(*args):
 #     for arg in args:
 #         print(arg)
-# my_function("apple", "banana", "cherry")        # In this example, the function my_function takes any number of arguments, and *args collects them into a tuple named args. 
+# my_function("apple", "banana", "cherry")        # In this example, the function my_function takes any number of arguments, and *args collects them into a tuple named args.
 # my_function(1,2,3,4,5,6,6,7,7,7,3,52,354,45)    # You can then iterate over args or perform any other operations on the arguments.
 # Ex3
 # def my_min(*args):
 #     return min(args)
 # print(my_min(8, 13, 4, 42, 120, 7))
 # # **kwargs (Key Word Arguments)
-# The **kwargs parameter allows a function to accept any number of keyword arguments. 
+# The **kwargs parameter allows a function to accept any number of keyword arguments.
 # It collects any extra keyword arguments passed to the function into a dictionary.
 # Ex1
 # def my_function(**kwargs):
@@ -519,7 +519,7 @@
 # x = list(map(lambda x:x%2==0,nums)) # here its maps on the list and check from the expression and return if true of false
 # print(x)
 # nums1 = [1,2,8,3,7]
-# x1 = list(filter(lambda x:x%2==0,nums)) # here its use the expression to filter the list 
+# x1 = list(filter(lambda x:x%2==0,nums)) # here its use the expression to filter the list
 # print(x1)
 # ============================================================
 ## Classes
@@ -537,7 +537,7 @@
 #      => self refers to the instance calling the method.
 # Instances of a class have attributes, which are pieces of data associated with them.
 # In this example, Cat instances have attributes color and legs. These can be accessed by putting a dot,
-# and the attribute name after an instance. 
+# and the attribute name after an instance.
 #  be used to set the initial value of an instance's attributes.
 # ex1
 # class Player:
@@ -550,7 +550,7 @@
 # level = int(input())
 # player1 = Player(name,level)
 # player1.intro()
-#===================================
+# ===================================
 # Inheritance (share functionality between classes.
 # To inherit a class from another class, put the superclass name in parentheses after the class name.
 # class Shape: # superclass
@@ -604,11 +604,34 @@
 #   if letter.isalnum():
 #     newword += letter
 # print(f"final string is : {newword}")
-#================================================================
+# ================================================================
 # zip()
-# The zip() function in Python is used to combine multiple iterables (such as lists, tuples, or strings) into an iterator of tuples. 
+# The zip() function in Python is used to combine multiple iterables (such as lists, tuples, or strings) into an iterator of tuples.
 # Each tuple contains the corresponding elements from the input iterables.
-# For example, consider two lists x = [1, 2, 3] and y = [4, 5, 6]. 
+# For example, consider two lists x = [1, 2, 3] and y = [4, 5, 6].
 # When we apply the zip() function to these lists, we get an iterator that contains tuples (1, 4), (2, 5), and (3, 6).
-# The zip() function stops when the shortest input iterable is exhausted. 
+# The zip() function stops when the shortest input iterable is exhausted.
 # This means that if the input iterables are of different lengths, the resulting iterator will only have tuples up to the length of the shortest iterable.
+
+
+# ================================================================
+### PROBLEM SOLVING ###
+
+## PROBLEM 1
+# def func(word):
+#   for i in range(len(word)):
+#     for j in range(i+1, len(word)):
+#       if word[i] == word[j]:
+#         return "false"
+#   return "true"
+
+# print(func(input()))
+
+
+## PROBLEM 2
+# def withdraw(amount):
+#   print(str(amount) + " withdrawn!")
+# try:
+#   withdraw(int(input()))
+# except ValueError:
+#   print("Please enter a number")

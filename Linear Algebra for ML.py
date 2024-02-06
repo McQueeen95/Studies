@@ -17,6 +17,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 import time
+import cv2  # openCV library for image transformations.
 
 # print(np.__version__)
 # =========== 1.2- Advantages of using NumPy arrays
@@ -34,7 +35,7 @@ A 1-D array represents a standard list of values entirely in one dimension.
 Remember that in NumPy, all of the elements within the array are of the same type.
 """
 # oneDimArr = np.array([10, 12])
-# print(oneDimArr)
+# print(oneDimArr, "\n",np.array([[10],[12]]),"\n",np.array([[10,12]]),"\n")
 
 # =============== 1.3- How to create NumPy arrays
 """
@@ -54,6 +55,7 @@ Return evenly spaced values within a given interval.
 # y1 = np.arange(2, 21, 3)
 # print(y)
 # print(y1)
+# print(np.arange(0,101,25))
 """
 to create an array with five evenly spaced values in the interval from 0 to 100?
 3 parameters that a function must take.
@@ -157,7 +159,8 @@ which allows you to perform operations specifically on arrays of different shape
 # onDim == onDim[:] == onDim[::]
 # print(onDim[1:4], "\n")  # return subArray contains from index 1 to index 3 in 1-D
 # print(twDim[0:1], "\n")  # return subArray contains the first row of the matrix 2-D
-# print(twDim[2:], "\n")  # return subArray contains the last row of the matrix 2-D
+# print(twDim[2:], "\n")  # return subArray contains the last row of the matrix 2-D ==> [[a,b,c]]
+# print(twDim[2], "\n")  # return subArray contains the last row of the matrix 2-D  ==> [a,b,c]
 # print(twDim[1:], "\n")  # return subArray contains the last two rows of the matrix 2-D
 # print(twDim[:,2], "\n")  # return subArray contains the last col of the matrix 2-D
 # print(twDim[:,0:2], "\n")  # return subArray contains the first two cols of the matrix 2-D
@@ -225,15 +228,15 @@ we can do it with the np.linalg.det(A) function.
 #       [
 #             [1, 2],
 #             [3, 4]
-#             ],
+#       ],
 #       [
 #             [1, 2],
 #             [2, 1]
-#             ],
+#       ],
 #       [
 #             [1, 3],
 #             [3, 1]
-#             ]
+#       ]
 #       ])
 # print(f"Det={np.linalg.det(a):.2f}")
 # print(f"shape= {np.shape(b)}\n det= {np.linalg.det(b)}")
@@ -401,6 +404,8 @@ elementary operations:
     - Add two rows and exchange one of the original rows with the result of the addition
     - Swap rows
 """
+
+
 def multiplyRow(matrix, rowNum, multiplyNum):
     indexedRowNum = rowNum - 1
     if multiplyNum == 0:
@@ -408,6 +413,8 @@ def multiplyRow(matrix, rowNum, multiplyNum):
     Nmatrix = matrix.copy()
     Nmatrix[indexedRowNum] = Nmatrix[indexedRowNum] * multiplyNum
     return Nmatrix
+
+
 def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 --> R2
     indexedRowNum1 = rowNum1 - 1
     indexedRowNum2 = rowNum2 - 1
@@ -418,6 +425,8 @@ def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 -
         rowNum1Multiple * Nmatrix[indexedRowNum1] + Nmatrix[indexedRowNum2]
     )
     return Nmatrix
+
+
 def swapRows(matrix, rowNum1, rowNum2):
     indexedRowNum1 = rowNum1 - 1
     indexedRowNum2 = rowNum2 - 1
@@ -426,12 +435,16 @@ def swapRows(matrix, rowNum1, rowNum2):
         [indexedRowNum2, indexedRowNum1]
     ]  # matrix[x][y] = matrix[x,y] R the same
     return Nmatrix
+
+
 def giveMeInRowReduction3_4(matrix):
     matrix = multiplyRow(matrix, 3, 1 / matrix[2, 2])
     X3 = matrix[2][3]
     X2 = (matrix[1, 3] - matrix[1, 2] * X3) / matrix[1, 1]
     X1 = (matrix[0, 3] - matrix[0, 2] * X3 - matrix[0, 1] * X2) / matrix[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}")
+
+
 def giveMeInRowReduction4_5(mat):
     mat = multiplyRow(mat, 4, 1 / mat[3, 3])
     X4 = mat[3, 4]
@@ -439,6 +452,8 @@ def giveMeInRowReduction4_5(mat):
     X2 = (mat[1, 4] - mat[1, 2] * X3 - mat[1, 3] * X4) / mat[1, 1]
     X1 = (mat[0, 4] - mat[0, 1] * X2 - mat[0, 2] * X3 - mat[0, 3] * X4) / mat[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}\nX4= {X4}")
+
+
 # print(f"by applying: 2*R3 --> R3 \n the matrix is:\n{multiplyRow(matrixA,3,2)}")
 # print(f"by applying: 1/2*R2 + R3 --> R3 \n the matrix is:\n{multiplyAndAddRows(matrixA,2,3,1/2)}")
 # print(f"by applying: R1 <--> R3 \n the matrix is:\n{swapRows(matrixA,1,3)}")
@@ -502,6 +517,8 @@ def giveMeInRowReduction4_5(mat):
 # ======####==
 # 1.1 Visualization of a Vector (𝑣 ∈ ℝ2) R2 is a plane in two dimension
 "We can see that vectors can be visualized as arrows in the plane"
+
+
 def plot_vectors(list_v, list_label, list_color):
     _, ax = plt.subplots(figsize=(10, 10))
     ax.tick_params(axis="x", labelsize=14)
@@ -524,13 +541,15 @@ def plot_vectors(list_v, list_label, list_color):
     plt.grid()
     plt.gca().set_aspect("equal")
     plt.show()
+
+
 # v = np.array([[1],[3]])
 # w = np.array([[4],[-1]])
 # n= np.array([0,9])
 # s= np.array([9,0])
 # e = np.array([0,-9])
 # d = np.array([-9,0])
-# plot_vectors([v], ["v"], ["gray"]) # drawing a vector from (0,0) to (9,3)
+# plot_vectors([v], ["v"], ["gray"]) # drawing a vector from (0,0) to (1,3)
 # ======####==
 # 1.2 Scalar Multiplication
 """
@@ -575,13 +594,19 @@ def plot_vectors(list_v, list_label, list_color):
 # ======####==
 # 2.2 Dot Product using Python
 "Note: it is recommended to define vectors as NumPy arrays to avoid errors."
+
+
 def Vdot2(x, y):
     return sum(x[i] * y[i] for i in range(len(x)))
+
+
 def Vdot1(x, y):
     sum = 0
     for xi, yi in zip(x, y):
         sum += xi * yi
     return sum
+
+
 # x = np.array([1, 2, 3])
 # y = np.array([4, 5, 6])
 # all the methods below give the same result but they are different in terms of speed
@@ -661,9 +686,9 @@ def Vdot1(x, y):
 # ==========#######=========###
 ## 1- Matrix Multiplication using Python
 "we gonna show the most commonly used function in the vectorized form"
-A = np.array([[4, 9, 9], [9, 1, 6], [9, 2, 3]])
+# A = np.array([[4, 9, 9], [9, 1, 6], [9, 2, 3]])
 # print("Matrix A (3 by 3):\n", A)
-B = np.array([[2, 2], [5, 7], [4, 4]])
+# B = np.array([[2, 2], [5, 7], [4, 4]])
 # print("Matrix B (3 by 2):\n", B)
 "first function is np.matmul() , second is '@' and third is 'x.dot(y)'"
 # print(np.matmul(A, B))
@@ -682,8 +707,8 @@ B = np.array([[2, 2], [5, 7], [4, 4]])
 #     print(err)
 "so the number of the columns in the first matrix should match the number of the rows in the second matrix"
 # backing to multipliying of the vectors there's a strange shortcut that I gonna show it to u
-x = np.array([1, -2, -5])
-y = np.array([4, 3, -1])
+# x = np.array([1, -2, -5])
+# y = np.array([4, 3, -1])
 # print("Shape of vector x:", x.shape)
 # print("Number of dimensions of vector x:", x.ndim)
 # print("Shape of vector x, reshaped to a matrix:", x.reshape((3, 1)).shape)
@@ -691,7 +716,7 @@ y = np.array([4, 3, -1])
 # from we know when we multiply x by y it will give us an error
 # print(np.matmul(x,y)) # here we try without any reshape
 # but it worked fine!!! , so how ?
-"So, vector  𝑥 was automatically transposed into the vector  1×3 and matrix multiplication  𝑥𝑇 𝑦 was calculate  d." # xT is x transpose
+"So, vector  𝑥 was automatically transposed into the vector  1×3 and matrix multiplication  𝑥𝑇 𝑦 was calculate   d." # xT is x transpose
 # now we gonna try same thing but now with reshape
 # try:
 #     np.matmul(x.reshape((3, 1)), y.reshape((3, 1)))
@@ -706,11 +731,50 @@ y = np.array([4, 3, -1])
     you get the resultant product matrix.
 """
 # and this is good and bad at the same time , let me show to u:
-print(A - 2)
+# print(A - 2)
 """
     Mathematically, subtraction of the 3×3 matrix  𝐴 and a scalar is not defined,
     but Python broadcasts the scalar, creating a  3×3 np.array and performing subtraction element by element.
 """
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
-### Lab 6
+#!## Lab 6 (Linear Transformations)
+# * In this lab you will explore linear transformations, visualize their results and master matrix multiplication to apply various linear transformations.
+# ==========#######=========###
+#!# 1- Transformations
+"""
+    A transformation is a function from one vector space to another that respects the underlying (linear) structure of each vector space. 
+    Referring to a specific transformation, you can use a symbol, such as  𝑇.
+    Specifying the spaces containing the input and output vectors, e.g.  ℝ2 and  ℝ3, you can write  𝑇:ℝ2→ℝ3.
+    Transforming vector  𝑣∈ℝ2 into the vector  𝑤∈ℝ3 by the transformation  𝑇, you can use the notation  𝑇(𝑣)=𝑤
+    and read it as "T of v equals to w" or "vector w is an image of vector v with the transformation T".
+    The following Python function corresponds to the transformation  𝑇:ℝ2→ℝ3 with the following symbolic formula:
+    T([𝑣1 𝑣2])= [3*𝑣1 0 -2*𝑣2]        ==>   (1)
+"""
+def T(v):
+    w = np.zeros((3,1)) 
+    w[0,0] = 3*v[0,0]  #W[row,column]
+    w[2,0] = -2*v[1,0] #W[row = 2, column = 0]
+    return w
+#here the the second row is still zero as we didn't specify it
+# v = np.array([[3], [5]])
+# w = T(v)
+# print("Original vector:\n", v, "\n\n Result of the transformation:\n", w)
+# ============
+#!# 2- Linear Transformations
+"""
+A transformation 𝑇 is said to be linear if the following two properties are true for any scalar 𝑘, and any input vectors 𝑢 and 𝑣:
+*(1) 𝑇(𝑘𝑣)=𝑘𝑇(𝑣)
+*(2) 𝑇(𝑢+𝑣)=𝑇(𝑢)+𝑇(𝑣)
+"""
+# u = np.array([[1], [-2]])
+# v = np.array([[2], [4]])
+# k = 7
+# print("T(k*v):\n", T(k*v), "\n k*T(v):\n", k*T(v), "\n\n")
+# print("T(u+v):\n", T(u+v), "\n T(u)+T(v):\n", T(u)+T(v))
+# then we can see that the first and second property is true, so it is linear transformation
+# ============
+## 3- Transformations Defined as a Matrix Multiplication
+"""
+Let  𝐿:ℝ𝑚→ℝ𝑛 be defined by a matrix 𝐴, where  𝐿(𝑣)=𝐴𝑣, multiplication of the matrix 𝐴(𝑛×𝑚) and vector 𝑣(𝑚×1) resulting in the vector 𝑤(𝑛×1).
+"""
