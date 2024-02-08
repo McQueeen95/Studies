@@ -404,8 +404,6 @@ elementary operations:
     - Add two rows and exchange one of the original rows with the result of the addition
     - Swap rows
 """
-
-
 def multiplyRow(matrix, rowNum, multiplyNum):
     indexedRowNum = rowNum - 1
     if multiplyNum == 0:
@@ -413,8 +411,6 @@ def multiplyRow(matrix, rowNum, multiplyNum):
     Nmatrix = matrix.copy()
     Nmatrix[indexedRowNum] = Nmatrix[indexedRowNum] * multiplyNum
     return Nmatrix
-
-
 def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 --> R2
     indexedRowNum1 = rowNum1 - 1
     indexedRowNum2 = rowNum2 - 1
@@ -425,8 +421,6 @@ def multiplyAndAddRows(matrix, rowNum1, rowNum2, rowNum1Multiple):  # xR1 + R2 -
         rowNum1Multiple * Nmatrix[indexedRowNum1] + Nmatrix[indexedRowNum2]
     )
     return Nmatrix
-
-
 def swapRows(matrix, rowNum1, rowNum2):
     indexedRowNum1 = rowNum1 - 1
     indexedRowNum2 = rowNum2 - 1
@@ -435,16 +429,12 @@ def swapRows(matrix, rowNum1, rowNum2):
         [indexedRowNum2, indexedRowNum1]
     ]  # matrix[x][y] = matrix[x,y] R the same
     return Nmatrix
-
-
 def giveMeInRowReduction3_4(matrix):
     matrix = multiplyRow(matrix, 3, 1 / matrix[2, 2])
     X3 = matrix[2][3]
     X2 = (matrix[1, 3] - matrix[1, 2] * X3) / matrix[1, 1]
     X1 = (matrix[0, 3] - matrix[0, 2] * X3 - matrix[0, 1] * X2) / matrix[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}")
-
-
 def giveMeInRowReduction4_5(mat):
     mat = multiplyRow(mat, 4, 1 / mat[3, 3])
     X4 = mat[3, 4]
@@ -452,12 +442,9 @@ def giveMeInRowReduction4_5(mat):
     X2 = (mat[1, 4] - mat[1, 2] * X3 - mat[1, 3] * X4) / mat[1, 1]
     X1 = (mat[0, 4] - mat[0, 1] * X2 - mat[0, 2] * X3 - mat[0, 3] * X4) / mat[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}\nX4= {X4}")
-
-
 # print(f"by applying: 2*R3 --> R3 \n the matrix is:\n{multiplyRow(matrixA,3,2)}")
 # print(f"by applying: 1/2*R2 + R3 --> R3 \n the matrix is:\n{multiplyAndAddRows(matrixA,2,3,1/2)}")
 # print(f"by applying: R1 <--> R3 \n the matrix is:\n{swapRows(matrixA,1,3)}")
-
 # ==========#######====
 # 2.3- Row Reduction and Solution of the Linear System
 # A_ref = swapRows(matrixA,1,3) # R1 <--> R3
@@ -466,13 +453,10 @@ def giveMeInRowReduction4_5(mat):
 # A_ref = multiplyAndAddRows(A_ref,2,3,-1) # -1*R2 + R3 --> R3
 # print(A_ref) # now its on Row Reduction form
 # giveMeInRowReduction3_4(A_ref)
-
 # we use the same methods with No solutions and infinite number of solutions
 # np.linalg.solve gives an error if there are no or infinitely many solutions,
-
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
-
 ### Assignment 1
 # A = np.array([
 #   [2,-1,1,1],
@@ -507,7 +491,6 @@ def giveMeInRowReduction4_5(mat):
 # mat = multiplyAndAddRows(mat,3,1,1)
 # mat = multiplyAndAddRows(mat,2,1,-2)
 # print(mat) # this in reduced row echlon form
-
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
 ### Lab 4 (Vector Operations: Scalar Multiplication, Sum and Dot Product of Vectors)
@@ -517,8 +500,6 @@ def giveMeInRowReduction4_5(mat):
 # ======####==
 # 1.1 Visualization of a Vector (𝑣 ∈ ℝ2) R2 is a plane in two dimension
 "We can see that vectors can be visualized as arrows in the plane"
-
-
 def plot_vectors(list_v, list_label, list_color):
     _, ax = plt.subplots(figsize=(10, 10))
     ax.tick_params(axis="x", labelsize=14)
@@ -541,8 +522,6 @@ def plot_vectors(list_v, list_label, list_color):
     plt.grid()
     plt.gca().set_aspect("equal")
     plt.show()
-
-
 # v = np.array([[1],[3]])
 # w = np.array([[4],[-1]])
 # n= np.array([0,9])
@@ -594,19 +573,13 @@ def plot_vectors(list_v, list_label, list_color):
 # ======####==
 # 2.2 Dot Product using Python
 "Note: it is recommended to define vectors as NumPy arrays to avoid errors."
-
-
 def Vdot2(x, y):
     return sum(x[i] * y[i] for i in range(len(x)))
-
-
 def Vdot1(x, y):
     sum = 0
     for xi, yi in zip(x, y):
         sum += xi * yi
     return sum
-
-
 # x = np.array([1, 2, 3])
 # y = np.array([4, 5, 6])
 # all the methods below give the same result but they are different in terms of speed
@@ -716,7 +689,7 @@ def Vdot1(x, y):
 # from we know when we multiply x by y it will give us an error
 # print(np.matmul(x,y)) # here we try without any reshape
 # but it worked fine!!! , so how ?
-"So, vector  𝑥 was automatically transposed into the vector  1×3 and matrix multiplication  𝑥𝑇 𝑦 was calculate   d." # xT is x transpose
+"So, vector  𝑥 was automatically transposed into the vector  1×3 and matrix multiplication  𝑥𝑇 𝑦 was calculate   d."  # xT is x transpose
 # now we gonna try same thing but now with reshape
 # try:
 #     np.matmul(x.reshape((3, 1)), y.reshape((3, 1)))
@@ -752,11 +725,11 @@ def Vdot1(x, y):
     T([𝑣1 𝑣2])= [3*𝑣1 0 -2*𝑣2]        ==>   (1)
 """
 def T(v):
-    w = np.zeros((3,1)) 
-    w[0,0] = 3*v[0,0]  #W[row,column]
-    w[2,0] = -2*v[1,0] #W[row = 2, column = 0]
+    w = np.zeros((3, 1))
+    w[0, 0] = 3 * v[0, 0]  # W[row,column]
+    w[2, 0] = -2 * v[1, 0]  # W[row = 2, column = 0]
     return w
-#here the the second row is still zero as we didn't specify it
+# here the the second row is still zero as we didn't specify it
 # v = np.array([[3], [5]])
 # w = T(v)
 # print("Original vector:\n", v, "\n\n Result of the transformation:\n", w)
@@ -774,7 +747,33 @@ A transformation 𝑇 is said to be linear if the following two properties are t
 # print("T(u+v):\n", T(u+v), "\n T(u)+T(v):\n", T(u)+T(v))
 # then we can see that the first and second property is true, so it is linear transformation
 # ============
-## 3- Transformations Defined as a Matrix Multiplication
+#!# 3- Transformations Defined as a Matrix Multiplication
 """
 Let  𝐿:ℝ𝑚→ℝ𝑛 be defined by a matrix 𝐴, where  𝐿(𝑣)=𝐴𝑣, multiplication of the matrix 𝐴(𝑛×𝑚) and vector 𝑣(𝑚×1) resulting in the vector 𝑤(𝑛×1).
 """
+def L(v):
+    A = np.array(
+        [[3, 0], [0, 0], [0, -2]]
+    )  # ? this the matrix that form the transformation in row 752
+    print("Transformation matrix:\n", A, "\n")
+    w = A @ v
+    return w
+# v = np.array([[3], [5]])
+# w = L(v)
+# print("Original vector:\n", v, "\n\n Result of the transformation:\n", w)
+"""
+Every linear transformation can be carried out by matrix multiplication.
+And vice versa, carrying out matrix multiplication, it is natural to consider the linear transformation that it represents.
+It means you can associate the matrix with the linear transformation in some way.
+This is a key connection between linear transformations and matrix algebra.
+"""
+# ============
+#!# 4- Applications: Computer Graphics
+# img = cv2.imread("./img.png", cv2.IMREAD_COLOR)
+# img = cv2.cvtColor(img, cv2.COLOR_BGR2RGB)
+# image_rotated = cv2.rotate(img, cv2.ROTATE_90_CLOCKWISE)
+# plt.imshow(image_rotated)
+# plt.show()
+# ============########===============#################==================########################==============
+# ============########===============#################==================########################==============
+### Assignment 2
