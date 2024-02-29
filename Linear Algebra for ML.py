@@ -101,9 +101,11 @@ Think of a multidimensional array as an excel sheet where each row/column repres
 """
 An alternative way to create a multidimensional array is by reshaping the initial 1-D array.
 Using np.reshape() you can rearrange elements of the previous array into a new shape.
-"""
+# """
 # oDimArr = np.array([1, 2, 3, 4, 5, 6, 7, 8, 9,10,11,12])
-# multiDimArr = np.reshape(oDimArr, (3, 4))
+# multiDimArr = np.reshape(oDimArr, # the array to be reshaped
+#                         (3, 4) # dimensions of the new array
+#                         )
 # print(multiDimArr, "\n")
 # =====================================================
 # =========== 2.1- Finding size, shape and dimension
@@ -179,7 +181,9 @@ np.hsplit() - splits an array into several smaller arrays
 # print(f"a1:\n{ar2}\n")
 # print(np.hstack((ar1,ar2)),"\n") # return a new array which put Arr1 next to Arr2[Arr1 Arr2]
 # print(np.vstack((ar1,ar2)),"\n") # return a new array which put Arr1 at the top of Arr2
-# print(np.hsplit(ar1,2))
+# print(np.hsplit(ar1,2)) # split the array into 2 subarrays of equal size
+# print(np.hsplit(ar2,[1])) # split the array after the first column
+# print(np.hsplit(ar2,[1,3])) # split the array after the first and the third row
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
 ### Lab 2 (Solving Linear Systems: 2 variables)
@@ -429,6 +433,45 @@ def swapRows(matrix, rowNum1, rowNum2):
         [indexedRowNum2, indexedRowNum1]
     ]  # matrix[x][y] = matrix[x,y] R the same
     return Nmatrix
+def get_index_first_non_zero_value_from_column(M, column, starting_row):
+    """
+    Retrieve the index of the first non-zero value in a specified column of the given matrix.
+    Parameters:
+    - matrix (numpy.array): The input matrix to search for non-zero values.
+    - column (int): The index of the column to search.
+    - starting_row (int): The starting row index for the search.
+    Returns:
+    int or None: The index of the first non-zero value in the specified column, starting from the given row.
+                Returns None if no non-zero value is found.
+    """
+    # Get the column array starting from the specified row
+    column_array = M[starting_row:,column]
+    for i, val in enumerate(column_array):
+        # Iterate over every value in the column array. 
+        # To check for non-zero values, you must always use np.isclose instead of doing "val == 0".
+        if not np.isclose(val, 0, atol = 1e-5):
+            # If one non zero value is found, then adjust the index to match the correct index in the matrix and return it.
+            index = i + starting_row
+            return index
+    # If no non-zero value is found below it, return None.
+    return None
+def get_index_first_non_zero_value_from_row(M, row): # gitting the index of pivot
+    """
+    Find the index of the first non-zero value in the specified row of the given matrix.
+    Parameters:
+    - matrix (numpy.array): The input matrix to search for non-zero values.
+    - row (int): The index of the row to search.
+    Returns:
+    int or None: The index of the first non-zero value in the specified row.
+                Returns None if no non-zero value is found.
+    """
+    # Get the desired row
+    row_array = M[row]
+    for i, val in enumerate(row_array):
+        # If finds a non zero value, returns the index. Otherwise returns None.
+        if not np.isclose(val, 0, atol = 1e-5):
+            return i
+    return None
 def giveMeInRowReduction3_4(matrix):
     matrix = multiplyRow(matrix, 3, 1 / matrix[2, 2])
     X3 = matrix[2][3]
@@ -442,9 +485,237 @@ def giveMeInRowReduction4_5(mat):
     X2 = (mat[1, 4] - mat[1, 2] * X3 - mat[1, 3] * X4) / mat[1, 1]
     X1 = (mat[0, 4] - mat[0, 1] * X2 - mat[0, 2] * X3 - mat[0, 3] * X4) / mat[0, 0]
     print(f"X1= {X1}\nX2= {X2}\nX3= {X3}\nX4= {X4}")
+def move_row_to_bottom(M, row_index):
+    """
+    Move the specified row to the bottom of the given matrix.
+    Parameters:
+    - M (numpy.array): Input matrix.
+    - row_index (int): Index of the row to be moved to the bottom.
+    Returns:
+    - numpy.array: Matrix with the specified row moved to the bottom.
+    """
+    # Make a copy of M to avoid modifying the original matrix
+    M = M.copy()
+    # Extract the specified row
+    row_to_move = M[row_index]
+    # Delete the specified row from the matrix
+    M = np.delete(M, row_index, axis=0)
+    # Append the row at the bottom of the matrix
+    M = np.vstack([M, row_to_move])
+    return M
+def augmented_matrix(A, B):
+    """
+    Create an augmented matrix by horizontally stacking two matrices A and B.
+    Parameters:
+    - A (numpy.array): First matrix.
+    - B (numpy.array): Second matrix.
+    Returns:
+    - numpy.array: Augmented matrix obtained by horizontally stacking A and B.
+    """
+    return np.hstack((A,B))
+def reduced_row_echelon_form(A, B):
+    """
+    Utilizes elementary row operations to transform a given set of matrices,
+    which represent the coefficients and constant terms of a linear system,
+    into reduced row echelon form.
+    Parameters:
+    - A (numpy.array): The input square matrix of coefficients.
+    - B (numpy.array): The input column matrix of constant terms
+    Returns:
+    numpy.array: A new augmented matrix in reduced row echelon form.
+    """
+    # Make copies of the input matrices to avoid modifying the originals
+    A = A.copy()
+    B = B.copy()
+    # Convert matrices to float to prevent integer division
+    A = A.astype('float64')
+    B = B.astype('float64')
+    # Number of rows in the coefficient matrix
+    num_rows = len(A)
+    # List to store rows that should be moved to the bottom (rows of zeroes)
+    rows_to_move = []
+    # Transform matrices A and B into the augmented matrix M
+    M = np.hstack((A, B))
+    # Iterate over the rows.
+    for i in range(num_rows):
+        # Find the first non-zero entry in the current row (pivot)
+        pivot = next((val for val in M[i, i:] if not np.isclose(val, 0)), 0)
+        # This variable stores the pivot's column index, it starts at i,
+        # but it may change if the pivot is not in the main diagonal.
+        column_index = i
+        # CASE PIVOT IS ZERO
+        if np.isclose(pivot, 0):
+            # PART 1: Look for rows below the current row to swap,
+            # you may use the function get_index_first_non_zero_value_from_column
+            # index = np.argmax(np.abs(M[i:, i])) + i
+            index = get_index_first_non_zero_value_from_column(M, column_index, i)
+            # If there is a non-zero pivot
+            if index is not None:
+                # Swap rows if a non-zero entry is found below the current row
+                # M[[i, index]] = M[[index, i]]
+                swapRows(M, i + 1, index + 1)
+                # Update the pivot after swapping rows
+                pivot = M[i, i]
+            # PART 2 - NOT GRADED. This part deals with the case where
+            # the pivot isn't in the main diagonal.
+            # If no non-zero entry is found below it to swap rows,
+            # then look for a non-zero pivot outside the diagonal.
+            if index is None:
+                index_new_pivot = get_index_first_non_zero_value_from_row(M, i) 
+                # If there is no non-zero pivot, it is a row with zeroes,
+                # save it into the list rows_to_move so you can move it to the bottom further.
+                # The reason for not moving right away is that it would mess up the indexing in the for loop.
+                # The second condition i >= num_rows is to avoid taking the augmented part into consideration.
+                if index_new_pivot is None or index_new_pivot >= num_rows:
+                    rows_to_move.append(i)
+                    continue
+                # If there is another non-zero value outside the diagonal, it will be the pivot.
+                else:
+                    pivot = M[i, index_new_pivot]
+                    # Update the column index to agree with the new pivot position
+                    column_index = index_new_pivot
+        # END HANDLING FOR PIVOT 0
+        # Divide the current row by the pivot, so the new pivot will be 1. (reduced row echelon form)
+        M[i] = M[i] / pivot
+        # Perform row reduction for rows below the current row
+        for j in range(i + 1, num_rows):
+            # Get the value in the row that is below the pivot value.
+            # Remember that the value in the column position is given
+            # by the variable called column_index
+            value_below_pivot = M[j, column_index]
+            # Perform row reduction using the formula:
+            # row_to_reduce -> row_to_reduce - value_below_pivot * pivot_row
+            M[j] = M[j] - value_below_pivot * M[i]
+    # Move every row of zeroes to the bottom
+    for row_index in rows_to_move:
+        M = np.concatenate((M[:row_index], M[row_index + 1:], M[row_index:row_index + 1]))
+    return M
+def check_solution(M):
+    """
+    Given an augmented matrix in reduced row echelon form, determine the nature of the associated linear system.
+    Parameters:
+    - M (numpy.array): An (n x n+1) matrix representing the augmented form of a linear system,
+    where n is the number of equations and variables
+    Returns:
+    - str: A string indicating the nature of the linear system:
+    - "Unique solution." if the system has one unique solution,
+    - "No solution." if the system has no solution,
+    - "Infinitely many solutions." if the system has infinitely many solutions.
+    This function checks for singularity and analyzes the constant terms to determine the solution status.
+    """
+    # Make a copy of the input matrix to avoid modifying the original
+    M = M.copy()
+    # Get the number of rows in the matrix
+    num_rows = len(M)
+    # Define the square matrix associated with the linear system
+    coefficient_matrix = M[:,:-1]
+    # Define the vector associated with the constant terms in the linear system
+    constant_vector = M[:,-1]
+    # Flag to indicate if the matrix is singular
+    singular = False
+    # Iterate over the rows of the coefficient matrix
+    for i in range(num_rows):
+        # Test if the row from the square matrix has only zeros (do not replcae the part 'is None')
+        if get_index_first_non_zero_value_from_row(coefficient_matrix, i) is None:
+            # The matrix is singular, analyze the corresponding constant term to determine the type of solution
+            singular = True 
+            # If the constant term is non-zero, the system has no solution
+            if not np.isclose(constant_vector[i],0):
+                return "No solution." 
+    # Determine the type of solution based on the singularity condition            
+    if singular:        
+        return "Infinitely many solutions."
+    else:
+        return "Unique solution."
+def back_substitution(M):
+    """
+    Perform back substitution on an augmented matrix (with unique solution) in reduced row echelon form to find the solution to the linear system.
+    Parameters:
+    - M (numpy.array): The augmented matrix in reduced row echelon form (n x n+1).
+    Returns:
+    numpy.array: The solution vector of the linear system.
+    """
+    # Make a copy of the input matrix to avoid modifying the original
+    M = M.copy()
+    # Get the number of rows (and columns) in the matrix of coefficients
+    num_rows = len(M)
+    # Iterate from bottom to top
+    for i in range(num_rows-1,-1,-1):
+        # Get the substitution row
+        substitution_row = M[i,:]
+        # Iterate over the rows above the substitution_row
+        for j in range(i-1,-1,-1):
+            # Get the row to be reduced
+            row_to_reduce = M[j,:]
+            # Get the index of the first non-zero element in the substitution row
+            index = get_index_first_non_zero_value_from_row(M, i)
+            # Get the value of the element at the found index
+            value = row_to_reduce[index]
+            # Perform the back substitution step using the formula row_to_reduce = None
+            row_to_reduce = row_to_reduce - value * substitution_row
+            # Replace the updated row in the matrix
+            M[j, :] = row_to_reduce
+    # Extract the solution from the last column
+    solution = M[:,-1]
+    return solution
+def gaussian_elimination(A, B):
+    """
+    Solve a linear system represented by an augmented matrix using the Gaussian elimination method.
+    Parameters:
+    - A (numpy.array): Square matrix of size n x n representing the coefficients of the linear system
+    - B (numpy.array): Column matrix of size 1 x n representing the constant terms.
+    Returns:
+    numpy.array or str: The solution vector if a unique solution exists, or a string indicating the type of solution.
+    """
+    ### START CODE HERE ###
+    # Get the matrix in row echelon form
+    reduced_row_echelon_M = reduced_row_echelon_form(A,B)
+    # Check the type of solution (unique, infinitely many, or none)
+    solution = check_solution(reduced_row_echelon_M)
+    # If the solution is unique, perform back substitution
+    if solution == "Unique solution.": 
+        solution = back_substitution(reduced_row_echelon_M)
+    ### END SOLUTION HERE ###
+    return solution
+
+
+# A = np.array([[2,1,5],[1,3,1], [3,4,6]])
+# B = np.array([[0], [0], [0]])
+# print(reduced_row_echelon_form(A,B))
+# print(np.linalg.det(A))
+# print(gaussian_elimination(A,B))
+# print(back_substitution(reduced_row_echelon_form(A,B)))
+# print(np.linalg.solve(A,B))
+# matrix = np.hstack((A,np.reshape(B,(3,1)))) # make it agumented matrix
+# print(check_solution(reduced_row_echelon_form(A,B)))
 # print(f"by applying: 2*R3 --> R3 \n the matrix is:\n{multiplyRow(matrixA,3,2)}")
 # print(f"by applying: 1/2*R2 + R3 --> R3 \n the matrix is:\n{multiplyAndAddRows(matrixA,2,3,1/2)}")
 # print(f"by applying: R1 <--> R3 \n the matrix is:\n{swapRows(matrixA,1,3)}")
+# N = np.array([
+# [0, 5, -3 ,6 ,8],
+# [0, 6, 3, 8, 1],
+# [0, 0, 0, 0, 0],
+# [0, 0, 0 ,1 ,7],
+# [0, 2, 1, 0, 4]
+# ]
+# )
+# print(N)
+# print(get_index_first_non_zero_value_from_column(N, column = 1, starting_row = 2))
+# print(f'Output for row 2: {get_index_first_non_zero_value_from_row(N, 2)}')
+# print(f'Output for row 3: {get_index_first_non_zero_value_from_row(N, 3)}')
+# M = np.array([
+#     [1, 2, 3],
+#     [4, 5, 6],
+#     [7, 8, 9]
+# ])
+# print(f'Matrix before:\n{M}')
+# print(f'Matrix after moving index 1:\n{move_row_to_bottom(M, 1)}')
+# A = np.array([[1,9,3], [3,4,5], [4,5,6]])
+# B = np.array([[1], [85], [7]])
+# print(gaussian_elimination(A,B))
+# print(back_substitution(reduced_row_echelon_form(A,B)))
+# print(np.linalg.solve(A,B))
+# print(augmented_matrix(A,B))
 # ==========#######====
 # 2.3- Row Reduction and Solution of the Linear System
 # A_ref = swapRows(matrixA,1,3) # R1 <--> R3
@@ -491,6 +762,30 @@ def giveMeInRowReduction4_5(mat):
 # mat = multiplyAndAddRows(mat,3,1,1)
 # mat = multiplyAndAddRows(mat,2,1,-2)
 # print(mat) # this in reduced row echlon form
+#######################################
+# A = np.array(
+#     [
+#         [1,1,-1],
+#         [1,-1,2],
+#         [4,-2,1]
+#     ],dtype=np.dtype(float)
+# )
+# b = np.array([6,4,10],dtype=np.dtype(float))
+# print(np.linalg.det(A))
+# print(np.linalg.solve(A,b))
+# A = np.array([[1,2,3],[0,0,0], [0,0,5]])
+# B = np.array([[1], [2], [4]])
+# matrix = np.hstack((A,np.reshape(B,(3,1)))) # make it agumented matrix
+# print(augmented_matrix(A, B) , '\n',np.hstack((A,B)))
+# mat = multiplyAndAddRows(matrix,1,2,-1)
+# mat = multiplyAndAddRows(mat,1,3,-4)
+# mat = multiplyAndAddRows(mat,2,3,-3)
+# mat = multiplyAndAddRows(mat,3,1,-1/4)
+# mat = multiplyRow(mat,3,1/4)
+# mat = multiplyAndAddRows(mat,3,2,3)
+# mat = multiplyAndAddRows(mat,2,1,1/2)
+# mat = multiplyRow(mat,2,-1/2)
+# giveMeInRowReduction3_4(mat)
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
 ### Lab 4 (Vector Operations: Scalar Multiplication, Sum and Dot Product of Vectors)
@@ -776,4 +1071,5 @@ This is a key connection between linear transformations and matrix algebra.
 # plt.show()
 # ============########===============#################==================########################==============
 # ============########===============#################==================########################==============
-### Assignment 2
+#!## Assignment 2
+# grade-up-to-here
