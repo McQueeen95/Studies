@@ -1,3 +1,5 @@
+
+
 # those laps from Corsera
 #########Lap1###########
 ## NumPy to create 2-D arrays
@@ -341,12 +343,12 @@ define a function plot_lines() to plot the lines and use it later to represent t
 # ==========#######=========###
 ## 3 System of Linear Equations with No Solutions
 # ==========#######====
-# a = np.array([
-#       [-1, 3],
-#       [3, -9]
-#       ])
-# b = np.array([7,1])
-# print(np.linalg.det(a)) #Det = 0 so its infinte or no solution
+a = np.array([
+      [-1, 3],
+      [3, -9]
+      ])
+b = np.array([7,1])
+print(np.linalg.det(a)) #Det = 0 so its infinte or no solution
 
 # try:
 #       x_2 = np.linalg.solve(a, b)
